@@ -8,6 +8,6 @@ package _02_EDD;
  *
  * @author AresR
  */
-public class DoubleNode {
+public class _01_BinarySearchTree {
     
 }

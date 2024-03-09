@@ -8,6 +8,6 @@ package _02_EDD;
  *
  * @author AresR
  */
-public class BinarySearchTree {
+public class _02_NodeBST {
     
 }

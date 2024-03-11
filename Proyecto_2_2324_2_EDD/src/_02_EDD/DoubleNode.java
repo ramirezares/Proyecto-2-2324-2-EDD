@@ -8,6 +8,15 @@ package _02_EDD;
  *
  * @author AresR
  */
+
 public class DoubleNode {
+    //E data
+    //DoubleNode pNxt
+    //DoubleNOde pPrev
     
+    //DoubleNode()
+    
+    //IsEquals()
+    
+    //Getters y setters
 }

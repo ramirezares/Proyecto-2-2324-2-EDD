@@ -9,5 +9,24 @@ package _02_EDD;
  * @author AresR
  */
 public class DoubleLinkedList {
+  
+    // nodo pFirst, nodo pLast, int size
     
+    //DoubleLinkedList()   
+    
+    //isEmpty()
+    
+    //insertHead()
+    
+    //insertLast()
+    
+    //locateData()    
+    
+    //destroyer()
+    
+    //deleteNode()
+    
+    //isEquals()
+    
+    //
 }

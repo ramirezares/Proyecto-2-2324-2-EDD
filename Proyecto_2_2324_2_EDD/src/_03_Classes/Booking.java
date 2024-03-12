@@ -77,17 +77,12 @@ public class Booking {
         this.cellphone = cellphone;
     }
 
-  
-
-    
-
-
-    public String getRoom_Type() {
-        return roomType;
+    public String getID() {
+        return ID;
     }
 
-    public void setRoom_Type(String room_Type) {
-        this.roomType = room_Type;
+    public void setID(String ID) {
+        this.ID = ID;
     }
 
     public String getArrival() {
@@ -106,13 +101,13 @@ public class Booking {
         this.departure = departure;
     }
 
-    public String getID() {
-        return ID;
-    }
+    
+  
 
-    public void setID(String ID) {
-        this.ID = ID;
-    }
+    
+
+
+  
     
     
    

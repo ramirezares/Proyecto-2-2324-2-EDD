@@ -74,15 +74,20 @@ public class RoomRecord {
         this.arrive = arrive;
     }
 
-    public String getRoom_Number() {
+    public String getRoomNumber() {
         return room_Number;
     }
 
-    public void setRoom_Number(String room_Number) {
+    public void setRoomNumber(String room_Number) {
         this.room_Number = room_Number;
     }
    
-    
+    public String getFullName() {
+        String fullName;
+       fullName = this.name+this.lastName;
+       return fullName;
+        
+    }
     
     
     

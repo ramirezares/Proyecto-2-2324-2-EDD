@@ -24,11 +24,11 @@ public class ClientStatus {
         this.arrive = arrive;
     }
 
-    public String getRoom_number() {
+    public String getRoomNumber() {
         return roomNumber;
     }
 
-    public void setRoom_number(String room_number) {
+    public void setRoomNumber(String room_number) {
         this.roomNumber = room_number;
     }
 

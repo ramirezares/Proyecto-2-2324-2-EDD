@@ -9,6 +9,8 @@ public class Room {
     private int room_Number;
     private String  room_Type;
     private int room_Floor;
+    
+    //atributo historial en la clase room va a ser un string
 
     public Room(int room_Number, String room_Type, int room_Floor) {
         this.room_Number = room_Number;

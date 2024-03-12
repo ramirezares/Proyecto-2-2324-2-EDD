@@ -12,6 +12,8 @@ public class RoomRecord {
     private String genre;
     private String arrive;
     private String room_Number;
+    
+    //falta una funcion que genero una linea de string sin el numero de la habitacion
 
     public RoomRecord(String ID, String name, String lastName, String email, String genre, String arrive, String room_Number) {
         this.ID = ID;

@@ -52,4 +52,10 @@ public class Booking {
         this.departure = departure;
     }
     
+    
+    public String getID(){
+        return this.client.getID();
+    
+    }
+    
 }

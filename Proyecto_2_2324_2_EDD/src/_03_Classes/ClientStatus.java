@@ -81,4 +81,10 @@ public class ClientStatus {
         this.arrive = arrive;
     }
     
+    public String getFullName() {
+        String fullName;
+       fullName = this.name+this.lastName;
+       return fullName;
+        
+    }
 }

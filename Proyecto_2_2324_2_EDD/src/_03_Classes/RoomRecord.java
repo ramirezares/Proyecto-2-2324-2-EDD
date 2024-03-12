@@ -82,12 +82,7 @@ public class RoomRecord {
         this.room_Number = room_Number;
     }
    
-    public String getFullName() {
-        String fullName;
-       fullName = this.name+this.lastName;
-       return fullName;
-        
-    }
+    
     
     
     

@@ -4,7 +4,7 @@ import _03_Classes.ClientStatus;
 
 /**
  *
- * @author Danna Star
+ * @author Daniela Zambrano
  */
 public class HashTable {
     

@@ -20,113 +20,101 @@ public class BinarySearchTree {
         return this.pRoot == null;
     }
 
-    // Pertenece
-    
-    // Determinar altura
-    
-    // Determinar numero de elementos
-    
-    // Hacer una copia
-    
-    //Determinar si dos arboles son identicos
-    
-    //Borrar (Hacer null?)
+    public NodeBST SearchNodeInBST(NodeBST pRoot, int numNodeOfCurrentOperation) {
 
-    public NodeBST SearchNodeInBST(NodeBST NodeOfCurrentOperation) {
-
-        if (this.pRoot == null) {
+        if (pRoot == null) {
             return null;
-        } else if (this.pRoot.isEqual(NodeOfCurrentOperation)) {
-            return this.getRoot();
-        } else if (this.pRoot.isGreaterThan(NodeOfCurrentOperation)) {
-            BinarySearchTree SubTreeLeft = new BinarySearchTree();
-            SubTreeLeft.setRoot(this.pRoot.getLeftSong());
-            return SubTreeLeft.SearchNodeInBST(NodeOfCurrentOperation);
+        } else if (pRoot.isEqual(numNodeOfCurrentOperation)) {
+            return pRoot;
+        } else if (pRoot.isGreaterThan(numNodeOfCurrentOperation)) {
+            return SearchNodeInBST(pRoot.getLeftSong(), numNodeOfCurrentOperation);
         } else {
-            BinarySearchTree SubTreeRight = new BinarySearchTree();
-            SubTreeRight.setRoot(this.pRoot.getLeftSong());
-            return SubTreeRight.SearchNodeInBST(NodeOfCurrentOperation);
+            return SearchNodeInBST(pRoot.getRightSong(), numNodeOfCurrentOperation);
         }
     }
 
-    public boolean insertNodeInBST(NodeBST NodeOfCurrentOperation) {
+    public boolean insertNodeInBST(NodeBST pRoot, int numNodeOfCurrentOperation, Object Data) {
         boolean val = false;
 
-        if (this.pRoot == null) {
-            this.pRoot = NodeOfCurrentOperation;
+        if (pRoot == null) {
+            NodeBST nNodeBST = new NodeBST(numNodeOfCurrentOperation, Data);
+            pRoot = nNodeBST;
+            val = true;
         } else {
-            if (this.pRoot.isGreaterThan(NodeOfCurrentOperation)) {
-                BinarySearchTree SubTreeLeft = new BinarySearchTree();
-                SubTreeLeft.setRoot(this.pRoot.getLeftSong());
-                SubTreeLeft.insertNodeInBST(NodeOfCurrentOperation);
-                this.pRoot.setLeftSong(SubTreeLeft.getRoot());
-                val = true;
-            } else if (this.pRoot.isLessThan(NodeOfCurrentOperation)) {
-                BinarySearchTree SubTreeRight = new BinarySearchTree();
-                SubTreeRight.setRoot(this.pRoot.getRightSong());
-                SubTreeRight.insertNodeInBST(NodeOfCurrentOperation);
-                this.pRoot.setRightSong(SubTreeRight.getRoot());
-                val = true;
+            if (pRoot.isGreaterThan(numNodeOfCurrentOperation)) {
+                insertNodeInBST(pRoot.getLeftSong(), numNodeOfCurrentOperation, Data);
+            } else if (pRoot.isLessThan(numNodeOfCurrentOperation)) {
+                insertNodeInBST(pRoot.getRightSong(), numNodeOfCurrentOperation, Data);
             }
         }
         return val;
     }
 
-    public boolean deleteNodeInBST(NodeBST NodeOfCurrentOperation) {
+    public boolean deleteNodeInBST(NodeBST pRoot, int numNodeOfCurrentOperation) {
         boolean val = false;
 
-        if (this.pRoot == null) {
+        if (pRoot == null) {
             return val;
         } else {
-            if (this.pRoot.isGreaterThan(NodeOfCurrentOperation)) {
-                BinarySearchTree SubTreeLeft = new BinarySearchTree();
-                SubTreeLeft.setRoot(this.pRoot.getLeftSong());
-                SubTreeLeft.deleteNodeInBST(NodeOfCurrentOperation);
-                this.pRoot.setLeftSong(SubTreeLeft.getRoot());
-
+            if (pRoot.isGreaterThan(numNodeOfCurrentOperation)) {
+                deleteNodeInBST(pRoot.getLeftSong(), numNodeOfCurrentOperation);
             } else {
-                if (this.pRoot.isLessThan(NodeOfCurrentOperation)) {
-                    BinarySearchTree SubTreeRight = new BinarySearchTree();
-                    SubTreeRight.setRoot(this.pRoot.getRightSong());
-                    SubTreeRight.insertNodeInBST(NodeOfCurrentOperation);
-                    this.pRoot.setRightSong(SubTreeRight.getRoot());
-                }
-                else {
-                    if (this.pRoot.getLeftSong()==null){
-                        this.pRoot = this.pRoot.getRightSong();
-                    }
-                    else{
-                        if(this.pRoot.getRightSong()==null){
-                            this.pRoot = this.pRoot.getLeftSong();
-                        }
-                        else{
-                            NodeBST aux = searchMin(this.pRoot.getRightSong());
-                            this.pRoot.setData(aux.getData());
-                            this.deleteNodeInBST(this.pRoot.getRightSong());
+                if (pRoot.isLessThan(numNodeOfCurrentOperation)) {
+                    deleteNodeInBST(pRoot.getRightSong(), numNodeOfCurrentOperation);
+                } else {
+                    if (pRoot.getLeftSong() == null) {
+                        pRoot = pRoot.getRightSong();
+                    } else {
+                        if (pRoot.getRightSong() == null) {
+                            pRoot = pRoot.getLeftSong();
+                        } else if (pRoot.isEqual(numNodeOfCurrentOperation)) {
+                            pRoot = replace(pRoot);
                         }
                     }
-                    
+
                 }
             }
         }
         return val;
     }
-    
-    public NodeBST searchMin(NodeBST pRootOfCurrentOperation){
-        NodeBST nodeToReturn;
-        
-        NodeBST nodeLeft = pRootOfCurrentOperation.getLeftSong();
-        NodeBST nodeRight = pRootOfCurrentOperation.getRightSong();
-        
-        if(nodeLeft.getNumberOfNode()<nodeRight.getNumberOfNode()){
-            nodeToReturn = nodeLeft;
-        } else{
-            nodeToReturn = nodeRight;
+
+    protected NodeBST replace(NodeBST pRootOfCurrentOperation) {
+        NodeBST nodeToReturn, aux;
+
+        aux = pRootOfCurrentOperation;
+        nodeToReturn = pRootOfCurrentOperation.getLeftSong();
+        while (nodeToReturn.getRightSong() != null) {
+            aux = nodeToReturn;
+            nodeToReturn = nodeToReturn.getRightSong();
         }
-        
+        pRootOfCurrentOperation.setData(nodeToReturn.getData());
+        if (aux == pRootOfCurrentOperation) {
+            aux.setLeftSong(nodeToReturn.getLeftSong());
+        } else {
+            aux.setRightSong(nodeToReturn.getLeftSong());
+        }
         return nodeToReturn;
     }
-    
+
+    // Determinar numero de elementos
+    public int countNumberOfNodes() {
+        NodeBST pRootAux = this.pRoot;
+        int count = 0;
+
+        count = inOrden(pRootAux, count);
+
+        return count;
+    }
+
+    public int inOrden(NodeBST pRoot, int count) {
+        if (pRoot != null) {
+            inOrden(pRoot.getLeftSong(), count);
+            count++;
+            inOrden(pRoot.getRightSong(), count);
+        }
+        return count;
+    }
+
     public NodeBST getRoot() {
         return pRoot;
     }
@@ -134,8 +122,5 @@ public class BinarySearchTree {
     public void setRoot(NodeBST Root) {
         this.pRoot = Root;
     }
-    
-    // Obtener la data con el numero del nodo. data es la reservacion o la habitacion
-    
-    // Obtener 
+
 }

@@ -16,13 +16,13 @@ public class NodeBST<E> implements Comparator {
     private NodeBST leftSong;       // Hijo izquierdo
     private NodeBST rightSong;      // Hijo Derecho
 
-    public void NodeBST(int numberToNode, E data) {
+    public NodeBST(int numberToNode, E data) {
         this.numberOfNode = numberToNode;
         this.Data = data;
         this.leftSong = this.rightSong = null;
     }
 
-    public void NodeBST(int numberToNode, E data, NodeBST nLeft, NodeBST nRight) {
+    public NodeBST(int numberToNode, E data, NodeBST nLeft, NodeBST nRight) {
         this.numberOfNode = numberToNode;
         this.Data = data;
         this.leftSong = nLeft;
@@ -62,29 +62,30 @@ public class NodeBST<E> implements Comparator {
     }
 
     @Override
-    public boolean isEqual(NodeBST NodeOfCurrentOperation) {
+    public boolean isEqual(int numNodeOfCurrentOperation) {
         boolean val = false;
-        if (NodeOfCurrentOperation.numberOfNode == this.numberOfNode) {
+        if (numNodeOfCurrentOperation == this.numberOfNode) {
             val = true;
         }
         return val;
     }
 
     @Override
-    public boolean isLessThan(NodeBST NodeOfCurrentOperation) {
+    public boolean isLessThan(int numNodeOfCurrentOperation) {
         boolean val = false;
-        if (this.numberOfNode < NodeOfCurrentOperation.numberOfNode) {
+        if (this.numberOfNode < numNodeOfCurrentOperation) {
             val = true;
         }
         return val;
     }
 
     @Override
-    public boolean isGreaterThan(NodeBST NodeOfCurrentOperation) {
+    public boolean isGreaterThan(int numNodeOfCurrentOperation) {
         boolean val = false;
-        if (this.numberOfNode > NodeOfCurrentOperation.numberOfNode) {
+        if (this.numberOfNode > numNodeOfCurrentOperation) {
             val = true;
         }
         return val;
     }
+    
 }

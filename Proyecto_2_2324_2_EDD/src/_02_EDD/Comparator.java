@@ -11,9 +11,9 @@ package _02_EDD;
  */
 public interface Comparator<E> {
     
-    public boolean isEqual(NodeBST NodeOfCurrentOperation);
+    public boolean isEqual(int numNodeOfCurrentOperation);
     
-    public boolean isLessThan(NodeBST NodeOfCurrentOperation);
+    public boolean isLessThan(int numNodeOfCurrentOperation);
     
-    public boolean isGreaterThan(NodeBST NodeOfCurrentOperation);
+    public boolean isGreaterThan(int numNodeOfCurrentOperation);
 }

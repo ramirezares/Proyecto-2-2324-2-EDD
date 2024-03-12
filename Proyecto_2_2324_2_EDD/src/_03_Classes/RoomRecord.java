@@ -9,7 +9,7 @@ public class RoomRecord {
     private String name;
     private String lastName;
     private String email;
-    private String genre;
+    private String gender;
     private String arrive;
     private String room_Number;
     
@@ -20,7 +20,7 @@ public class RoomRecord {
         this.name = name;
         this.lastName = lastName;
         this.email = email;
-        this.genre = genre;
+        this.gender = genre;
         this.arrive = arrive;
         this.room_Number = room_Number;
     }
@@ -59,11 +59,11 @@ public class RoomRecord {
     }
 
     public String getGenre() {
-        return genre;
+        return gender;
     }
 
     public void setGenre(String genre) {
-        this.genre = genre;
+        this.gender = genre;
     }
 
     public String getArrive() {

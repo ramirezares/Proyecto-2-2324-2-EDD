@@ -20,7 +20,7 @@ public class ReadCSV {
     
     /**
     * Funcion que toma un string con la direccion de un archivo .csv y lo lee en la terminal
-    * @param ruta String con la ruta del archivo
+    * @param ruta String con la ruta del archivop
     */
     public void ReadCSV(String ruta) {
         try {
@@ -48,6 +48,7 @@ public class ReadCSV {
            System.out.print(readedline[i] + "   |   ");  
         }
     } 
+    /*
     public void putAtributesBooking(ListaSimple listaDeReservas)  {
         Booking newbooking = new Booking(readedline[0],readedline[1],readedline[2],readedline[3],readedline[4],readedline[5],readedline[6],readedline[7],readedline[8]);
         listaDeReservas.addEnd(newbooking);
@@ -131,4 +132,6 @@ public class ReadCSV {
             JOptionPane.showMessageDialog(null, "No se encuentra un archivo CSV en la ruta especificada");
         }
     }
+*/
+    
 }

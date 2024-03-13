@@ -101,7 +101,18 @@ public class Booking {
         this.departure = departure;
     }
 
-    
+    public void printBook() {
+        System.out.println(this.ID);
+         System.out.println(this.name);
+          System.out.println(this.lastName);
+           System.out.println(this.email);
+            System.out.println(this.gender);
+             System.out.println(this.roomType);
+              System.out.println(this.cellphone);
+              System.out.println(this.arrival);
+              System.out.println(this.departure);
+              System.out.println("");
+    }
   
 
     

@@ -19,6 +19,12 @@ public class Room {
         this.history = history;
     }
 
+    public Room(int roomNumber, String roomType, int roomFloor) {
+        this.roomNumber = roomNumber;
+        this.roomType = roomType;
+        this.roomFloor = roomFloor;
+        this.history = null;
+    }
    
 
        

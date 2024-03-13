@@ -27,7 +27,7 @@ public class ReadCSV {
     * Funcion que toma un string con la direccion de un archivo .csv y lo lee en la terminal
     * @param ruta String con la ruta del archivop
     */
-    public void ReadCSV(String ruta) {
+    public void printCSV(String ruta) {
         try {
             leer = new BufferedReader(new FileReader(ruta));
             while ((line = leer.readLine()) != null ) {
@@ -53,7 +53,7 @@ public class ReadCSV {
            System.out.print(readedline[i] + "   |   ");  
         }
     } 
-    
+    /*
     public void putAtributesBooking(ListaSimple listaDeReservas)  {
         Booking newbooking = new Booking(readedline[0],readedline[1],readedline[2],readedline[3],readedline[4],readedline[5],readedline[6],readedline[7],readedline[8]);
         listaDeReservas.addEnd(newbooking);
@@ -61,22 +61,26 @@ public class ReadCSV {
         ultimo.printBook();
         
     }
-    public void putAtributesClientStatus(HashTable tablastatus,int erasefirst)  {
+    */
+    public void putAtributesClientStatus(HashTable tablastatus)  {
         ClientStatus newClientStatus = new ClientStatus(readedline[0],readedline[1],readedline[2],readedline[3],readedline[4],readedline[5],readedline[6]);
         tablastatus.insert(newClientStatus);
-        System.out.println(tablastatus);
-        System.out.println(erasefirst);
     }
+    
+    /*
     public void putAtributesRoom(ListaSimple listaDeHabitaciones)  {
         Room newRoom = new Room(Integer.parseInt(readedline[0]),readedline[1],Integer.parseInt(readedline[2]));
         listaDeHabitaciones.addEnd(newRoom);
         
     }
+*/
+/*
     public void putAtributesRoomRecord(ListaSimple listaDeHistorial)  {
         RoomRecord newRoomRecord = new RoomRecord(readedline[0],readedline[1],readedline[2],readedline[3],readedline[4],readedline[5],readedline[6]);
         listaDeHistorial.addEnd(newRoomRecord);
     }
-    
+*/
+    /*
     public void readBooking(ListaSimple listaDeReservas) {
         try {
             int erasefirst = 0;
@@ -98,16 +102,17 @@ public class ReadCSV {
             JOptionPane.showMessageDialog(null, "No se encuentra un archivo CSV en la ruta especificada");
         }
     }
+    */
     public void readClientStatus(HashTable tablastatus) {
         try {
             int erasefirst = 0;
-            leer = new BufferedReader(new FileReader(System.getProperty("user.dir") + "\\src\\Archivosparaleer\\Booking_hotel - reservas.csv"));
+            leer = new BufferedReader(new FileReader(System.getProperty("user.dir") + "\\src\\Archivosparaleer\\Booking_hotel - estado.csv"));
             while ((line = leer.readLine()) != null ) {
                 if (erasefirst == 0) {
                     erasefirst = 1;
                 } else {
                 readedline = line.split(",");
-                putAtributesClientStatus(tablastatus,erasefirst); 
+                putAtributesClientStatus(tablastatus); 
                 erasefirst++;
                 }
             }
@@ -119,12 +124,18 @@ public class ReadCSV {
             JOptionPane.showMessageDialog(null, "No se encuentra un archivo CSV en la ruta especificada");
         }
     }
+    /*
     public void readRoomRecords(ListaSimple listaDeHistorial) {
         try {
-            leer = new BufferedReader(new FileReader(System.getProperty("user.dir") + "\\src\\Archivosparaleer\\Booking_hotel - reservas.csv"));
+            int erasefirst = 0;
+            leer = new BufferedReader(new FileReader(System.getProperty("user.dir") + "\\src\\Archivosparaleer\\Booking_hotel - Histórico.csv"));
             while ((line = leer.readLine()) != null ) {
+                if (erasefirst == 0) {
+                    erasefirst = 1;
+                } else {
                 readedline = line.split(",");
                 putAtributesBooking(listaDeHistorial);
+                }
             }
             listaDeHistorial.deleteHead();
             leer.close();
@@ -135,12 +146,19 @@ public class ReadCSV {
             JOptionPane.showMessageDialog(null, "No se encuentra un archivo CSV en la ruta especificada");
         }
     }
+    */
+    /*
     public void readRooms(ListaSimple listaDeHabitaciones) {
         try {
-            leer = new BufferedReader(new FileReader(System.getProperty("user.dir") + "\\src\\Archivosparaleer\\Booking_hotel - reservas.csv"));
+            int erasefirst = 0;
+            leer = new BufferedReader(new FileReader(System.getProperty("user.dir") + "\\src\\Archivosparaleer\\Booking_hotel - habitaciones.csv"));
             while ((line = leer.readLine()) != null ) {
+                if (erasefirst == 0) {
+                    erasefirst = 1;
+                } else {
                 readedline = line.split(",");
                 putAtributesBooking(listaDeHabitaciones);
+                }
             }
             listaDeHabitaciones.deleteHead();
             leer.close();
@@ -151,6 +169,5 @@ public class ReadCSV {
             JOptionPane.showMessageDialog(null, "No se encuentra un archivo CSV en la ruta especificada");
         }
     }
-    
-    
+    */
 }

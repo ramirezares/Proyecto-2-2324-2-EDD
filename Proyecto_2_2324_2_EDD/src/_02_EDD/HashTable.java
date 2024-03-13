@@ -4,7 +4,7 @@ import _03_Classes.ClientStatus;
 
 /**
  *
- * @author Danna Star
+ * @author Daniela Zambrano
  */
 public class HashTable {
     
@@ -25,7 +25,8 @@ public class HashTable {
     //
     /**
      *
-     * @param key la clave que representa al objeto (nombre y apellido juntos)
+     * @param key la clave que representa al objeto
+     * fullname del client status
      * @return la posicion de un elemento
      */
     public int index(String key){
@@ -46,6 +47,7 @@ public class HashTable {
     /**
      *
      * @param key clave que identifica de manera unica al objeto que se agrega en el hashtable
+     * fullname del client status
      * @return el indice donde se debe agregar 
      */
     public long convertString(String key){
@@ -86,10 +88,10 @@ public class HashTable {
 
     /**
      *
-     * @param key
-     * @return
+     * @param key fullname del client status
+     * @return clientStatus encontrado
      */
-    public ClientStatus  search(String key){
+    public ClientStatus search(String key){
     ClientStatus c;
     int position;
     position = index(key);
@@ -99,6 +101,10 @@ public class HashTable {
     
     
     //ELiminar un elemento
+    /**
+     *
+     * @param key fullname del client status
+     */
     
     public void delete (String key){
     int position;
@@ -109,9 +115,9 @@ public class HashTable {
     
     }
     
-    //No hay metodo de eliminar pero se hace basicamente lo  mismo que arriba
-    
-    
+    /**
+     *Imprime toda la tabla
+     */
     public void print(){
         for (int i = 0; i < this.size; i++) {
             System.out.println(this.table[i]);

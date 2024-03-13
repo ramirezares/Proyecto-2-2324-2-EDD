@@ -9,20 +9,20 @@ package _02_EDD;
  * @author AresR
  * @param <E>
  */
-public class NodeBST<E> implements Comparator {
+public class NodeBST implements Comparator {
 
     private int numberOfNode;       // Numero identificador del objeto para ordenarlo
-    private E Data;                 // Objeto a almacenar
+    private Object Data;                 // Objeto a almacenar
     private NodeBST leftSong;       // Hijo izquierdo
     private NodeBST rightSong;      // Hijo Derecho
 
-    public NodeBST(int numberToNode, E data) {
+    public NodeBST(int numberToNode, Object data) {
         this.numberOfNode = numberToNode;
         this.Data = data;
         this.leftSong = this.rightSong = null;
     }
 
-    public NodeBST(int numberToNode, E data, NodeBST nLeft, NodeBST nRight) {
+    public NodeBST(int numberToNode, Object data, NodeBST nLeft, NodeBST nRight) {
         this.numberOfNode = numberToNode;
         this.Data = data;
         this.leftSong = nLeft;
@@ -37,11 +37,11 @@ public class NodeBST<E> implements Comparator {
         this.numberOfNode = numberOfNode;
     }
     
-    public E getData() {
+    public Object getData() {
         return Data;
     }
 
-    public void setData(E Data) {
+    public void setData(Object Data) {
         this.Data = Data;
     }
 

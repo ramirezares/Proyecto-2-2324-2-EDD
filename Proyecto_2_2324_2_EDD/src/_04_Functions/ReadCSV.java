@@ -48,20 +48,27 @@ public class ReadCSV {
            System.out.print(readedline[i] + "   |   ");  
         }
     } 
+    
+    
+    
     /*
     public void putAtributesBooking(ListaSimple listaDeReservas)  {
         Booking newbooking = new Booking(readedline[0],readedline[1],readedline[2],readedline[3],readedline[4],readedline[5],readedline[6],readedline[7],readedline[8]);
         listaDeReservas.addEnd(newbooking);
         Booking ultimo = (Booking) listaDeReservas.getTail().getContent();
         ultimo.printBook();
+        
     }
-    public void putAtributesClientStatus(ListaSimple listaDeEstados)  {
+    public void putAtributesClientStatus(HashTable tablastatus,int erasefirst)  {
         ClientStatus newClientStatus = new ClientStatus(readedline[0],readedline[1],readedline[2],readedline[3],readedline[4],readedline[5],readedline[6]);
-        listaDeEstados.addEnd(newClientStatus);
+        tablastatus.insert(newClientStatus);
+        System.out.println(tablastatus);
+        System.out.println(erasefirst);
     }
     public void putAtributesRoom(ListaSimple listaDeHabitaciones)  {
         Room newRoom = new Room(Integer.parseInt(readedline[0]),readedline[1],Integer.parseInt(readedline[2]));
         listaDeHabitaciones.addEnd(newRoom);
+        
     }
     public void putAtributesRoomRecord(ListaSimple listaDeHistorial)  {
         RoomRecord newRoomRecord = new RoomRecord(readedline[0],readedline[1],readedline[2],readedline[3],readedline[4],readedline[5],readedline[6]);
@@ -70,10 +77,15 @@ public class ReadCSV {
     
     public void readBooking(ListaSimple listaDeReservas) {
         try {
+            int erasefirst = 0;
             leer = new BufferedReader(new FileReader(System.getProperty("user.dir") + "\\src\\Archivosparaleer\\Booking_hotel - reservas.csv"));
             while ((line = leer.readLine()) != null ) {
+                if (erasefirst == 0) {
+                    erasefirst = 1;
+                } else {
                 readedline = line.split(",");
                 putAtributesBooking(listaDeReservas);
+                }
             }
             listaDeReservas.deleteHead();
             leer.close();
@@ -84,14 +96,19 @@ public class ReadCSV {
             JOptionPane.showMessageDialog(null, "No se encuentra un archivo CSV en la ruta especificada");
         }
     }
-    public void readClientStatus(ListaSimple listaDeEstados) {
+    public void readClientStatus(HashTable tablastatus) {
         try {
+            int erasefirst = 0;
             leer = new BufferedReader(new FileReader(System.getProperty("user.dir") + "\\src\\Archivosparaleer\\Booking_hotel - reservas.csv"));
             while ((line = leer.readLine()) != null ) {
+                if (erasefirst == 0) {
+                    erasefirst = 1;
+                } else {
                 readedline = line.split(",");
-                putAtributesBooking(listaDeEstados);
+                putAtributesClientStatus(tablastatus,erasefirst); 
+                erasefirst++;
+                }
             }
-            listaDeEstados.deleteHead();
             leer.close();
             line = null;
             readedline = null;
@@ -133,5 +150,6 @@ public class ReadCSV {
         }
     }
 */
+    //l
     
 }

@@ -4,6 +4,11 @@
  */
 package _04_Functions;
 
+import _02_EDD.HashTable;
+import _03_Classes.Booking;
+import _03_Classes.ClientStatus;
+import _03_Classes.Room;
+import _03_Classes.RoomRecord;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -49,9 +54,6 @@ public class ReadCSV {
         }
     } 
     
-    
-    
-    /*
     public void putAtributesBooking(ListaSimple listaDeReservas)  {
         Booking newbooking = new Booking(readedline[0],readedline[1],readedline[2],readedline[3],readedline[4],readedline[5],readedline[6],readedline[7],readedline[8]);
         listaDeReservas.addEnd(newbooking);
@@ -149,7 +151,6 @@ public class ReadCSV {
             JOptionPane.showMessageDialog(null, "No se encuentra un archivo CSV en la ruta especificada");
         }
     }
-*/
-    //l
+    
     
 }

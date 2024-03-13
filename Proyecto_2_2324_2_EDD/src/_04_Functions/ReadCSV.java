@@ -48,4 +48,87 @@ public class ReadCSV {
            System.out.print(readedline[i] + "   |   ");  
         }
     } 
+    public void putAtributesBooking(ListaSimple listaDeReservas)  {
+        Booking newbooking = new Booking(readedline[0],readedline[1],readedline[2],readedline[3],readedline[4],readedline[5],readedline[6],readedline[7],readedline[8]);
+        listaDeReservas.addEnd(newbooking);
+        Booking ultimo = (Booking) listaDeReservas.getTail().getContent();
+        ultimo.printBook();
+    }
+    public void putAtributesClientStatus(ListaSimple listaDeEstados)  {
+        ClientStatus newClientStatus = new ClientStatus(readedline[0],readedline[1],readedline[2],readedline[3],readedline[4],readedline[5],readedline[6]);
+        listaDeEstados.addEnd(newClientStatus);
+    }
+    public void putAtributesRoom(ListaSimple listaDeHabitaciones)  {
+        Room newRoom = new Room(Integer.parseInt(readedline[0]),readedline[1],Integer.parseInt(readedline[2]));
+        listaDeHabitaciones.addEnd(newRoom);
+    }
+    public void putAtributesRoomRecord(ListaSimple listaDeHistorial)  {
+        RoomRecord newRoomRecord = new RoomRecord(readedline[0],readedline[1],readedline[2],readedline[3],readedline[4],readedline[5],readedline[6]);
+        listaDeHistorial.addEnd(newRoomRecord);
+    }
+    
+    public void readBooking(ListaSimple listaDeReservas) {
+        try {
+            leer = new BufferedReader(new FileReader(System.getProperty("user.dir") + "\\src\\Archivosparaleer\\Booking_hotel - reservas.csv"));
+            while ((line = leer.readLine()) != null ) {
+                readedline = line.split(",");
+                putAtributesBooking(listaDeReservas);
+            }
+            listaDeReservas.deleteHead();
+            leer.close();
+            line = null;
+            readedline = null;
+            
+        } catch(IOException e){
+            JOptionPane.showMessageDialog(null, "No se encuentra un archivo CSV en la ruta especificada");
+        }
+    }
+    public void readClientStatus(ListaSimple listaDeEstados) {
+        try {
+            leer = new BufferedReader(new FileReader(System.getProperty("user.dir") + "\\src\\Archivosparaleer\\Booking_hotel - reservas.csv"));
+            while ((line = leer.readLine()) != null ) {
+                readedline = line.split(",");
+                putAtributesBooking(listaDeEstados);
+            }
+            listaDeEstados.deleteHead();
+            leer.close();
+            line = null;
+            readedline = null;
+            
+        } catch(IOException e){
+            JOptionPane.showMessageDialog(null, "No se encuentra un archivo CSV en la ruta especificada");
+        }
+    }
+    public void readRoomRecords(ListaSimple listaDeHistorial) {
+        try {
+            leer = new BufferedReader(new FileReader(System.getProperty("user.dir") + "\\src\\Archivosparaleer\\Booking_hotel - reservas.csv"));
+            while ((line = leer.readLine()) != null ) {
+                readedline = line.split(",");
+                putAtributesBooking(listaDeHistorial);
+            }
+            listaDeHistorial.deleteHead();
+            leer.close();
+            line = null;
+            readedline = null;
+            
+        } catch(IOException e){
+            JOptionPane.showMessageDialog(null, "No se encuentra un archivo CSV en la ruta especificada");
+        }
+    }
+    public void readRooms(ListaSimple listaDeHabitaciones) {
+        try {
+            leer = new BufferedReader(new FileReader(System.getProperty("user.dir") + "\\src\\Archivosparaleer\\Booking_hotel - reservas.csv"));
+            while ((line = leer.readLine()) != null ) {
+                readedline = line.split(",");
+                putAtributesBooking(listaDeHabitaciones);
+            }
+            listaDeHabitaciones.deleteHead();
+            leer.close();
+            line = null;
+            readedline = null;
+            
+        } catch(IOException e){
+            JOptionPane.showMessageDialog(null, "No se encuentra un archivo CSV en la ruta especificada");
+        }
+    }
 }

@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author Diego M
+ * @author Diego MS
  */
 public class ReadCSV {
    private BufferedReader leer;
@@ -84,7 +84,7 @@ public class ReadCSV {
     public void readBooking(ListaSimple listaDeReservas) {
         try {
             int erasefirst = 0;
-            leer = new BufferedReader(new FileReader(System.getProperty("user.dir") + "\\src\\Archivosparaleer\\Booking_hotel - reservas.csv"));
+            leer = new BufferedReader(new FileReader(System.getProperty("user.dir") + "\\src\\_08_Csvs\\Booking_hotel - reservas.csv"));
             while ((line = leer.readLine()) != null ) {
                 if (erasefirst == 0) {
                     erasefirst = 1;
@@ -106,7 +106,7 @@ public class ReadCSV {
     public void readClientStatus(HashTable tablastatus) {
         try {
             int erasefirst = 0;
-            leer = new BufferedReader(new FileReader(System.getProperty("user.dir") + "\\src\\Archivosparaleer\\Booking_hotel - estado.csv"));
+            leer = new BufferedReader(new FileReader(System.getProperty("user.dir") + "\\src\\_08_Csvs\\\\Booking_hotel - estado.csv"));
             while ((line = leer.readLine()) != null ) {
                 if (erasefirst == 0) {
                     erasefirst = 1;
@@ -128,7 +128,7 @@ public class ReadCSV {
     public void readRoomRecords(ListaSimple listaDeHistorial) {
         try {
             int erasefirst = 0;
-            leer = new BufferedReader(new FileReader(System.getProperty("user.dir") + "\\src\\Archivosparaleer\\Booking_hotel - Histórico.csv"));
+            leer = new BufferedReader(new FileReader(System.getProperty("user.dir") + "\\src\\_08_Csvs\\Booking_hotel - Histórico.csv"));
             while ((line = leer.readLine()) != null ) {
                 if (erasefirst == 0) {
                     erasefirst = 1;
@@ -151,7 +151,7 @@ public class ReadCSV {
     public void readRooms(ListaSimple listaDeHabitaciones) {
         try {
             int erasefirst = 0;
-            leer = new BufferedReader(new FileReader(System.getProperty("user.dir") + "\\src\\Archivosparaleer\\Booking_hotel - habitaciones.csv"));
+            leer = new BufferedReader(new FileReader(System.getProperty("user.dir") + "\\src\\_08_Csvs\\Booking_hotel - habitaciones.csv"));
             while ((line = leer.readLine()) != null ) {
                 if (erasefirst == 0) {
                     erasefirst = 1;

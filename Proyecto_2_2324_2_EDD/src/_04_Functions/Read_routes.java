@@ -6,10 +6,11 @@ package _04_Functions;
 
 /**
  *
- * @author Username
+ * @author Diego M
  */
 public class Read_routes {
     public void read_files() {
+        /*
         ReadCSV fileRead = new ReadCSV();
         String rutabooking = System.getProperty("user.dir") + "\\src\\_08_Csvs\\Booking_hotel - reservas.csv";
         System.out.println(rutabooking);
@@ -20,5 +21,6 @@ public class Read_routes {
         fileRead.ReadCSV(rutaClientStatus);
         fileRead.ReadCSV(rutaRooms);
         fileRead.ReadCSV(rutaRoomHistory);
+*/
     }
 }

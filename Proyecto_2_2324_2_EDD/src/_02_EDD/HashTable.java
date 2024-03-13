@@ -91,7 +91,7 @@ public class HashTable {
      * @param key fullname del client status
      * @return clientStatus encontrado
      */
-    public ClientStatus  search(String key){
+    public ClientStatus search(String key){
     ClientStatus c;
     int position;
     position = index(key);

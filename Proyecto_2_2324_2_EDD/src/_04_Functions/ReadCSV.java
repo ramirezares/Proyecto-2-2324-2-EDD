@@ -4,6 +4,7 @@
  */
 package _04_Functions;
 
+import _02_EDD.BinarySearchTree;
 import _02_EDD.HashTable;
 import _03_Classes.Booking;
 import _03_Classes.ClientStatus;
@@ -53,18 +54,26 @@ public class ReadCSV {
            System.out.print(readedline[i] + "   |   ");  
         }
     } 
-    /*
-    public void putAtributesBooking(ListaSimple listaDeReservas)  {
-        Booking newbooking = new Booking(readedline[0],readedline[1],readedline[2],readedline[3],readedline[4],readedline[5],readedline[6],readedline[7],readedline[8]);
-        listaDeReservas.addEnd(newbooking);
-        Booking ultimo = (Booking) listaDeReservas.getTail().getContent();
-        ultimo.printBook();
+    
+    public void putAtributesBooking(BinarySearchTree listaDeReservas)  {
+         String quitarpuntos[];
+         quitarpuntos = readedline[0].split(".");
+         String newID = quitarpuntos[0]+quitarpuntos[1]+quitarpuntos[2];
+         
+        
+        Booking newbooking = new Booking(newID,readedline[1],readedline[2],readedline[3],readedline[4],readedline[5],readedline[6],readedline[7],readedline[8]);
+        listaDeReservas.insertNodeInBST(null, 0, newbooking);
+        
         
     }
-    */
+    
     public void putAtributesClientStatus(HashTable tablastatus)  {
+        if (readedline[0].equals("")) {
+            
+        } else {
         ClientStatus newClientStatus = new ClientStatus(readedline[0],readedline[1],readedline[2],readedline[3],readedline[4],readedline[5],readedline[6]);
         tablastatus.insert(newClientStatus);
+        }
     }
     
     /*
@@ -80,8 +89,8 @@ public class ReadCSV {
         listaDeHistorial.addEnd(newRoomRecord);
     }
 */
-    /*
-    public void readBooking(ListaSimple listaDeReservas) {
+    
+    public void readBooking(BinarySearchTree listaDeReservas) {
         try {
             int erasefirst = 0;
             leer = new BufferedReader(new FileReader(System.getProperty("user.dir") + "\\src\\_08_Csvs\\Booking_hotel - reservas.csv"));
@@ -93,7 +102,6 @@ public class ReadCSV {
                 putAtributesBooking(listaDeReservas);
                 }
             }
-            listaDeReservas.deleteHead();
             leer.close();
             line = null;
             readedline = null;
@@ -102,7 +110,7 @@ public class ReadCSV {
             JOptionPane.showMessageDialog(null, "No se encuentra un archivo CSV en la ruta especificada");
         }
     }
-    */
+    
     public void readClientStatus(HashTable tablastatus) {
         try {
             int erasefirst = 0;

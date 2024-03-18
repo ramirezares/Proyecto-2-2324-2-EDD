@@ -5,9 +5,8 @@
 package _02_EDD;
 
 /**
- *
+ * 
  * @author AresR
- * @param <E>
  */
 public class NodeBST implements Comparator {
 

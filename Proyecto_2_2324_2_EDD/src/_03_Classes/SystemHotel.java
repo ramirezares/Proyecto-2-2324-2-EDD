@@ -12,13 +12,13 @@ import _04_Functions.ReadCSV;
  *
  * @author AresR
  */
-public class System {
+public class SystemHotel {
 
     private HashTable Status;
     private BinarySearchTree Bookings;
     private BinarySearchTree Rooms;
 
-    public System() {
+    public SystemHotel() {
         this.Status = new HashTable();
         this.Bookings = new BinarySearchTree();
         this.Rooms = new BinarySearchTree();

@@ -1,25 +1,19 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package _06_Interfaces;
 
 import javax.swing.ImageIcon;
 
 /**
  *
- * @author Danna Star
+ * @author Daniela Zambrano
  */
 public class Home extends javax.swing.JFrame {
     
     ImageIcon logoCompanyPic = new ImageIcon("Untitled-3.png");
     ImageIcon fondoPic = new ImageIcon("caption.jpg");
-    ImageIcon peoplePic = new ImageIcon("people.png");
-    ImageIcon bookPic = new ImageIcon("booking.png");
-    ImageIcon inPic = new ImageIcon("in.png");
-    ImageIcon outPic = new ImageIcon("out.png");
-    ImageIcon recordPic = new ImageIcon("folder.png");
-    ImageIcon helpPic = new ImageIcon("help.png");
+    ImageIcon peoplePic = new ImageIcon("people2.png");
+    ImageIcon bookPic = new ImageIcon("booking2.png");
+    ImageIcon recordPic = new ImageIcon("folder2.png");
     
     /**
      * Creates new form Welcome
@@ -31,16 +25,13 @@ public class Home extends javax.swing.JFrame {
         logo.setText("");
         imagenFondo.setIcon(fondoPic);
         imagenFondo.setText("");
-        inLabel.setIcon(inPic);
-        inLabel.setText("");
-        outLabel.setIcon(outPic);
-        outLabel.setText("");
+        
         peopleLabel.setIcon(peoplePic);
         peopleLabel.setText("");
         bookLabel.setIcon(bookPic);
         bookLabel.setText("");
-        helpLabel.setIcon(helpPic);
-        helpLabel.setText("");
+        //helpLabel.setIcon(helpPic);
+        //helpLabel.setText("");
         recordLabel.setIcon(recordPic);
         recordLabel.setText("");
     }
@@ -58,20 +49,17 @@ public class Home extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         logo = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
-        jButton10 = new javax.swing.JButton();
+        jPanel7 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        jPanel8 = new javax.swing.JPanel();
+        jButton8 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         jButton11 = new javax.swing.JButton();
-        helpLabel = new javax.swing.JLabel();
         peopleLabel = new javax.swing.JLabel();
         bookLabel = new javax.swing.JLabel();
-        inLabel = new javax.swing.JLabel();
-        outLabel = new javax.swing.JLabel();
         recordLabel = new javax.swing.JLabel();
+        jPanel9 = new javax.swing.JPanel();
         imagenFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -99,48 +87,8 @@ public class Home extends javax.swing.JFrame {
         logo.setText("jLabel2");
         jPanel1.add(logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 10, 130, 120));
 
-        jPanel3.setBackground(new java.awt.Color(120, 0, 0));
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 460, 1050, 10));
-
-        jPanel2.setBackground(new java.awt.Color(102, 155, 188));
-        jPanel2.setForeground(new java.awt.Color(102, 155, 188));
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jButton2.setBackground(new java.awt.Color(0, 48, 73));
-        jButton2.setFont(new java.awt.Font("Franklin Gothic Demi", 2, 14)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(253, 240, 213));
-        jButton2.setText("Visualizar Reservas");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 110, 220, 40));
-
-        jButton7.setBackground(new java.awt.Color(0, 48, 73));
-        jButton7.setFont(new java.awt.Font("Franklin Gothic Demi", 2, 14)); // NOI18N
-        jButton7.setForeground(new java.awt.Color(253, 240, 213));
-        jButton7.setText("Check-Out");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
-            }
-        });
-        jPanel2.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 110, 220, 40));
-
-        jButton8.setBackground(new java.awt.Color(0, 48, 73));
-        jButton8.setFont(new java.awt.Font("Franklin Gothic Demi", 2, 14)); // NOI18N
-        jButton8.setForeground(new java.awt.Color(253, 240, 213));
-        jButton8.setText("Visualizar Huespedes");
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
-            }
-        });
-        jPanel2.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 40, 220, 40));
-
-        jButton9.setBackground(new java.awt.Color(0, 48, 73));
-        jButton9.setFont(new java.awt.Font("Franklin Gothic Demi", 2, 14)); // NOI18N
+        jButton9.setBackground(new java.awt.Color(120, 0, 0));
+        jButton9.setFont(new java.awt.Font("Perpetua", 1, 14)); // NOI18N
         jButton9.setForeground(new java.awt.Color(253, 240, 213));
         jButton9.setText("Ayuda");
         jButton9.addActionListener(new java.awt.event.ActionListener() {
@@ -148,51 +96,67 @@ public class Home extends javax.swing.JFrame {
                 jButton9ActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 110, 220, 40));
+        jPanel1.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 440, 80, 30));
 
-        jButton10.setBackground(new java.awt.Color(0, 48, 73));
-        jButton10.setFont(new java.awt.Font("Franklin Gothic Demi", 2, 14)); // NOI18N
-        jButton10.setForeground(new java.awt.Color(253, 240, 213));
-        jButton10.setText("Check-In");
-        jButton10.addActionListener(new java.awt.event.ActionListener() {
+        jPanel7.setBackground(new java.awt.Color(0, 48, 73));
+        jPanel7.setForeground(new java.awt.Color(0, 48, 73));
+        jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel4.setFont(new java.awt.Font("Perpetua", 1, 40)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(253, 240, 213));
+        jLabel4.setText("Inicio");
+        jPanel7.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 560, 50));
+
+        jPanel8.setBackground(new java.awt.Color(120, 0, 0));
+        jPanel7.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 520, 1050, 10));
+
+        jButton8.setBackground(new java.awt.Color(0, 32, 54));
+        jButton8.setFont(new java.awt.Font("Perpetua", 1, 18)); // NOI18N
+        jButton8.setForeground(new java.awt.Color(253, 240, 213));
+        jButton8.setText("Gestión de Huespedes");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton10ActionPerformed(evt);
+                jButton8ActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 40, 220, 40));
+        jPanel7.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 80, 220, 40));
 
-        jButton11.setBackground(new java.awt.Color(0, 48, 73));
-        jButton11.setFont(new java.awt.Font("Franklin Gothic Demi", 2, 14)); // NOI18N
+        jButton2.setBackground(new java.awt.Color(0, 32, 54));
+        jButton2.setFont(new java.awt.Font("Perpetua", 1, 18)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(253, 240, 213));
+        jButton2.setText("Gestión de Reservas");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jPanel7.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 80, 220, 40));
+
+        jButton11.setBackground(new java.awt.Color(0, 32, 54));
+        jButton11.setFont(new java.awt.Font("Perpetua", 1, 18)); // NOI18N
         jButton11.setForeground(new java.awt.Color(253, 240, 213));
-        jButton11.setText("Historial de Habitaciones");
+        jButton11.setText("Historial Habitación");
         jButton11.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton11ActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 40, 220, 40));
-
-        helpLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        helpLabel.setText("jLabel3");
-        jPanel2.add(helpLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 100, 60, 60));
+        jPanel7.add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 80, 220, 40));
 
         peopleLabel.setText("jLabel3");
-        jPanel2.add(peopleLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 60, 60));
+        jPanel7.add(peopleLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 60, 60));
 
         bookLabel.setText("jLabel3");
-        jPanel2.add(bookLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 60, 60));
-
-        inLabel.setText("jLabel3");
-        jPanel2.add(inLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 30, 60, 60));
-
-        outLabel.setText("jLabel3");
-        jPanel2.add(outLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 100, 60, 60));
+        jPanel7.add(bookLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 70, 60, 60));
 
         recordLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         recordLabel.setText("jLabel3");
-        jPanel2.add(recordLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 30, 60, 60));
+        jPanel7.add(recordLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 70, 60, 60));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 470, 1050, 180));
+        jPanel1.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 490, 1050, 160));
+
+        jPanel9.setBackground(new java.awt.Color(120, 0, 0));
+        jPanel1.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 480, 1050, 10));
 
         imagenFondo.setFont(new java.awt.Font("Rage Italic", 0, 24)); // NOI18N
         imagenFondo.setText("jLabel2");
@@ -203,29 +167,29 @@ public class Home extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton7ActionPerformed
-
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton8ActionPerformed
-
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-        // TODO add your handling code here:
+        Help AyudaPag = new Help();
+        this.setVisible(false);
+        AyudaPag.setVisible(true);
     }//GEN-LAST:event_jButton9ActionPerformed
 
-    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton10ActionPerformed
-
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
-        // TODO add your handling code here:
+        RoomRecord historial = new RoomRecord();
+        historial.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_jButton11ActionPerformed
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        GestionClientStatus huespedes = new GestionClientStatus();
+        huespedes.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+         Bookings reservas = new Bookings();
+        reservas.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -271,22 +235,19 @@ public class Home extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel bookLabel;
-    private javax.swing.JLabel helpLabel;
     private javax.swing.JLabel imagenFondo;
-    private javax.swing.JLabel inLabel;
-    private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
     private javax.swing.JLabel logo;
-    private javax.swing.JLabel outLabel;
     private javax.swing.JLabel peopleLabel;
     private javax.swing.JLabel recordLabel;
     // End of variables declaration//GEN-END:variables

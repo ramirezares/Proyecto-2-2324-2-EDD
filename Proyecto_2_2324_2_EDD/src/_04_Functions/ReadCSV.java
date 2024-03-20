@@ -4,6 +4,7 @@
  */
 package _04_Functions;
 
+import _02_EDD.BinarySearchTree;
 import _02_EDD.HashTable;
 import _03_Classes.Booking;
 import _03_Classes.ClientStatus;
@@ -53,35 +54,38 @@ public class ReadCSV {
            System.out.print(readedline[i] + "   |   ");  
         }
     } 
-    /*
-    public void putAtributesBooking(ListaSimple listaDeReservas)  {
-        Booking newbooking = new Booking(readedline[0],readedline[1],readedline[2],readedline[3],readedline[4],readedline[5],readedline[6],readedline[7],readedline[8]);
-        listaDeReservas.addEnd(newbooking);
-        Booking ultimo = (Booking) listaDeReservas.getTail().getContent();
-        ultimo.printBook();
+    
+    public void putAtributesBooking(BinarySearchTree Reservas)  {
+         String newID = readedline[0].replaceAll("[^\\w+]", "");
+         System.out.println(newID);
+        Booking newbooking = new Booking(newID,readedline[1],readedline[2],readedline[3],readedline[4],readedline[5],readedline[6],readedline[7],readedline[8]);
+        Reservas.insertNodeInBST(Reservas.getRoot(), Integer.parseInt(newID), newbooking);
         
-    }
-    */
-    public void putAtributesClientStatus(HashTable tablastatus)  {
-        ClientStatus newClientStatus = new ClientStatus(readedline[0],readedline[1],readedline[2],readedline[3],readedline[4],readedline[5],readedline[6]);
-        tablastatus.insert(newClientStatus);
+        
     }
     
-    /*
-    public void putAtributesRoom(ListaSimple listaDeHabitaciones)  {
+    public void putAtributesClientStatus(HashTable tablastatus)  {
+        if (readedline[0].equals("")) {
+            
+        } else {
+        ClientStatus newClientStatus = new ClientStatus(readedline[0],readedline[1],readedline[2],readedline[3],readedline[4],readedline[5],readedline[6]);
+        tablastatus.insert(newClientStatus);
+        }
+    }
+    
+    public void putAtributesRoom(BinarySearchTree habitaciones)  {
         Room newRoom = new Room(Integer.parseInt(readedline[0]),readedline[1],Integer.parseInt(readedline[2]));
-        listaDeHabitaciones.addEnd(newRoom);
+        habitaciones.insertNodeInBST(habitaciones.getRoot(), Integer.parseInt(readedline[0]), newRoom);
         
     }
-*/
 /*
     public void putAtributesRoomRecord(ListaSimple listaDeHistorial)  {
         RoomRecord newRoomRecord = new RoomRecord(readedline[0],readedline[1],readedline[2],readedline[3],readedline[4],readedline[5],readedline[6]);
         listaDeHistorial.addEnd(newRoomRecord);
     }
 */
-    /*
-    public void readBooking(ListaSimple listaDeReservas) {
+    
+    public void readBooking(BinarySearchTree Reservas) {
         try {
             int erasefirst = 0;
             leer = new BufferedReader(new FileReader(System.getProperty("user.dir") + "\\src\\_08_Csvs\\Booking_hotel - reservas.csv"));
@@ -90,10 +94,9 @@ public class ReadCSV {
                     erasefirst = 1;
                 } else {
                 readedline = line.split(",");
-                putAtributesBooking(listaDeReservas);
+                putAtributesBooking(Reservas);
                 }
             }
-            listaDeReservas.deleteHead();
             leer.close();
             line = null;
             readedline = null;
@@ -102,7 +105,7 @@ public class ReadCSV {
             JOptionPane.showMessageDialog(null, "No se encuentra un archivo CSV en la ruta especificada");
         }
     }
-    */
+    
     public void readClientStatus(HashTable tablastatus) {
         try {
             int erasefirst = 0;
@@ -137,7 +140,6 @@ public class ReadCSV {
                 putAtributesBooking(listaDeHistorial);
                 }
             }
-            listaDeHistorial.deleteHead();
             leer.close();
             line = null;
             readedline = null;
@@ -147,8 +149,8 @@ public class ReadCSV {
         }
     }
     */
-    /*
-    public void readRooms(ListaSimple listaDeHabitaciones) {
+    
+    public void readRooms(BinarySearchTree Habitaciones) {
         try {
             int erasefirst = 0;
             leer = new BufferedReader(new FileReader(System.getProperty("user.dir") + "\\src\\_08_Csvs\\Booking_hotel - habitaciones.csv"));
@@ -157,10 +159,9 @@ public class ReadCSV {
                     erasefirst = 1;
                 } else {
                 readedline = line.split(",");
-                putAtributesBooking(listaDeHabitaciones);
+                putAtributesBooking(Habitaciones);
                 }
             }
-            listaDeHabitaciones.deleteHead();
             leer.close();
             line = null;
             readedline = null;
@@ -169,5 +170,8 @@ public class ReadCSV {
             JOptionPane.showMessageDialog(null, "No se encuentra un archivo CSV en la ruta especificada");
         }
     }
-    */
+    
+    
+    //Buscar en history el ultimo elemento que es la habitacion.
+    //Revisar que elemento 
 }

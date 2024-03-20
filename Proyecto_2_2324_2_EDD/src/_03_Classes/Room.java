@@ -27,6 +27,12 @@ public class Room {
         this.record = record;
     }
 
+    public Room(int roomNumber, String roomType, int roomFloor) {
+        this.roomNumber = roomNumber;
+        this.roomType = roomType;
+        this.roomFloor = roomFloor;
+        this.record = null;
+    }
    
 
        

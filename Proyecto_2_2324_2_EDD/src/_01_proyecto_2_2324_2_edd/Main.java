@@ -6,6 +6,8 @@ package _01_proyecto_2_2324_2_edd;
 
 import _02_EDD.BinarySearchTree;
 
+import _06_Interfaces.Home;
+
 /**
  *
  * @author AresR
@@ -17,7 +19,6 @@ public class Main {
      */
     public static void main(String[] args) {
 
-        System.out.println("Hey");
 
         BinarySearchTree test = new BinarySearchTree();
         System.out.println(test.isEmpty());
@@ -47,6 +48,11 @@ public class Main {
             System.out.println("El nodo nno se encuentra");
         }
         //test.             Prueben el que quieran
+        /*
+=======
+        Home principalPage = new Home();
+        principalPage.setVisible(true);
+>>>>>>> feature/Classes_Daniela*/
     }
 
 }

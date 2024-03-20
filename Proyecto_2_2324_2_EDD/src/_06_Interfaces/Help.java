@@ -10,7 +10,7 @@ import javax.swing.ImageIcon;
 public class Help extends javax.swing.JFrame {
        
     ImageIcon logoCompanyPic = new ImageIcon("Untitled-3.png");
-    ImageIcon fondoPic = new ImageIcon("caption.jpg");
+    ImageIcon fondoPic = new ImageIcon("mount-fuji-8010752_1280.jpg");
     /**
      * Creates new form Help
      */
@@ -95,7 +95,7 @@ public class Help extends javax.swing.JFrame {
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         usButton.setBackground(new java.awt.Color(102, 155, 188));
-        usButton.setFont(new java.awt.Font("Perpetua", 1, 14)); // NOI18N
+        usButton.setFont(new java.awt.Font("Perpetua", 1, 18)); // NOI18N
         usButton.setForeground(new java.awt.Color(0, 48, 73));
         usButton.setText("Desarrolladores");
         usButton.addActionListener(new java.awt.event.ActionListener() {
@@ -103,10 +103,10 @@ public class Help extends javax.swing.JFrame {
                 usButtonActionPerformed(evt);
             }
         });
-        jPanel2.add(usButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 80, 220, 40));
+        jPanel2.add(usButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 80, 220, 50));
 
         funcionamientoButton.setBackground(new java.awt.Color(102, 155, 188));
-        funcionamientoButton.setFont(new java.awt.Font("Perpetua", 1, 14)); // NOI18N
+        funcionamientoButton.setFont(new java.awt.Font("Perpetua", 1, 18)); // NOI18N
         funcionamientoButton.setForeground(new java.awt.Color(0, 48, 73));
         funcionamientoButton.setText("Funcionamiento del Programa");
         funcionamientoButton.addActionListener(new java.awt.event.ActionListener() {
@@ -114,10 +114,10 @@ public class Help extends javax.swing.JFrame {
                 funcionamientoButtonActionPerformed(evt);
             }
         });
-        jPanel2.add(funcionamientoButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, 220, 40));
+        jPanel2.add(funcionamientoButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, 280, 50));
 
         infoButton.setBackground(new java.awt.Color(102, 155, 188));
-        infoButton.setFont(new java.awt.Font("Perpetua", 1, 14)); // NOI18N
+        infoButton.setFont(new java.awt.Font("Perpetua", 1, 18)); // NOI18N
         infoButton.setForeground(new java.awt.Color(0, 48, 73));
         infoButton.setText("Información General");
         infoButton.addActionListener(new java.awt.event.ActionListener() {
@@ -125,7 +125,7 @@ public class Help extends javax.swing.JFrame {
                 infoButtonActionPerformed(evt);
             }
         });
-        jPanel2.add(infoButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 80, 220, 40));
+        jPanel2.add(infoButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 80, 220, 50));
 
         jLabel1.setFont(new java.awt.Font("Perpetua", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(253, 240, 213));
@@ -144,7 +144,7 @@ public class Help extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 80, 100, 40));
+        jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 90, 100, 40));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 490, 1050, 160));
 

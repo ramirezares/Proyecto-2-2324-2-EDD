@@ -63,6 +63,7 @@ public class GestionClientStatus extends javax.swing.JFrame {
         backButtom = new javax.swing.JButton();
         checkOutButtom = new javax.swing.JButton();
         searchButtom = new javax.swing.JButton();
+        textTitle = new javax.swing.JLabel();
         imagenFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -204,7 +205,7 @@ public class GestionClientStatus extends javax.swing.JFrame {
         text.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         textScroll.setViewportView(text);
 
-        jPanel1.add(textScroll, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 410, 370));
+        jPanel1.add(textScroll, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, 410, 340));
 
         jPanel3.setBackground(new java.awt.Color(0, 32, 54));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -246,6 +247,11 @@ public class GestionClientStatus extends javax.swing.JFrame {
         jPanel3.add(searchButtom, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 60, 130, 40));
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 530, 1070, 120));
+
+        textTitle.setFont(new java.awt.Font("Perpetua", 1, 28)); // NOI18N
+        textTitle.setForeground(new java.awt.Color(0, 32, 54));
+        textTitle.setText("Huesped  Encontrado");
+        jPanel1.add(textTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, 310, 30));
 
         imagenFondo.setBackground(new java.awt.Color(102, 155, 188));
         imagenFondo.setFont(new java.awt.Font("Rage Italic", 0, 24)); // NOI18N
@@ -422,5 +428,6 @@ public class GestionClientStatus extends javax.swing.JFrame {
     private javax.swing.JTextField surnameClient;
     private javax.swing.JTextArea text;
     private javax.swing.JScrollPane textScroll;
+    private javax.swing.JLabel textTitle;
     // End of variables declaration//GEN-END:variables
 }

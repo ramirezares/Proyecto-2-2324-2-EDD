@@ -113,14 +113,6 @@ public class Booking {
               System.out.println(this.departure);
               System.out.println("");
     }
-  
-
     
-
-
-  
-    
-    
-   
-    
+    // Hacer funcion que me devuelva un string
 }

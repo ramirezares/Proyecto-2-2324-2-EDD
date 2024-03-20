@@ -1,4 +1,3 @@
-
 package _03_Classes;
 
 /**
@@ -6,6 +5,7 @@ package _03_Classes;
  * @author Daniela Zambrano
  */
 public class ClientStatus {
+
     private String roomNumber;
     private String name;
     private String lastName;
@@ -72,7 +72,6 @@ public class ClientStatus {
         this.cellphone = cellphone;
     }
 
-    
     public String getArrive() {
         return arrive;
     }
@@ -80,11 +79,22 @@ public class ClientStatus {
     public void setArrive(String arrive) {
         this.arrive = arrive;
     }
-    
+
     public String getFullName() {
         String fullName;
-       fullName = this.name+this.lastName;
-       return fullName;
-        
+        fullName = this.name + this.lastName;
+        return fullName;
+
+    }
+
+    public String getClientSummary() {
+        StringBuilder stringToReturn = new StringBuilder();
+
+        stringToReturn.append(this.roomNumber).append("\n");
+        stringToReturn.append(this.name).append(" ").append(this.lastName).append("\n");
+        stringToReturn.append(this.email).append(this.gender).append("\n");
+        stringToReturn.append(this.cellphone).append(this.arrive).append("\n");
+
+        return stringToReturn.toString();
     }
 }

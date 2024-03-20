@@ -5,8 +5,7 @@
 package _01_proyecto_2_2324_2_edd;
 
 import _02_EDD.BinarySearchTree;
-
-import _06_Interfaces.Home;
+import _03_Classes.RoomRecord;
 
 /**
  *
@@ -18,7 +17,12 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-
+        RoomRecord histo = new RoomRecord("hola","hola","hola","hola","hola","hola","hola");
+        String salida = histo.stringRoomRecord();
+        System.out.println(salida);
+    }
+       /* 
+        System.out.println("Hey");
 
         BinarySearchTree test = new BinarySearchTree();
         System.out.println(test.isEmpty());
@@ -48,11 +52,7 @@ public class Main {
             System.out.println("El nodo nno se encuentra");
         }
         //test.             Prueben el que quieran
-        /*
-=======
-        Home principalPage = new Home();
-        principalPage.setVisible(true);
->>>>>>> feature/Classes_Daniela*/
     }
+    */
 
 }

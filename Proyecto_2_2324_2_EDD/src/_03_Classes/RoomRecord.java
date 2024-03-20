@@ -82,7 +82,15 @@ public class RoomRecord {
         this.room_Number = room_Number;
     }
    
-    
+    public String stringRoomRecord() {
+        String stringaux;
+        stringaux =  this.ID + " " + this.name + " " + this.lastName + " " + this.email + " " + this.gender + " " + this.arrive;
+                
+        
+        return stringaux;
+        
+        
+    }
     
     
     

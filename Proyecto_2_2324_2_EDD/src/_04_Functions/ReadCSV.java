@@ -171,4 +171,7 @@ public class ReadCSV {
         }
     }
     
+    
+    //Buscar en history el ultimo elemento que es la habitacion.
+    //Revisar que elemento 
 }

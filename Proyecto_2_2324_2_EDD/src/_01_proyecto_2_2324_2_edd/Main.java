@@ -5,6 +5,7 @@
 package _01_proyecto_2_2324_2_edd;
 
 import _02_EDD.BinarySearchTree;
+import _03_Classes.RoomRecord;
 
 /**
  *
@@ -16,7 +17,11 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-
+        RoomRecord histo = new RoomRecord("hola","hola","hola","hola","hola","hola","hola");
+        String salida = histo.stringRoomRecord();
+        System.out.println(salida);
+    }
+       /* 
         System.out.println("Hey");
 
         BinarySearchTree test = new BinarySearchTree();
@@ -48,5 +53,6 @@ public class Main {
         }
         //test.             Prueben el que quieran
     }
+    */
 
 }

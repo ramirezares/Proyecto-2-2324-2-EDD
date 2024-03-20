@@ -25,7 +25,7 @@ public class SystemHotel {
         this.Bookings = new BinarySearchTree();
         this.Rooms = new BinarySearchTree();
         
-         ReadCSV temporal = new ReadCSV();   // Temporal para que solo funcione aca al inicio del programa.
+        ReadCSV temporal = new ReadCSV();   // Temporal para que solo funcione aca al inicio del programa.
 
         //temporal.readClientStatus(Status);        
         //temporal.readBooking(Bookings);
@@ -150,4 +150,30 @@ public class SystemHotel {
         // plantear 
         
     }
+
+    public HashTable getStatus() {
+        return Status;
+    }
+
+    public void setStatus(HashTable Status) {
+        this.Status = Status;
+    }
+
+    public BinarySearchTree getBookings() {
+        return Bookings;
+    }
+
+    public void setBookings(BinarySearchTree Bookings) {
+        this.Bookings = Bookings;
+    }
+
+    public BinarySearchTree getRooms() {
+        return Rooms;
+    }
+
+    public void setRooms(BinarySearchTree Rooms) {
+        this.Rooms = Rooms;
+    }
+    
+    
 }

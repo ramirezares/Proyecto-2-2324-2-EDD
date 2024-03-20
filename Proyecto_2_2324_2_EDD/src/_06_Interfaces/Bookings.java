@@ -224,7 +224,7 @@ public class Bookings extends javax.swing.JFrame {
             */
             checkInButtom.setVisible(false);
             chosenRoom.setText(auxClient.getRoomNumber());
-            chosenName.setText(auxClient.getName()+""+auxClient.getApellido());
+            chosenName.setText(auxClient.getName()+""+auxClient.getLastName());
             checkInPanel.setVisible(true);
             IDname.setText("");
             textScroll.setVisible(false);

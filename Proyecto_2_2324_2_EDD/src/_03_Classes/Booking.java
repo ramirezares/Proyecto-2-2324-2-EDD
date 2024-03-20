@@ -1,12 +1,11 @@
-
 package _03_Classes;
-
 
 /**
  *
  * @author Daniela
  */
 public class Booking {
+
     private String ID;
     private String name;
     private String lastName;
@@ -103,16 +102,26 @@ public class Booking {
 
     public void printBook() {
         System.out.println(this.ID);
-         System.out.println(this.name);
-          System.out.println(this.lastName);
-           System.out.println(this.email);
-            System.out.println(this.gender);
-             System.out.println(this.roomType);
-              System.out.println(this.cellphone);
-              System.out.println(this.arrival);
-              System.out.println(this.departure);
-              System.out.println("");
+        System.out.println(this.name);
+        System.out.println(this.lastName);
+        System.out.println(this.email);
+        System.out.println(this.gender);
+        System.out.println(this.roomType);
+        System.out.println(this.cellphone);
+        System.out.println(this.arrival);
+        System.out.println(this.departure);
+        System.out.println("");
     }
-    
-    // Hacer funcion que me devuelva un string
+
+    public String getSummaryOfBooking() {
+        StringBuilder stringToReturn = new StringBuilder();
+        
+        stringToReturn.append(this.ID).append(". ").append(this.name).append(". ").append(this.lastName).append(".").append("\n");
+        stringToReturn.append(this.gender).append(". ").append(this.departure).append("\n");
+        stringToReturn.append(this.email).append(" ").append(this.cellphone).append("\n");
+        stringToReturn.append(this.roomType).append(" ").append(this.arrival).append("\n");
+        
+        return stringToReturn.toString();
+    }
+
 }

@@ -9,33 +9,22 @@ public class Room {
     private int roomNumber;
     private String  roomType;
     private int roomFloor;
-    private String record;
+    private String roomRecord;
     //atributo historial en la clase room va a ser un string
 
     public Room(int roomNumber, String roomType, int roomFloor, String history) {
         this.roomNumber = roomNumber;
         this.roomType = roomType;
         this.roomFloor = roomFloor;
-        this.record = history;
-    }
-
-    public String getRecord() {
-        return record;
-    }
-
-    public void setRecord(String record) {
-        this.record = record;
+        this.roomRecord = history;          // Ver si borramos este constructor
     }
 
     public Room(int roomNumber, String roomType, int roomFloor) {
         this.roomNumber = roomNumber;
         this.roomType = roomType;
         this.roomFloor = roomFloor;
-        this.record = null;
+        this.roomRecord = "";
     }
-   
-
-       
     
     public int getRoomNumber() {
         return roomNumber;
@@ -61,6 +50,29 @@ public class Room {
         this.roomFloor = room_Floor;
     }
     
+    public String getRoomRecord() {
+        return roomRecord;
+    }
+
+    public void setRoomRecord(String roomRecord) {
+        this.roomRecord = roomRecord;
+    }
+
+    public void modifyRoomRecord(String lineToAppendToRecord){
+        StringBuilder newRoomRecord = new StringBuilder();
+        
+        newRoomRecord.append(this.roomRecord).append("\n");
+        newRoomRecord.append(lineToAppendToRecord);
+        
+        this.setRoomRecord(newRoomRecord.toString());
+    }
     
-    
+    public String getSummaryForRecord(){
+        StringBuilder stringToReturn = new StringBuilder();
+        
+        stringToReturn.append(this.roomNumber).append(". ").append(this.roomType).append(". ").append(this.roomFloor).append(".").append("\n");
+        stringToReturn.append(this.roomRecord).append(". ").append("\n");
+        
+        return stringToReturn.toString();
+    }
 }

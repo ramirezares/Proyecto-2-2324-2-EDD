@@ -21,7 +21,7 @@ public class BinarySearchTree {
     }
 
     public NodeBST SearchNodeInBST(NodeBST pRoot, int numNodeOfCurrentOperation) throws Exception {
-        
+
         if (pRoot == null) {
             throw new Exception("No se encuentra.");
         } else if (pRoot.isEqual(numNodeOfCurrentOperation)) {
@@ -160,6 +160,22 @@ public class BinarySearchTree {
 
             // Cerrar el paréntesis del nodo
             sb.append(")");
+        }
+    }
+
+    public boolean insertNewDataInNode(NodeBST pRoot, int numNodeOfCurrentOperation, Object newData) throws Exception {
+        if (pRoot == null) {
+            throw new Exception("No se encuentra.");
+
+        } else if (pRoot.isEqual(numNodeOfCurrentOperation)) {
+            pRoot.setData(newData);
+            return true;
+
+        } else if (pRoot.isGreaterThan(numNodeOfCurrentOperation)) {
+            return insertNewDataInNode(pRoot.getLeftSong(), numNodeOfCurrentOperation, newData);
+
+        } else {
+            return insertNewDataInNode(pRoot.getRightSong(), numNodeOfCurrentOperation, newData);
         }
     }
 }

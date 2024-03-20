@@ -40,11 +40,11 @@ public class ClientStatus {
         this.name = name;
     }
 
-    public String getApellido() {
+    public String getLastName() {
         return lastName;
     }
 
-    public void setApellido(String apellido) {
+    public void setLastName(String apellido) {
         this.lastName = apellido;
     }
 

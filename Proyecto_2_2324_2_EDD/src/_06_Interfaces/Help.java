@@ -1,20 +1,29 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package _06_Interfaces;
+
+import javax.swing.ImageIcon;
 
 /**
  *
- * @author Danna Star
+ * @author Daniela Zambrano
  */
 public class Help extends javax.swing.JFrame {
-
+       
+    ImageIcon logoCompanyPic = new ImageIcon("Untitled-3.png");
+    ImageIcon fondoPic = new ImageIcon("mount-fuji-8010752_1280.jpg");
     /**
      * Creates new form Help
      */
     public Help() {
         initComponents();
+        this.setLocationRelativeTo(null);
+        logo.setIcon(logoCompanyPic);
+        logo.setText("");
+        imagenFondo.setIcon(fondoPic);
+        imagenFondo.setText("");
+        text.setVisible(false);
+        coroto.setVisible(false);
+        xButtom.setVisible(false);
     }
 
     /**
@@ -26,26 +35,237 @@ public class Help extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        logo = new javax.swing.JLabel();
+        xButtom = new javax.swing.JButton();
+        jPanel4 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        usButton = new javax.swing.JButton();
+        funcionamientoButton = new javax.swing.JButton();
+        infoButton = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        jButton3 = new javax.swing.JButton();
+        coroto = new javax.swing.JScrollPane();
+        text = new javax.swing.JTextArea();
+        imagenFondo = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1050, 650));
         setMinimumSize(new java.awt.Dimension(1050, 650));
-        setPreferredSize(new java.awt.Dimension(1050, 650));
         setResizable(false);
         setType(java.awt.Window.Type.UTILITY);
+
+        jPanel1.setBackground(new java.awt.Color(253, 240, 213));
+        jPanel1.setForeground(new java.awt.Color(253, 240, 213));
+        jPanel1.setMaximumSize(new java.awt.Dimension(1050, 650));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel3.setFont(new java.awt.Font("Perpetua", 1, 40)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 48, 73));
+        jLabel3.setText("MIYAKO HOTELS & RESORTS");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 560, 70));
+
+        jLabel2.setFont(new java.awt.Font("Rage Italic", 0, 30)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(193, 18, 31));
+        jLabel2.setText("An Unique Experience");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, -1, -1));
+
+        logo.setText("jLabel2");
+        jPanel1.add(logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 10, 130, 120));
+
+        xButtom.setBackground(new java.awt.Color(120, 0, 0));
+        xButtom.setForeground(new java.awt.Color(253, 240, 213));
+        xButtom.setText("X");
+        xButtom.setBorder(null);
+        xButtom.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                xButtomActionPerformed(evt);
+            }
+        });
+        jPanel1.add(xButtom, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 170, 50, 30));
+
+        jPanel4.setBackground(new java.awt.Color(120, 0, 0));
+        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 480, 1050, 10));
+
+        jPanel2.setBackground(new java.awt.Color(0, 48, 73));
+        jPanel2.setForeground(new java.awt.Color(0, 48, 73));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        usButton.setBackground(new java.awt.Color(102, 155, 188));
+        usButton.setFont(new java.awt.Font("Perpetua", 1, 18)); // NOI18N
+        usButton.setForeground(new java.awt.Color(0, 48, 73));
+        usButton.setText("Desarrolladores");
+        usButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                usButtonActionPerformed(evt);
+            }
+        });
+        jPanel2.add(usButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 80, 220, 50));
+
+        funcionamientoButton.setBackground(new java.awt.Color(102, 155, 188));
+        funcionamientoButton.setFont(new java.awt.Font("Perpetua", 1, 18)); // NOI18N
+        funcionamientoButton.setForeground(new java.awt.Color(0, 48, 73));
+        funcionamientoButton.setText("Funcionamiento del Programa");
+        funcionamientoButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                funcionamientoButtonActionPerformed(evt);
+            }
+        });
+        jPanel2.add(funcionamientoButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, 280, 50));
+
+        infoButton.setBackground(new java.awt.Color(102, 155, 188));
+        infoButton.setFont(new java.awt.Font("Perpetua", 1, 18)); // NOI18N
+        infoButton.setForeground(new java.awt.Color(0, 48, 73));
+        infoButton.setText("Información General");
+        infoButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                infoButtonActionPerformed(evt);
+            }
+        });
+        jPanel2.add(infoButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 80, 220, 50));
+
+        jLabel1.setFont(new java.awt.Font("Perpetua", 1, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(253, 240, 213));
+        jLabel1.setText("Apartado de Ayuda");
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 560, 50));
+
+        jPanel3.setBackground(new java.awt.Color(120, 0, 0));
+        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 520, 1050, 10));
+
+        jButton3.setBackground(new java.awt.Color(120, 0, 0));
+        jButton3.setFont(new java.awt.Font("Perpetua", 1, 14)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(253, 240, 213));
+        jButton3.setText("Atrás");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 90, 100, 40));
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 490, 1050, 160));
+
+        text.setEditable(false);
+        text.setBackground(new java.awt.Color(140, 175, 197));
+        text.setColumns(20);
+        text.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        text.setForeground(new java.awt.Color(0, 48, 73));
+        text.setRows(5);
+        text.setBorder(null);
+        text.setMargin(new java.awt.Insets(11, 110, 0, 11));
+        coroto.setViewportView(text);
+
+        jPanel1.add(coroto, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 170, 650, 240));
+
+        imagenFondo.setFont(new java.awt.Font("Rage Italic", 0, 24)); // NOI18N
+        imagenFondo.setForeground(new java.awt.Color(0, 48, 73));
+        imagenFondo.setText("jLabel2");
+        jPanel1.add(imagenFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -120, 1050, 650));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 1050, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 650, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void usButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usButtonActionPerformed
+        text.setVisible(true);
+        coroto.setVisible(true);
+        xButtom.setVisible(true);
+        text.setText("""
+                     
+                                Este proyecto fue desarrollado arduamente por:
+
+                                * Diego Méndez C.I. 30830746
+
+                                * Ares Rámirez C.I. 30382924
+
+                                * Daniela Zambrano C.I. 30956881
+                     
+                     """);
+    }//GEN-LAST:event_usButtonActionPerformed
+
+    private void funcionamientoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_funcionamientoButtonActionPerformed
+        text.setVisible(true);
+        coroto.setVisible(true);
+        xButtom.setVisible(true);
+        text.setText("""
+
+                                Registro de clientes. El usuario podrá conocer los clientes que
+                                actualmente se encuentran hospedados en el hotel; para lo cual 
+                                se deberá introducir el apellido del cliente y el nombre, para
+                                luego obtener el número de la habitación en la que se encuentra 
+                                alojado.
+
+                                Búsqueda de reservación: Dada la cédula de identidad del cliente, 
+                                el recepcionista podrá conocer los datos de la reservación, en 
+                                caso de existir.
+
+                                Historial de habitación: dado el número de una habitación, 
+                                el sistema emitirá una lista de los clientes que alguna 
+                                vez se hospedaron en ella.
+
+                                Check-in: Un cliente con reservación llega para comenzar su 
+                                estadía. En ese momento, el recepcionista le asignará una 
+                                habitación, de manera que la reservación pasa al registro de
+                                los huéspedes del hotel.
+
+                                Check-out: Al terminar su estadía, el recepcionista cierra el
+                                registro del cliente, quedando libre la habitación y actualizándose
+                                el historial de la habitación utilizada. 
+                     """);
+    }//GEN-LAST:event_funcionamientoButtonActionPerformed
+
+    private void infoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_infoButtonActionPerformed
+        text.setVisible(true);
+        coroto.setVisible(true);
+        xButtom.setVisible(true);
+        text.setText("""
+                     
+                                Este es un proyecto para la materia de Estructura de Datos
+                                donde fueron implementados conocimientos de HashTable, ABB,
+                                POO, todo los que nos ha brindado la materia y todo lo que
+                                internet nos apoye. 
+
+                                Un reconocido Hotel de la Ciudad ha contratado a su equipo de trabajo para 
+                                construir  un sistema en Java para la administración de las reservas. El 
+                                sistema deberá implementar una solución con uso eficiente de los recursos
+                                del computador.
+                     """);
+    }//GEN-LAST:event_infoButtonActionPerformed
+
+    private void xButtomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_xButtomActionPerformed
+        text.setVisible(false);
+        coroto.setVisible(false);
+        xButtom.setVisible(false);
+    }//GEN-LAST:event_xButtomActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        Home Inicio = new Home();
+        Inicio.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -83,5 +303,21 @@ public class Help extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JScrollPane coroto;
+    private javax.swing.JButton funcionamientoButton;
+    private javax.swing.JLabel imagenFondo;
+    private javax.swing.JButton infoButton;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JLabel logo;
+    private javax.swing.JTextArea text;
+    private javax.swing.JButton usButton;
+    private javax.swing.JButton xButtom;
     // End of variables declaration//GEN-END:variables
 }

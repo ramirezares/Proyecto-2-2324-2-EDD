@@ -174,7 +174,7 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
-        RoomRecord historial = new RoomRecord();
+        RoomRecord1 historial = new RoomRecord1();
         historial.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton11ActionPerformed

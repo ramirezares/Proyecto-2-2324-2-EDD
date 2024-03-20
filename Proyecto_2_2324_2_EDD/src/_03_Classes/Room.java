@@ -9,41 +9,49 @@ public class Room {
     private int roomNumber;
     private String  roomType;
     private int roomFloor;
-    private String history;
+    private String record;
     //atributo historial en la clase room va a ser un string
 
     public Room(int roomNumber, String roomType, int roomFloor, String history) {
         this.roomNumber = roomNumber;
         this.roomType = roomType;
         this.roomFloor = roomFloor;
-        this.history = history;
+        this.record = history;
+    }
+
+    public String getRecord() {
+        return record;
+    }
+
+    public void setRecord(String record) {
+        this.record = record;
     }
 
    
 
        
     
-    public int getRoom_Number() {
+    public int getRoomNumber() {
         return roomNumber;
     }
 
-    public void setRoom_Number(int room_Number) {
+    public void setRoomNumber(int room_Number) {
         this.roomNumber = room_Number;
     }
 
-    public String getRoom_Type() {
+    public String getRoomType() {
         return roomType;
     }
 
-    public void setRoom_Type(String room_Type) {
+    public void setRoomType(String room_Type) {
         this.roomType = room_Type;
     }
 
-    public int getRoom_Floor() {
+    public int getRoomFloor() {
         return roomFloor;
     }
 
-    public void setRoom_Floor(int room_Floor) {
+    public void setRoomFloor(int room_Floor) {
         this.roomFloor = room_Floor;
     }
     

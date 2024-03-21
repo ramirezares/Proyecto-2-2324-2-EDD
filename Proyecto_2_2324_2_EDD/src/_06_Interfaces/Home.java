@@ -180,7 +180,7 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton11ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        GestionClientStatus huespedes = new GestionClientStatus();
+        ManageClientStatus huespedes = new ManageClientStatus();
         huespedes.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton8ActionPerformed

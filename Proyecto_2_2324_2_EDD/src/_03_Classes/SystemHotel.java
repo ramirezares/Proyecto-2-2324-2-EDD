@@ -4,6 +4,7 @@ import _02_EDD.BinarySearchTree;
 import _02_EDD.HashTable;
 import _02_EDD.NodeBST;
 import _04_Functions.ReadCSV;
+import java.lang.reflect.Array;
 import javax.swing.JOptionPane;
 
 /**
@@ -69,7 +70,6 @@ public class SystemHotel {
 
         return "";
     }
-
     public void checkInWithIDBooking() {
         // Recibe el id de una reserva y se trae la reserva para crear un unevo cliente en status.
         // Borra la reserva del arbol de reservas

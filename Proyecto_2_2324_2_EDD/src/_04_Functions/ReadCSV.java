@@ -23,6 +23,7 @@ public class ReadCSV {
    private BufferedReader leer;
    private String line;
    private String readedline[] = null;
+   private Room roomArray[] = null;
     
     /**
     * Funcion que toma un string con la direccion de un archivo .csv y lo lee en la terminal
@@ -73,9 +74,13 @@ public class ReadCSV {
         }
     }
     
-    public void putAtributesRoom(BinarySearchTree habitaciones)  {
+    public void putAtributesRoom(BinarySearchTree habitaciones,int arrayNum)  {
         Room newRoom = new Room(Integer.parseInt(readedline[0]),readedline[1],Integer.parseInt(readedline[2]));
-        habitaciones.insertNodeInBST(habitaciones.getRoot(), Integer.parseInt(readedline[0]), newRoom);
+        roomArray[arrayNum] = newRoom;
+        
+    }
+    
+    public void setRoomArray() {
         
     }
 /*
@@ -153,13 +158,16 @@ public class ReadCSV {
     public void readRooms(BinarySearchTree Habitaciones) {
         try {
             int erasefirst = 0;
+            int numArray = 0;
             leer = new BufferedReader(new FileReader(System.getProperty("user.dir") + "\\src\\_08_Csvs\\Booking_hotel - habitaciones.csv"));
             while ((line = leer.readLine()) != null ) {
                 if (erasefirst == 0) {
                     erasefirst = 1;
                 } else {
                 readedline = line.split(",");
-                putAtributesBooking(Habitaciones);
+                putAtributesRoom(Habitaciones,numArray);
+                numArray++;
+                
                 }
             }
             leer.close();
@@ -173,5 +181,7 @@ public class ReadCSV {
     
     
     //Buscar en history el ultimo elemento que es la habitacion.
-    //Revisar que elemento 
+    //Revisar que elemento este en el arbol binario DE HABITACIONEs
+    //Si esta agregar el historial a la habitacion
+    //Si no, hay que agregar la habitacion al árbol binario
 }

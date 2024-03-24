@@ -1,14 +1,16 @@
 
 package _06_Interfaces;
 
+import _03_Classes.SystemHotel;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Daniela Zambrano
  */
 public class Home extends javax.swing.JFrame {
-    
+    public static SystemHotel Miyako= new SystemHotel();
     ImageIcon logoCompanyPic = new ImageIcon("Untitled-3.png");
     ImageIcon fondoPic = new ImageIcon("caption.jpg");
     ImageIcon peoplePic = new ImageIcon("people2.png");
@@ -30,8 +32,22 @@ public class Home extends javax.swing.JFrame {
         peopleLabel.setText("");
         bookLabel.setIcon(bookPic);
         bookLabel.setText("");
-        //helpLabel.setIcon(helpPic);
-        //helpLabel.setText("");
+        recordLabel.setIcon(recordPic);
+        recordLabel.setText("");
+    }
+    public Home(SystemHotel miyako) {
+        Home.Miyako=miyako;
+        initComponents();
+        this.setLocationRelativeTo(null);
+        logo.setIcon(logoCompanyPic);
+        logo.setText("");
+        imagenFondo.setIcon(fondoPic);
+        imagenFondo.setText("");
+        
+        peopleLabel.setIcon(peoplePic);
+        peopleLabel.setText("");
+        bookLabel.setIcon(bookPic);
+        bookLabel.setText("");
         recordLabel.setIcon(recordPic);
         recordLabel.setText("");
     }
@@ -49,13 +65,13 @@ public class Home extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         logo = new javax.swing.JLabel();
-        jButton9 = new javax.swing.JButton();
+        helpButtom = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
-        jButton8 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton11 = new javax.swing.JButton();
+        guestButtom = new javax.swing.JButton();
+        bookingButtom = new javax.swing.JButton();
+        recordButtom = new javax.swing.JButton();
         peopleLabel = new javax.swing.JLabel();
         bookLabel = new javax.swing.JLabel();
         recordLabel = new javax.swing.JLabel();
@@ -87,16 +103,16 @@ public class Home extends javax.swing.JFrame {
         logo.setText("jLabel2");
         jPanel1.add(logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 10, 130, 120));
 
-        jButton9.setBackground(new java.awt.Color(120, 0, 0));
-        jButton9.setFont(new java.awt.Font("Perpetua", 1, 14)); // NOI18N
-        jButton9.setForeground(new java.awt.Color(253, 240, 213));
-        jButton9.setText("Ayuda");
-        jButton9.addActionListener(new java.awt.event.ActionListener() {
+        helpButtom.setBackground(new java.awt.Color(120, 0, 0));
+        helpButtom.setFont(new java.awt.Font("Perpetua", 1, 14)); // NOI18N
+        helpButtom.setForeground(new java.awt.Color(253, 240, 213));
+        helpButtom.setText("Ayuda");
+        helpButtom.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton9ActionPerformed(evt);
+                helpButtomActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 440, 80, 30));
+        jPanel1.add(helpButtom, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 440, 80, 30));
 
         jPanel7.setBackground(new java.awt.Color(0, 48, 73));
         jPanel7.setForeground(new java.awt.Color(0, 48, 73));
@@ -110,38 +126,38 @@ public class Home extends javax.swing.JFrame {
         jPanel8.setBackground(new java.awt.Color(120, 0, 0));
         jPanel7.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 520, 1050, 10));
 
-        jButton8.setBackground(new java.awt.Color(0, 32, 54));
-        jButton8.setFont(new java.awt.Font("Perpetua", 1, 18)); // NOI18N
-        jButton8.setForeground(new java.awt.Color(253, 240, 213));
-        jButton8.setText("Gestión de Huespedes");
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
+        guestButtom.setBackground(new java.awt.Color(0, 32, 54));
+        guestButtom.setFont(new java.awt.Font("Perpetua", 1, 18)); // NOI18N
+        guestButtom.setForeground(new java.awt.Color(253, 240, 213));
+        guestButtom.setText("Gestión de Huespedes");
+        guestButtom.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
+                guestButtomActionPerformed(evt);
             }
         });
-        jPanel7.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 80, 220, 40));
+        jPanel7.add(guestButtom, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 80, 220, 40));
 
-        jButton2.setBackground(new java.awt.Color(0, 32, 54));
-        jButton2.setFont(new java.awt.Font("Perpetua", 1, 18)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(253, 240, 213));
-        jButton2.setText("Gestión de Reservas");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        bookingButtom.setBackground(new java.awt.Color(0, 32, 54));
+        bookingButtom.setFont(new java.awt.Font("Perpetua", 1, 18)); // NOI18N
+        bookingButtom.setForeground(new java.awt.Color(253, 240, 213));
+        bookingButtom.setText("Gestión de Reservas");
+        bookingButtom.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                bookingButtomActionPerformed(evt);
             }
         });
-        jPanel7.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 80, 220, 40));
+        jPanel7.add(bookingButtom, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 80, 220, 40));
 
-        jButton11.setBackground(new java.awt.Color(0, 32, 54));
-        jButton11.setFont(new java.awt.Font("Perpetua", 1, 18)); // NOI18N
-        jButton11.setForeground(new java.awt.Color(253, 240, 213));
-        jButton11.setText("Historial Habitación");
-        jButton11.addActionListener(new java.awt.event.ActionListener() {
+        recordButtom.setBackground(new java.awt.Color(0, 32, 54));
+        recordButtom.setFont(new java.awt.Font("Perpetua", 1, 18)); // NOI18N
+        recordButtom.setForeground(new java.awt.Color(253, 240, 213));
+        recordButtom.setText("Historial Habitación");
+        recordButtom.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton11ActionPerformed(evt);
+                recordButtomActionPerformed(evt);
             }
         });
-        jPanel7.add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 80, 220, 40));
+        jPanel7.add(recordButtom, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 80, 220, 40));
 
         peopleLabel.setText("jLabel3");
         jPanel7.add(peopleLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 60, 60));
@@ -167,29 +183,45 @@ public class Home extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-        Help AyudaPag = new Help();
+    private void helpButtomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_helpButtomActionPerformed
+        if((Home.Miyako.getRooms()!=null)&&(Home.Miyako.getStatusList()!=null)&&(Home.Miyako.getBookings()!=null)){
+        Help AyudaPag = new Help(Home.Miyako);
         this.setVisible(false);
-        AyudaPag.setVisible(true);
-    }//GEN-LAST:event_jButton9ActionPerformed
+        AyudaPag.setVisible(true);}
+        else{
+        JOptionPane.showMessageDialog(null, "Al parecer no se cargaron correctamente los datos del sistema.\nCierre el programa e inténtelo nuevamente.", "Error!", 1);
+        }
+    }//GEN-LAST:event_helpButtomActionPerformed
 
-    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
-        RoomRecord1 historial = new RoomRecord1();
-        historial.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_jButton11ActionPerformed
+    private void recordButtomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recordButtomActionPerformed
+        if((Home.Miyako.getRooms()!=null)&&(Home.Miyako.getStatusList()!=null)&&(Home.Miyako.getBookings()!=null)){
+            RoomRecord historial = new RoomRecord(Home.Miyako);
+            historial.setVisible(true);
+            this.setVisible(false);}
+        else{
+        JOptionPane.showMessageDialog(null, "Al parecer no se cargaron correctamente los datos del sistema.\nCierre el programa e inténtelo nuevamente.", "Error!", 1);
+        }
+    }//GEN-LAST:event_recordButtomActionPerformed
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        ManageClientStatus huespedes = new ManageClientStatus();
+    private void guestButtomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guestButtomActionPerformed
+        if((Home.Miyako.getRooms()!=null)&&(Home.Miyako.getStatusList()!=null)&&(Home.Miyako.getBookings()!=null)){
+        ManageClientStatus huespedes = new ManageClientStatus(Home.Miyako);
         huespedes.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_jButton8ActionPerformed
+        this.setVisible(false);}
+        else{
+        JOptionPane.showMessageDialog(null, "Al parecer no se cargaron correctamente los datos del sistema.\nCierre el programa e inténtelo nuevamente.", "Error!", 1);
+        }
+    }//GEN-LAST:event_guestButtomActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-         Bookings reservas = new Bookings();
+    private void bookingButtomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookingButtomActionPerformed
+        if((Home.Miyako.getRooms()!=null)&&(Home.Miyako.getStatusList()!=null)&&(Home.Miyako.getBookings()!=null)){
+        Bookings reservas = new Bookings(Home.Miyako);
         reservas.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_jButton2ActionPerformed
+        this.setVisible(false);}
+        else{
+        JOptionPane.showMessageDialog(null, "Al parecer no se cargaron correctamente los datos del sistema.\nCierre el programa e inténtelo nuevamente.", "Error!", 1);
+        }
+    }//GEN-LAST:event_bookingButtomActionPerformed
 
     /**
      * @param args the command line arguments
@@ -235,11 +267,10 @@ public class Home extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel bookLabel;
+    private javax.swing.JButton bookingButtom;
+    private javax.swing.JButton guestButtom;
+    private javax.swing.JButton helpButtom;
     private javax.swing.JLabel imagenFondo;
-    private javax.swing.JButton jButton11;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
@@ -249,6 +280,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel9;
     private javax.swing.JLabel logo;
     private javax.swing.JLabel peopleLabel;
+    private javax.swing.JButton recordButtom;
     private javax.swing.JLabel recordLabel;
     // End of variables declaration//GEN-END:variables
 }

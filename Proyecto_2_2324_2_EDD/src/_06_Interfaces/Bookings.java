@@ -1,8 +1,12 @@
 
 package _06_Interfaces;
 
-import _03_Classes.Booking;
-import _03_Classes.ClientStatus;
+import _02_EDD.BinarySearchTree;
+import _02_EDD.NodeBST;
+import _03_Classes.SystemHotel;
+import _05_Validations.Validations;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.INFORMATION_MESSAGE;
@@ -13,14 +17,20 @@ import static javax.swing.JOptionPane.WARNING_MESSAGE;
  * @author Daniela Zambrano
  */
 public class Bookings extends javax.swing.JFrame {
+    public  SystemHotel Miyako; 
+    public BinarySearchTree BookingsList;
+    
     ImageIcon logoCompanyPic = new ImageIcon("Untitled-3.png");
     ImageIcon fondoPic = new ImageIcon("mount-fuji-1346096_1280.jpg");
-    Booking MainBooking=null;
+    String MainID="";
     
     /**
      * Creates new form Bookings
      */
-    public Bookings() {
+    public Bookings(){}
+    public Bookings(SystemHotel miyako) {
+        this.Miyako=miyako;
+        this.BookingsList=Miyako.getBookings();
         initComponents();
         this.setLocationRelativeTo(null);
         logo.setIcon(logoCompanyPic);
@@ -60,7 +70,7 @@ public class Bookings extends javax.swing.JFrame {
         checkInButtom = new javax.swing.JButton();
         searchButtom = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
-        IDname = new javax.swing.JTextField();
+        IDClient = new javax.swing.JTextField();
         jPanel9 = new javax.swing.JPanel();
         imagenFondo1 = new javax.swing.JLabel();
 
@@ -167,14 +177,14 @@ public class Bookings extends javax.swing.JFrame {
         jLabel4.setText("Inserte el ID del cliente");
         jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 280, 30));
 
-        IDname.setBackground(new java.awt.Color(253, 240, 213));
-        IDname.setForeground(new java.awt.Color(0, 32, 54));
-        IDname.addActionListener(new java.awt.event.ActionListener() {
+        IDClient.setBackground(new java.awt.Color(253, 240, 213));
+        IDClient.setForeground(new java.awt.Color(0, 32, 54));
+        IDClient.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                IDnameActionPerformed(evt);
+                IDClientActionPerformed(evt);
             }
         });
-        jPanel3.add(IDname, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, 280, 40));
+        jPanel3.add(IDClient, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, 280, 40));
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 530, 1070, 120));
 
@@ -200,60 +210,74 @@ public class Bookings extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void IDnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IDnameActionPerformed
+    private void IDClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IDClientActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_IDnameActionPerformed
+    }//GEN-LAST:event_IDClientActionPerformed
 
     private void backButtomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtomActionPerformed
-        Home Inicio = new Home();
+        Home Inicio = new Home( this.Miyako);
         Inicio.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_backButtomActionPerformed
 
     private void checkInButtomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkInButtomActionPerformed
-        if (MainBooking==null){
-            JOptionPane.showMessageDialog(null, "No hay ningún huesped seleccionado para realizar el check-out,\n por favor inserte el nombre y el apellido para encontrar un huesped. ", "Error!", WARNING_MESSAGE);
+        if ("".equals(MainID)){
+            JOptionPane.showMessageDialog(null, "No hay ninguna reserva seleccionada,\nInserte el ID del cliente para encontrar realizar el Check-In. ", "Error!", WARNING_MESSAGE);
             checkInButtom.setVisible(false);
         }else{
-            ClientStatus auxClient=null;
-            /*
-            deberia crearse el client status con losdatos de reserva y agregarlo al hashtable
-            eliminar la reserva correspondiente
-            y devolver la habitacion del clientstatus
-                    Aqui llama a la funcion que devuelve la habitacion 
-            */
+            /*ClientStatus auxClient;//=Miyako.checkInWithIDBooking(MainID);
+            
             checkInButtom.setVisible(false);
             chosenRoom.setText(auxClient.getRoomNumber());
             chosenName.setText(auxClient.getName()+""+auxClient.getLastName());
             checkInPanel.setVisible(true);
-            IDname.setText("");
+            IDClient.setText("");
             textScroll.setVisible(false);
             text.setVisible(false);
             textTitle.setVisible(false);
-            
+            */
         }
 
     }//GEN-LAST:event_checkInButtomActionPerformed
 
     private void searchButtomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtomActionPerformed
         checkInPanel.setVisible(false);
-        String name=IDname.getText();
-        String keyName;
-        Booking auxBooking=null;
-        /*Funcion que llama a validacion de cada texto y luego los combina
-        sila validacion retorna un texto entonces busca el hash table
-        if keyname!=""
-        auxclient =funcion de buscar en el hash table con nombrejunto*/
-
-        if (auxBooking!=null){
+        String IDString=IDClient.getText();
+        NodeBST existID=null;
+        Validations val=new Validations();
+        boolean check;
+        if (val.isID(IDString)){
+            int ID=Integer.parseInt(IDString);
+            try {
+                existID=BookingsList.SearchNodeInBST(BookingsList.getRoot(), ID);
+            } catch (Exception ex) {
+                Logger.getLogger(Bookings.class.getName()).log(Level.SEVERE, null, ex);
+                System.out.println("Hay algo mal en el boton buscar");
+            }
+            check=true;
+        }
+        else{
+            check=false;
+            checkInPanel.setVisible(false);
+            text.setVisible(false);
+            textTitle.setVisible(false);
+            textScroll.setVisible(false);
+            checkInButtom.setVisible(false); }
+        
+        if (existID!=null){
             textScroll.setVisible(true);
             text.setVisible(true);
             textTitle.setVisible(true);
-            text.setText("reserva to string"); //auxBooking.toString()
+            text.setText(Miyako.visualizeBooking(IDString));
             checkInButtom.setVisible(true);
         }
-        else{
-            JOptionPane.showMessageDialog(null, "No se ha encontrado ninguna reserva con ese ID.\n Por favor intente nuevamente. ", "Información", INFORMATION_MESSAGE);
+        else if(check){
+            JOptionPane.showMessageDialog(null, "No se ha encontrado ninguna reserva con ese ID.\nInténtelo nuevamente. ", "Información", INFORMATION_MESSAGE);
+            checkInPanel.setVisible(false);
+            text.setVisible(false);
+            textTitle.setVisible(false);
+            textScroll.setVisible(false);
+            checkInButtom.setVisible(false);
         }
     }//GEN-LAST:event_searchButtomActionPerformed
 
@@ -300,7 +324,7 @@ public class Bookings extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField IDname;
+    private javax.swing.JTextField IDClient;
     private javax.swing.JButton backButtom;
     private javax.swing.JButton checkInButtom;
     private javax.swing.JPanel checkInPanel;

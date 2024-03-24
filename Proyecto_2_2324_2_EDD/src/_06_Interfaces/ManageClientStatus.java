@@ -1,7 +1,12 @@
 
 package _06_Interfaces;
 
+import _02_EDD.BinarySearchTree;
+import _02_EDD.HashTable;
 import _03_Classes.ClientStatus;
+import _03_Classes.SystemHotel;
+import _04_Functions.Helper;
+import _05_Validations.Validations;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.INFORMATION_MESSAGE;
@@ -12,14 +17,21 @@ import static javax.swing.JOptionPane.WARNING_MESSAGE;
  * @author Daniela Zambrano
  */
 public class ManageClientStatus extends javax.swing.JFrame {
+    public SystemHotel Miyako;     
+    public HashTable GuestsList;
+    public BinarySearchTree BookingsList;
+    
     ImageIcon logoCompanyPic = new ImageIcon("Untitled-3.png");
     ImageIcon fondoPic = new ImageIcon("mount-fuji-1346096_1280.jpg");
     ClientStatus MainClient;
-    Boolean CheckOut;
     /**
      * Creates new form Check_in
      */
-    public ManageClientStatus() {
+    public ManageClientStatus(){}
+    public ManageClientStatus(SystemHotel miyako) {
+        this.Miyako=miyako;
+        this.GuestsList= Miyako.getStatusList();
+        this.BookingsList=Miyako.getBookings();
         initComponents();
         this.setLocationRelativeTo(null);
         logo.setIcon(logoCompanyPic);
@@ -27,9 +39,11 @@ public class ManageClientStatus extends javax.swing.JFrame {
         imagenFondo.setIcon(fondoPic);
         imagenFondo.setText("");
         checkOutPanel.setVisible(false);
+        textTitle.setVisible(false);
         text.setVisible(false);
         textScroll.setVisible(false);
-        checkOutButtom.setVisible(false);
+        checkOutButtom.setVisible(false); 
+        searchButtom.setVisible(true);
     }
 
     /**
@@ -311,15 +325,19 @@ public class ManageClientStatus extends javax.swing.JFrame {
     private void finalCheckOutButtomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finalCheckOutButtomActionPerformed
         String email=emailClient.getText();
         String phone=phoneClient.getText();
+        String ID=IDClient.getText();
+        Validations val=new Validations();
+        boolean ready;
+        if (((val.isEmail(email))&&(val.isID(ID))&&(val.isPhone(phone)))){
+            ready=true;
+        }
+        else{
+            ready=false;
+            JOptionPane.showMessageDialog(null, "Debe colocar todos los datos para poder confirmar el check-in.\nInténtelo nuevamente.", "Información", INFORMATION_MESSAGE);
+        }
         
-        /*Aqui va una funcion que verifique los datos 
-        si los datos en orden checkout = true*/
-        
-        if(CheckOut){/*
-        los datos del cliente son agarrados en una funcion y convertidos en historial
-        se sebe actaulizar el historial  de la habitacion 
-        y se debe elimnar del hashtable el client= 
-        */
+        if(ready){
+            this.Miyako.checkOut(MainClient.getFullName(), ID, email, phone);
             checkOutPanel.setVisible(false);
             text.setVisible(false);
             textScroll.setVisible(false);
@@ -341,6 +359,7 @@ public class ManageClientStatus extends javax.swing.JFrame {
             checkOutButtom.setVisible(false);
         }else{
         checkOutPanel.setVisible(true);  
+        searchButtom.setVisible(false);
         }
         
         
@@ -348,7 +367,7 @@ public class ManageClientStatus extends javax.swing.JFrame {
     }//GEN-LAST:event_checkOutButtomActionPerformed
 
     private void backButtomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtomActionPerformed
-        Home Inicio = new Home();
+        Home Inicio = new Home(this.Miyako);
         Inicio.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_backButtomActionPerformed
@@ -356,21 +375,40 @@ public class ManageClientStatus extends javax.swing.JFrame {
     private void searchButtomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtomActionPerformed
         String name=nameClient.getText();
         String surname=surnameClient.getText();
-        String ID= IDClient.getText();
         String keyName;
         ClientStatus auxClient=null;
-        /*Funcion que llama a validacion de cada texto y luego los combina
-        sila validacion retorna un texto entonces busca el hash table
-        if keyname!=""
-            auxclient =funcion de buscar en el hash table con nombrejunto*/
-            
+        Validations val=new Validations();
+        Helper help=new Helper();
+        boolean check;
+        if ((val.isName2(name))&&(val.isName2(surname))){
+            keyName=help.NameSurname(name, surname);
+            auxClient=GuestsList.search(keyName);
+            check=true;
+        }
+        else{
+            check=false;
+            checkOutPanel.setVisible(false);
+            textTitle.setVisible(false);
+            text.setVisible(false);
+            textScroll.setVisible(false);
+            checkOutButtom.setVisible(false); 
+            JOptionPane.showMessageDialog(null, "Debe colocar todos los datos para poder buscar al huesped.\nInténtelo nuevamente.", "Información", INFORMATION_MESSAGE);
+        }
+        
         if (auxClient!=null){
         textScroll.setVisible(true);
         text.setVisible(true);
-        text.setText("cliente to string"); //auxClient.toString()
+        textTitle.setVisible(true);
+        text.setText(auxClient.toString()); 
         checkOutButtom.setVisible(true);
+        this.MainClient=auxClient;
         }
-        else{
+        else if(check && (val.isName(name))&&(val.isName(surname))){
+            checkOutPanel.setVisible(false);
+            textTitle.setVisible(false);
+            text.setVisible(false);
+            textScroll.setVisible(false);
+            checkOutButtom.setVisible(false); 
             JOptionPane.showMessageDialog(null, "No se ha encontrado ningún huesped con ese nombre.\n Por favor intente nuevamente. ", "Información", INFORMATION_MESSAGE);
             }
     }//GEN-LAST:event_searchButtomActionPerformed

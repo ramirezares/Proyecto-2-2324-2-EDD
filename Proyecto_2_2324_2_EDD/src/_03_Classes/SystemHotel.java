@@ -1,10 +1,11 @@
-
 package _03_Classes;
 
 import _02_EDD.BinarySearchTree;
 import _02_EDD.HashTable;
 import _02_EDD.NodeBST;
 import _04_Functions.ReadCSV;
+import _05_Validations.Validations;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
@@ -88,15 +89,23 @@ public class SystemHotel {
             int IDToSearch = Integer.parseInt(ID);
             NodeBST NodeOfBooking = SystemHotel.Bookings.SearchNodeInBST(SystemHotel.Bookings.getRoot(), IDToSearch); //Busco la reserva 
             Booking BookingToStatus = (Booking) NodeOfBooking.getData();
+
+            int[] occupiedRooms = ListOfOccupiedRoomsWithStatusWithDate(BookingToStatus.getArrival());
             
-            //Hacer funciones auxiliares de abajo
+            int[] RoomswithType = ListOfRoomsWithType(BookingToStatus.getRoomType());
             
-            // Crear el objeto cliente y agregarlo al HashTable
+            int roomNumber = SelectNumOfAvailableRoom(RoomswithType, occupiedRooms);
+            
+            ClientStatus newClientToStatus = new ClientStatus( String.valueOf(roomNumber), BookingToStatus.getName(), BookingToStatus.getLastName(), BookingToStatus.getEmail(), BookingToStatus.getGender(), BookingToStatus.getCellphone(), BookingToStatus.getArrival());
+            
+            SystemHotel.StatusList.insert(newClientToStatus);
+            
+            SystemHotel.Bookings.deleteNodeInBST(SystemHotel.Bookings.getRoot(), Integer.parseInt(BookingToStatus.getID()));
             
             val = true;
 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, " .");
+            JOptionPane.showMessageDialog(null, "No hay habitacion disponible.");
         }
         return val;
         // Recibe el id de una reserva y se trae la reserva para crear un unevo cliente en status.
@@ -106,58 +115,100 @@ public class SystemHotel {
         // Colocar JOptionPane para imprimir exitoso o fallas.
     }
 
-    private void BookingToStatus() {
-        // Busca en reverva con el ID y si la encuentra procede a hacer el Check in,
-        // si no indica que no se encuentra en la reserva
+    private int[] ListOfOccupiedRoomsWithStatusWithDate(String ArriveDate) {
+        Validations temporal = new Validations();
+        int[] occupiedRooms = new int[301];
 
+        for (int i = 0; i < SystemHotel.StatusList.getSize(); i++) {
+            ClientStatus current = SystemHotel.StatusList.getTable()[i];
+            if (temporal.compareStrings(ArriveDate, current.getArrive())) {
+                occupiedRooms[i] = Integer.parseInt(current.getRoomNumber());
+            }
+        }
+        //Busca en el Hashtable status las habitaciones que estan ocupadas en la fecha de llegada indicada
+
+        // devuelve un array con las habitaciones ocupadas    
+        return occupiedRooms;
     }
 
-    /*
-    //private array ListOfOccupiedRoomsWithStatusWithDate(){
-    
-    //Busca en el Hashtable status las habitaciones que estan ocupadas en la fecha de llegada indicada
-    
-    // devuelve un array con las habitaciones ocupadas
-    
-    }
-     */
-
-  /*
-    private Integer[] ListOfRoomsWithType(){
+    private int[] ListOfRoomsWithType(String roomsType) {
         // Hacer funcion que cree un array del largo de las habitaciones del tipo y con el numero de habitaciones correspondientes
-        int amountOfRoomsWithType = 0;
-        
-        for(int i=0){
-            // Contador para saber el largo del array
+        // int count = 0;
+        // int amountOfRoomsWithType = countWithType(SystemHotel.Rooms.getRoot(), roomsType, count);
+
+        ArrayList RoomswithType = new ArrayList();
+        RoomswithType = AddWithType(SystemHotel.Rooms.getRoot(), roomsType, RoomswithType);
+        Object[] temporalArray = RoomswithType.toArray();
+
+        int[] intArray = new int[RoomswithType.size()];  // Array de enteros
+
+        for (int i = 0; i < temporalArray.length; i++) {
+            intArray[i] = (int) temporalArray[i];  // Casting de Object a int
+        }
+
+        return intArray;
+    }
+
+    
+    /*
+    private int countWithType(NodeBST pRoot, String roomType, int count) {
+        Validations temporal = new Validations();
+
+        if (pRoot != null) {
+            Room current = (Room) pRoot.getData();
+            count = countWithType(pRoot.getLeftSong(),roomType, count);
+            
+            if (temporal.compareStrings(roomType, current.getRoomType())){
+            count++;
+            }    
+            
+            count = countWithType(pRoot.getRightSong(), roomType, count);
             
         }
-        
-        //Creo el array
-        
-        //Recorro el arbol con otro for usando search. El len del arbol se puede saber con la funcion countNumberOfNodes
-            //Si el atributo type del objeto dentro del nodo es igual al tipo de la habitacion, agrego el numero al array
-    
-    // Plantear, creo que con el CSV se pudieran leer las lineas y obtener solo las habitaciones con el tipo deseado
-    
-    // Retorna una lista o un array con las habitaciones del tipo deseado
+        return count;
     }
- */
-    private int SelectNumOfAvailableRoom() {
+     */
+    private ArrayList AddWithType(NodeBST pRoot, String roomType, ArrayList RoomswithType) {
+        Validations temporal = new Validations();
+
+        if (pRoot != null) {
+            Room current = (Room) pRoot.getData();
+            RoomswithType = AddWithType(pRoot.getLeftSong(), roomType, RoomswithType);
+
+            if (temporal.compareStrings(roomType, current.getRoomType())) {
+                RoomswithType.add(current.getRoomNumber());
+
+            }
+            RoomswithType = AddWithType(pRoot.getRightSong(), roomType, RoomswithType);
+
+        }
+        return RoomswithType;
+    }
+
+    private int SelectNumOfAvailableRoom(int[] RoomswithType, int[] occupiedRooms) {
         // Selecciona el numero de posicion de la habitacion del tipo disponible evaluando en la lista de ocupadas 
         // y la lista de las habitaciones del tipo deseado.
 
-        return 1;
+        int numToReturn = -1;
+        
+        for (int i : RoomswithType) {
+            boolean notOccupied = true;
+            for (int j : occupiedRooms) {                
+                
+                if(RoomswithType[i]==occupiedRooms[j]){
+                    notOccupied=false;
+                }
+            }
+            
+            if(notOccupied){
+                numToReturn = i;
+                return numToReturn;
+            }
+        }
+
+        return numToReturn;     // Validar que si devuelve -1 afuera nunca encontro una habitacion disponible
     }
 
-    /*
-    private void addToStatus(){
-    
-    recibe la reserva, crea el objeto estado y lo agrega al hashtable
-    
-    pone en ocupado el atributo de la clase Room        Crear atributo
-    
-    }
-     */
     /**
      *
      * @param completeNameOfCustomerToSearch
@@ -170,8 +221,8 @@ public class SystemHotel {
         // Validar afuera el ID
         try {
             ClientStatus matched = SystemHotel.StatusList.search(completeNameOfCustomerToSearch);
-            String LineToAppend = CreateRecordLine(ID, matched.getName(), matched.getLastName(), email, matched.getGender(),matched.getArrive() );
-            
+            String LineToAppend = CreateRecordLine(ID, matched.getName(), matched.getLastName(), email, matched.getGender(), matched.getArrive());
+
             int roomNumber = Integer.parseInt(matched.getRoomNumber());
             NodeBST currentNode = SystemHotel.Rooms.SearchNodeInBST(SystemHotel.Rooms.getRoot(), roomNumber); //Retorna el nodo a modificar
             Room toModify = (Room) currentNode.getData();

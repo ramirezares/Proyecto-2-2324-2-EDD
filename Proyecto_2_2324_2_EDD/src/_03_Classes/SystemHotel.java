@@ -60,7 +60,7 @@ public class SystemHotel {
             JOptionPane.showMessageDialog(null, "No existe una reserva.");
         }
         // recibe un ID, busca en el arbol la reservacion con se ID y muestra sus datos
-        return "";
+        return bookingToReturn;
     }
 
     public String visualizeRoomRecordWithRoomNumber(String roomNumber) {
@@ -86,7 +86,7 @@ public class SystemHotel {
         try {
             // Validar que id sea una cedula afuera
             int IDToSearch = Integer.parseInt(ID);
-            NodeBST NodeOfBooking = SystemHotel.Bookings.SearchNodeInBST(SystemHotel.Bookings.getRoot(), IDToSearch);
+            NodeBST NodeOfBooking = SystemHotel.Bookings.SearchNodeInBST(SystemHotel.Bookings.getRoot(), IDToSearch); //Busco la reserva 
             Booking BookingToStatus = (Booking) NodeOfBooking.getData();
             
             //Hacer funciones auxiliares de abajo
@@ -96,7 +96,7 @@ public class SystemHotel {
             val = true;
 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, ".");
+            JOptionPane.showMessageDialog(null, " .");
         }
         return val;
         // Recibe el id de una reserva y se trae la reserva para crear un unevo cliente en status.

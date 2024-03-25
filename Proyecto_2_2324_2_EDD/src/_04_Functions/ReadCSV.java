@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package _04_Functions;
 
 import _02_EDD.BinarySearchTree;
@@ -9,7 +6,6 @@ import _02_EDD.HashTable;
 import _03_Classes.Booking;
 import _03_Classes.ClientStatus;
 import _03_Classes.Room;
-import _03_Classes.RoomRecord;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -43,6 +39,7 @@ public class ReadCSV {
             
         } catch(IOException e){
             JOptionPane.showMessageDialog(null, "No se encuentra un archivo CSV en la ruta especificada");
+            
         }
     }
     
@@ -50,9 +47,9 @@ public class ReadCSV {
     * Lee las lineas de un arreglo
     */
     public void printline() {
-        for (int i = 0; i < readedline.length; i++) {
-           System.out.print(readedline[i] + "   |   ");  
-        }
+       for (String readedline1 : readedline) {
+           System.out.print(readedline1 + "   |   ");
+       }
     } 
     
     public void putAtributesBooking(BinarySearchTree Reservas)  {
@@ -103,6 +100,7 @@ public class ReadCSV {
             
         } catch(IOException e){
             JOptionPane.showMessageDialog(null, "No se encuentra un archivo CSV en la ruta especificada");
+            Reservas=null;
         }
     }
     
@@ -125,6 +123,7 @@ public class ReadCSV {
             
         } catch(IOException e){
             JOptionPane.showMessageDialog(null, "No se encuentra un archivo CSV en la ruta especificada");
+            tablastatus=null;
         }
     }
     /*
@@ -168,6 +167,8 @@ public class ReadCSV {
             
         } catch(IOException e){
             JOptionPane.showMessageDialog(null, "No se encuentra un archivo CSV en la ruta especificada");
+            Habitaciones=null;
+                    
         }
     }
     

@@ -17,9 +17,6 @@ import static javax.swing.JOptionPane.WARNING_MESSAGE;
  * @author Daniela Zambrano
  */
 public class ManageClientStatus extends javax.swing.JFrame {
-    public SystemHotel Miyako;     
-    public HashTable GuestsList;
-    public BinarySearchTree BookingsList;
     
     ImageIcon logoCompanyPic = new ImageIcon("Untitled-3.png");
     ImageIcon fondoPic = new ImageIcon("mount-fuji-1346096_1280.jpg");
@@ -27,11 +24,7 @@ public class ManageClientStatus extends javax.swing.JFrame {
     /**
      * Creates new form Check_in
      */
-    public ManageClientStatus(){}
-    public ManageClientStatus(SystemHotel miyako) {
-        this.Miyako=miyako;
-        this.GuestsList= Miyako.getStatusList();
-        this.BookingsList=Miyako.getBookings();
+    public ManageClientStatus() {
         initComponents();
         this.setLocationRelativeTo(null);
         logo.setIcon(logoCompanyPic);
@@ -337,7 +330,7 @@ public class ManageClientStatus extends javax.swing.JFrame {
         }
         
         if(ready){
-            this.Miyako.checkOut(MainClient.getFullName(), ID, email, phone);
+            Home.Miyako.checkOut(MainClient.getFullName(), ID, email, phone);
             checkOutPanel.setVisible(false);
             text.setVisible(false);
             textScroll.setVisible(false);
@@ -367,7 +360,7 @@ public class ManageClientStatus extends javax.swing.JFrame {
     }//GEN-LAST:event_checkOutButtomActionPerformed
 
     private void backButtomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtomActionPerformed
-        Home Inicio = new Home(this.Miyako);
+        Home Inicio = new Home();
         Inicio.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_backButtomActionPerformed
@@ -375,14 +368,14 @@ public class ManageClientStatus extends javax.swing.JFrame {
     private void searchButtomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtomActionPerformed
         String name=nameClient.getText();
         String surname=surnameClient.getText();
-        String keyName;
+        String keyName="";
         ClientStatus auxClient=null;
         Validations val=new Validations();
         Helper help=new Helper();
         boolean check;
         if ((val.isName2(name))&&(val.isName2(surname))){
             keyName=help.NameSurname(name, surname);
-            auxClient=GuestsList.search(keyName);
+            auxClient=Home.Miyako.StatusList.search(keyName);
             check=true;
         }
         else{
@@ -399,7 +392,7 @@ public class ManageClientStatus extends javax.swing.JFrame {
         textScroll.setVisible(true);
         text.setVisible(true);
         textTitle.setVisible(true);
-        text.setText(auxClient.toString()); 
+        text.setText(Home.Miyako.visualizeGuest(keyName)); 
         checkOutButtom.setVisible(true);
         this.MainClient=auxClient;
         }

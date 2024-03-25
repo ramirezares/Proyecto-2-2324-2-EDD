@@ -37,22 +37,6 @@ public class Home extends javax.swing.JFrame {
         recordLabel.setText("");
     }
 
-    public Home(SystemHotel miyako) {
-        Home.Miyako = miyako;
-        initComponents();
-        this.setLocationRelativeTo(null);
-        logo.setIcon(logoCompanyPic);
-        logo.setText("");
-        imagenFondo.setIcon(fondoPic);
-        imagenFondo.setText("");
-
-        peopleLabel.setIcon(peoplePic);
-        peopleLabel.setText("");
-        bookLabel.setIcon(bookPic);
-        bookLabel.setText("");
-        recordLabel.setIcon(recordPic);
-        recordLabel.setText("");
-    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -187,7 +171,7 @@ public class Home extends javax.swing.JFrame {
 
     private void helpButtomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_helpButtomActionPerformed
         if ((Home.Miyako.Rooms != null) && (Home.Miyako.StatusList != null) && (Home.Miyako.Bookings != null)) {
-            Help AyudaPag = new Help(Home.Miyako);
+            Help AyudaPag = new Help();
             this.setVisible(false);
             AyudaPag.setVisible(true);
         } else {
@@ -207,7 +191,7 @@ public class Home extends javax.swing.JFrame {
 
     private void guestButtomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guestButtomActionPerformed
         if ((Home.Miyako.Rooms != null) && (Home.Miyako.StatusList != null) && (Home.Miyako.Bookings != null)) {
-            ManageClientStatus huespedes = new ManageClientStatus(Home.Miyako);
+            ManageClientStatus huespedes = new ManageClientStatus();
             huespedes.setVisible(true);
             this.setVisible(false);
         } else {

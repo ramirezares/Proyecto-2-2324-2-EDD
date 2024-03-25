@@ -1,6 +1,7 @@
 package _06_Interfaces;
 
 import _02_EDD.NodeBST;
+import _03_Classes.ClientStatus;
 import _05_Validations.Validations;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -221,8 +222,12 @@ public class Bookings extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "No hay ninguna reserva seleccionada,\nInserte el ID del cliente para encontrar realizar el Check-In. ", "Error!", WARNING_MESSAGE);
             checkInButtom.setVisible(false);
             
+            
         } else {
-            /*ClientStatus auxClient;//=Miyako.checkInWithIDBooking(MainID);
+            /*
+            Booking
+            
+            ClientStatus auxClient= Home.Miyako.checkInWithIDBooking(MainID);
             
             checkInButtom.setVisible(false);
             chosenRoom.setText(auxClient.getRoomNumber());
@@ -232,7 +237,7 @@ public class Bookings extends javax.swing.JFrame {
             textScroll.setVisible(false);
             text.setVisible(false);
             textTitle.setVisible(false);
-             */
+            */
         }
 
     }//GEN-LAST:event_checkInButtomActionPerformed
@@ -268,7 +273,7 @@ public class Bookings extends javax.swing.JFrame {
             textTitle.setVisible(true);
             text.setText(Home.Miyako.visualizeBooking(IDString));
             checkInButtom.setVisible(true);
-            //udjudoddojdoj
+            MainID=IDString;
         } else if (check) {
             JOptionPane.showMessageDialog(null, "No se ha encontrado ninguna reserva con ese ID.\nInténtelo nuevamente. ", "Información", INFORMATION_MESSAGE);
             checkInPanel.setVisible(false);

@@ -134,7 +134,8 @@ public class RoomRecord extends javax.swing.JFrame {
         jPanel7.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 310, 30));
 
         numRoom.setBackground(new java.awt.Color(102, 155, 188));
-        numRoom.setForeground(new java.awt.Color(0, 48, 73));
+        numRoom.setFont(new java.awt.Font("Franklin Gothic Demi", 0, 12)); // NOI18N
+        numRoom.setForeground(new java.awt.Color(0, 0, 0));
         numRoom.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 numRoomActionPerformed(evt);

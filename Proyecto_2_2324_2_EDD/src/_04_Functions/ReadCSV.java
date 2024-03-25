@@ -55,7 +55,6 @@ public class ReadCSV {
     
     public void putAtributesBooking(BinarySearchTree Reservas)  {
          String newID = readedline[0].replaceAll("[^\\w+]", "");
-         System.out.println(newID);
         Booking newbooking = new Booking(newID,readedline[1],readedline[2],readedline[3],readedline[4],readedline[5],readedline[6],readedline[7],readedline[8]);
         Reservas.insertNodeInBST(Reservas.getRoot(), Integer.parseInt(newID), newbooking);
         

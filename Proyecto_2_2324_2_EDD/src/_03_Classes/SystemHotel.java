@@ -64,7 +64,7 @@ public class SystemHotel {
         return bookingToReturn;
     }
 
-    public String visualizeRoomRecordWithRoomNumber(String roomNumber) {
+    public String visualizeRoomRecord(String roomNumber) {
         String recordToReturn = "";
 
         try {
@@ -82,8 +82,8 @@ public class SystemHotel {
         return recordToReturn;
     }
 
-    public boolean checkInWithIDBooking(String ID) {
-        boolean val = false;
+    public ClientStatus checkInWithIDBooking(String ID) {
+        ClientStatus client = null;
         try {
             // Validar que id sea una cedula afuera
             int IDToSearch = Integer.parseInt(ID);
@@ -102,12 +102,12 @@ public class SystemHotel {
             
             SystemHotel.Bookings.deleteNodeInBST(SystemHotel.Bookings.getRoot(), Integer.parseInt(BookingToStatus.getID()));
             
-            val = true;
+            client = newClientToStatus;
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "No hay habitacion disponible.");
         }
-        return val;
+        return client;
         // Recibe el id de una reserva y se trae la reserva para crear un unevo cliente en status.
         // Borra la reserva del arbol de reservas
 

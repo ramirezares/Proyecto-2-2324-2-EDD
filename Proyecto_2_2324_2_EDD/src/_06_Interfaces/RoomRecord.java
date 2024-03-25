@@ -189,16 +189,11 @@ public class RoomRecord extends javax.swing.JFrame {
 
     private void searchButtomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtomActionPerformed
         String roomNumber= numRoom.getText();
-        Room auxRoom=null;
+        String auxRoom=null;
         Validations val=new Validations();
         boolean check;
         if (val.isRoom(roomNumber)){
-            /*el dato ingresado es valid
-            *funcion que busca roomNumber en el arbol binario*
-            porende se puedebuscar la habitacion en el sistema
-            //cuando se obtenga el nodon y el objeto se iguala a aux Room
-            auxRoom=Home.Miyako.searchRoom();
-            */
+            auxRoom=Home.Miyako.visualizeRoomRecord(roomNumber);
             check=true;
         }
         else{
@@ -210,7 +205,7 @@ public class RoomRecord extends javax.swing.JFrame {
             check=false;
             JOptionPane.showMessageDialog(null, "Debe colocar el número correspondiente a la habitación para poder visualizar el historial de la misma.\nInténtelo nuevamente.", "Información", INFORMATION_MESSAGE);
         }
-        if(auxRoom!=null){
+        if(!"".equals(auxRoom)){
             
         textTitle.setVisible(true);
         textScroll.setVisible(true);
@@ -220,7 +215,7 @@ public class RoomRecord extends javax.swing.JFrame {
         numRoomLabel.setText(roomNumber);
 
         text.setVisible(true);
-        text.setText(auxRoom.getSummaryForRecord());
+        text.setText(Home.Miyako.visualizeRoomRecord(roomNumber));
         
         }
         else if(check){

@@ -6,6 +6,7 @@ package _01_proyecto_2_2324_2_edd;
 
 import _02_EDD.BinarySearchTree;
 import _02_EDD.HashTable;
+import _02_EDD.ListaSimple;
 import _04_Functions.ReadCSV;
 
 /**
@@ -20,10 +21,10 @@ public class Main {
     public static void main(String[] args) {
             System.out.println("hoola");
             ReadCSV data = new ReadCSV();
-            BinarySearchTree pepe = new BinarySearchTree();
-
-           HashTable hashi = new HashTable();
-           data.readClientStatus(hashi);
-
+            BinarySearchTree Habitaciones = new BinarySearchTree();
+            
+            ListaSimple lista = new ListaSimple();
+            data.readRooms(Habitaciones);
+            
     }
 }

@@ -6,6 +6,7 @@ package _04_Functions;
 
 import _02_EDD.BinarySearchTree;
 import _02_EDD.HashTable;
+import _02_EDD.ListaSimple;
 import _03_Classes.Booking;
 import _03_Classes.ClientStatus;
 import _03_Classes.Room;
@@ -13,7 +14,9 @@ import _03_Classes.RoomRecord;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
+
 
 /**
  *
@@ -23,7 +26,12 @@ public class ReadCSV {
    private BufferedReader leer;
    private String line;
    private String readedline[] = null;
-   private Room roomArray[] = null;
+   private ArrayList<Room> roomArray;
+    
+
+    public ReadCSV() {
+        this.roomArray = new ArrayList<Room>();
+    }
     
     /**
     * Funcion que toma un string con la direccion de un archivo .csv y lo lee en la terminal
@@ -74,14 +82,23 @@ public class ReadCSV {
         }
     }
     
-    public void putAtributesRoom(BinarySearchTree habitaciones)  {
+    
+    public void createArrayRooms(int arrayNum)  {
         Room newRoom = new Room(Integer.parseInt(readedline[0]),readedline[1],Integer.parseInt(readedline[2]));
-        habitaciones.insertNodeInBST(habitaciones.getRoot(), Integer.parseInt(readedline[0]), newRoom);
+        roomArray.add(newRoom);
         
     }
-    
-    public void setRoomArray() {
-        
+    public void putRoomInTree(BinarySearchTree Habitaciones,ListaSimple HabitacionesNoHistorial,ListaSimple HabitacionesHistorial)  {
+        for (int i = 0; i < HabitacionesNoHistorial.getSize(); i++) {
+            Room HabitacionAgregada = (Room) HabitacionesNoHistorial.getContentByIndex(i);
+            Habitaciones.insertNodeInBST(Habitaciones.getRoot(), HabitacionAgregada.getRoomNumber(), HabitacionAgregada);
+            
+        }
+        for (int i = 0; i < HabitacionesHistorial.getSize(); i++) {
+            Room HabitacionAgregada = (Room) HabitacionesHistorial.getContentByIndex(i);
+            Habitaciones.insertNodeInBST(Habitaciones.getRoot(), HabitacionAgregada.getRoomNumber(), HabitacionAgregada);
+            
+        }
     }
 /*
     public void putAtributesRoomRecord(ListaSimple listaDeHistorial)  {
@@ -133,6 +150,60 @@ public class ReadCSV {
             JOptionPane.showMessageDialog(null, "No se encuentra un archivo CSV en la ruta especificada");
         }
     }
+        public void readRoomRecordsForRooms(ArrayList ListaHabitaciones,BinarySearchTree HabitacionesCompletas) {
+        try {
+            ListaSimple HabitacionesHistorial = new ListaSimple();
+            ListaSimple HabitacionesNoHistorial = new ListaSimple();
+            int erasefirst = 0;
+            leer = new BufferedReader(new FileReader(System.getProperty("user.dir") + "\\src\\_08_CSV\\Booking_hotel - Histórico.csv"));
+            while ((line = leer.readLine()) != null ) {
+                if (erasefirst == 0) {
+                    erasefirst = 1;
+                } else {
+                readedline = line.split(",");
+                RoomRecord historial = new RoomRecord(readedline[0],readedline[1],readedline[2],readedline[3],readedline[4],readedline[5]);
+                
+                    for (int i = 0; i < ListaHabitaciones.size(); i++) {
+                        Room Habitaciontemporal = (Room) ListaHabitaciones.get(i);
+                        if (Integer.parseInt(readedline[6]) == Habitaciontemporal.getRoomNumber()) {
+                            if (HabitacionesHistorial.isInList(Habitaciontemporal)) {
+                            Room habitacionTemporalHistorial =  (Room) HabitacionesHistorial.getContentByIndex(HabitacionesHistorial.getIndex(Habitaciontemporal));
+                            habitacionTemporalHistorial.setRecord(historial.stringRoomRecord());
+                                
+                            } else {
+                            Habitaciontemporal.setRecord(historial.stringRoomRecord());
+                            HabitacionesHistorial.addEnd(Habitaciontemporal);
+                            }
+                        }
+                        
+                    }
+                }
+            }
+            
+            for (int i = 0; i < ListaHabitaciones.size(); i++) {
+                Room Habitaciontemporal2 = (Room) ListaHabitaciones.get(i);
+                if (HabitacionesHistorial.isInList(Habitaciontemporal2)) {
+                    
+                } else {
+                    HabitacionesNoHistorial.addEnd(Habitaciontemporal2);
+                }
+                
+            }
+            
+            
+            putRoomInTree(HabitacionesCompletas,HabitacionesNoHistorial,HabitacionesHistorial);
+                
+            
+            
+            
+            leer.close();
+            line = null;
+            readedline = null;
+            
+        } catch(IOException e){
+            JOptionPane.showMessageDialog(null, "No se encuentra un archivo CSV en la ruta especificada");
+        }
+    }
     /*
     public void readRoomRecords(ListaSimple listaDeHistorial) {
         try {
@@ -166,11 +237,12 @@ public class ReadCSV {
                     erasefirst = 1;
                 } else {
                 readedline = line.split(",");
-                putAtributesRoom(Habitaciones);
+                createArrayRooms(numArray);
                 numArray++;
                 
                 }
             }
+           readRoomRecordsForRooms(roomArray,Habitaciones);
             leer.close();
             line = null;
             readedline = null;

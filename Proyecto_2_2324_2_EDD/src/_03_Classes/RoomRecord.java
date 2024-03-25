@@ -24,7 +24,14 @@ public class RoomRecord {
         this.arrive = arrive;
         this.room_Number = room_Number;
     }
-
+    public RoomRecord(String ID, String name, String lastName, String email, String genre, String arrive) {
+        this.ID = ID;
+        this.name = name;
+        this.lastName = lastName;
+        this.email = email;
+        this.gender = genre;
+        this.arrive = arrive;
+    }
     
     public String getID() {
         return ID;
@@ -84,7 +91,7 @@ public class RoomRecord {
    
     public String stringRoomRecord() {
         String stringaux;
-        stringaux =  this.ID + " " + this.name + " " + this.lastName + " " + this.email + " " + this.gender + " " + this.arrive;
+        stringaux =  this.ID + " " + this.name + " " + this.lastName + " " + this.email + " " + this.gender + " " + this.arrive + "\n";
                 
         
         return stringaux;

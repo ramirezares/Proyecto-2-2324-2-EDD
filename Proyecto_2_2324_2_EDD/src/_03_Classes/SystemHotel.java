@@ -16,14 +16,14 @@ import javax.swing.JOptionPane;
  */
 public class SystemHotel {
 
-    private HashTable StatusList;
-    private BinarySearchTree Bookings;
-    private BinarySearchTree Rooms;
+    public static HashTable StatusList;
+    public static BinarySearchTree Bookings;
+    public static BinarySearchTree Rooms;
 
     public SystemHotel() {
-        this.StatusList = new HashTable();
-        this.Bookings = new BinarySearchTree();
-        this.Rooms = new BinarySearchTree();
+        SystemHotel.StatusList = new HashTable();
+        SystemHotel.Bookings = new BinarySearchTree();
+        SystemHotel.Rooms = new BinarySearchTree();
 
         ReadCSV temporal = new ReadCSV();   // Temporal para que solo funcione aca al inicio del programa.
 
@@ -202,29 +202,4 @@ public class SystemHotel {
         return lineToReturn;
         // Con el objeto status, crea y devuelve una linea String para agregar en el historial de la habitacion
     }
-
-    public HashTable getStatusList() {
-        return StatusList;
-    }
-
-    public void setStatusList(HashTable StatusList) {
-        this.StatusList = StatusList;
-    }
-
-    public BinarySearchTree getBookings() {
-        return Bookings;
-    }
-
-    public void setBookings(BinarySearchTree Bookings) {
-        this.Bookings = Bookings;
-    }
-
-    public BinarySearchTree getRooms() {
-        return Rooms;
-    }
-
-    public void setRooms(BinarySearchTree Rooms) {
-        this.Rooms = Rooms;
-    }
-
 }

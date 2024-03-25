@@ -1,4 +1,3 @@
-
 package _06_Interfaces;
 
 import _03_Classes.SystemHotel;
@@ -10,13 +9,15 @@ import javax.swing.JOptionPane;
  * @author Daniela Zambrano
  */
 public class Home extends javax.swing.JFrame {
-    public static SystemHotel Miyako= new SystemHotel();
+
+    public static SystemHotel Miyako = new SystemHotel();
+
     ImageIcon logoCompanyPic = new ImageIcon("Untitled-3.png");
     ImageIcon fondoPic = new ImageIcon("caption.jpg");
     ImageIcon peoplePic = new ImageIcon("people2.png");
     ImageIcon bookPic = new ImageIcon("booking2.png");
     ImageIcon recordPic = new ImageIcon("folder2.png");
-    
+
     /**
      * Creates new form Welcome
      */
@@ -27,7 +28,7 @@ public class Home extends javax.swing.JFrame {
         logo.setText("");
         imagenFondo.setIcon(fondoPic);
         imagenFondo.setText("");
-        
+
         peopleLabel.setIcon(peoplePic);
         peopleLabel.setText("");
         bookLabel.setIcon(bookPic);
@@ -35,15 +36,16 @@ public class Home extends javax.swing.JFrame {
         recordLabel.setIcon(recordPic);
         recordLabel.setText("");
     }
+
     public Home(SystemHotel miyako) {
-        Home.Miyako=miyako;
+        Home.Miyako = miyako;
         initComponents();
         this.setLocationRelativeTo(null);
         logo.setIcon(logoCompanyPic);
         logo.setText("");
         imagenFondo.setIcon(fondoPic);
         imagenFondo.setText("");
-        
+
         peopleLabel.setIcon(peoplePic);
         peopleLabel.setText("");
         bookLabel.setIcon(bookPic);
@@ -184,42 +186,42 @@ public class Home extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void helpButtomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_helpButtomActionPerformed
-        if((Home.Miyako.getRooms()!=null)&&(Home.Miyako.getStatusList()!=null)&&(Home.Miyako.getBookings()!=null)){
-        Help AyudaPag = new Help(Home.Miyako);
-        this.setVisible(false);
-        AyudaPag.setVisible(true);}
-        else{
-        JOptionPane.showMessageDialog(null, "Al parecer no se cargaron correctamente los datos del sistema.\nCierre el programa e inténtelo nuevamente.", "Error!", 1);
+        if ((Home.Miyako.Rooms != null) && (Home.Miyako.StatusList != null) && (Home.Miyako.Bookings != null)) {
+            Help AyudaPag = new Help(Home.Miyako);
+            this.setVisible(false);
+            AyudaPag.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(null, "Al parecer no se cargaron correctamente los datos del sistema.\nCierre el programa e inténtelo nuevamente.", "Error!", 1);
         }
     }//GEN-LAST:event_helpButtomActionPerformed
 
     private void recordButtomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recordButtomActionPerformed
-        if((Home.Miyako.getRooms()!=null)&&(Home.Miyako.getStatusList()!=null)&&(Home.Miyako.getBookings()!=null)){
+        if ((Home.Miyako.Rooms != null) && (Home.Miyako.StatusList != null) && (Home.Miyako.Bookings != null)) {
             RoomRecord historial = new RoomRecord(Home.Miyako);
             historial.setVisible(true);
-            this.setVisible(false);}
-        else{
-        JOptionPane.showMessageDialog(null, "Al parecer no se cargaron correctamente los datos del sistema.\nCierre el programa e inténtelo nuevamente.", "Error!", 1);
+            this.setVisible(false);
+        } else {
+            JOptionPane.showMessageDialog(null, "Al parecer no se cargaron correctamente los datos del sistema.\nCierre el programa e inténtelo nuevamente.", "Error!", 1);
         }
     }//GEN-LAST:event_recordButtomActionPerformed
 
     private void guestButtomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guestButtomActionPerformed
-        if((Home.Miyako.getRooms()!=null)&&(Home.Miyako.getStatusList()!=null)&&(Home.Miyako.getBookings()!=null)){
-        ManageClientStatus huespedes = new ManageClientStatus(Home.Miyako);
-        huespedes.setVisible(true);
-        this.setVisible(false);}
-        else{
-        JOptionPane.showMessageDialog(null, "Al parecer no se cargaron correctamente los datos del sistema.\nCierre el programa e inténtelo nuevamente.", "Error!", 1);
+        if ((Home.Miyako.Rooms != null) && (Home.Miyako.StatusList != null) && (Home.Miyako.Bookings != null)) {
+            ManageClientStatus huespedes = new ManageClientStatus(Home.Miyako);
+            huespedes.setVisible(true);
+            this.setVisible(false);
+        } else {
+            JOptionPane.showMessageDialog(null, "Al parecer no se cargaron correctamente los datos del sistema.\nCierre el programa e inténtelo nuevamente.", "Error!", 1);
         }
     }//GEN-LAST:event_guestButtomActionPerformed
 
     private void bookingButtomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookingButtomActionPerformed
-        if((Home.Miyako.getRooms()!=null)&&(Home.Miyako.getStatusList()!=null)&&(Home.Miyako.getBookings()!=null)){
-        Bookings reservas = new Bookings(Home.Miyako);
-        reservas.setVisible(true);
-        this.setVisible(false);}
-        else{
-        JOptionPane.showMessageDialog(null, "Al parecer no se cargaron correctamente los datos del sistema.\nCierre el programa e inténtelo nuevamente.", "Error!", 1);
+        if ((Home.Miyako.Rooms != null) && (Home.Miyako.StatusList != null) && (Home.Miyako.Bookings != null)) {
+            Bookings reservas = new Bookings(Home.Miyako);
+            reservas.setVisible(true);
+            this.setVisible(false);
+        } else {
+            JOptionPane.showMessageDialog(null, "Al parecer no se cargaron correctamente los datos del sistema.\nCierre el programa e inténtelo nuevamente.", "Error!", 1);
         }
     }//GEN-LAST:event_bookingButtomActionPerformed
 

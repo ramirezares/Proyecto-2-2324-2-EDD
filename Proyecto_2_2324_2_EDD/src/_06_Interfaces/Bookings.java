@@ -1,4 +1,3 @@
-
 package _06_Interfaces;
 
 import _02_EDD.BinarySearchTree;
@@ -17,20 +16,18 @@ import static javax.swing.JOptionPane.WARNING_MESSAGE;
  * @author Daniela Zambrano
  */
 public class Bookings extends javax.swing.JFrame {
-    public  SystemHotel Miyako; 
-    public BinarySearchTree BookingsList;
-    
+
     ImageIcon logoCompanyPic = new ImageIcon("Untitled-3.png");
     ImageIcon fondoPic = new ImageIcon("mount-fuji-1346096_1280.jpg");
-    String MainID="";
-    
+    String MainID = "";
+
     /**
      * Creates new form Bookings
      */
-    public Bookings(){}
+    public Bookings() {
+    }
+
     public Bookings(SystemHotel miyako) {
-        this.Miyako=miyako;
-        this.BookingsList=Miyako.getBookings();
         initComponents();
         this.setLocationRelativeTo(null);
         logo.setIcon(logoCompanyPic);
@@ -42,7 +39,7 @@ public class Bookings extends javax.swing.JFrame {
         textTitle.setVisible(false);
         textScroll.setVisible(false);
         checkInButtom.setVisible(false);
-        
+
     }
 
     /**
@@ -215,16 +212,16 @@ public class Bookings extends javax.swing.JFrame {
     }//GEN-LAST:event_IDClientActionPerformed
 
     private void backButtomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtomActionPerformed
-        Home Inicio = new Home( this.Miyako);
+        Home Inicio = new Home();
         Inicio.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_backButtomActionPerformed
 
     private void checkInButtomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkInButtomActionPerformed
-        if ("".equals(MainID)){
+        if ("".equals(MainID)) {
             JOptionPane.showMessageDialog(null, "No hay ninguna reserva seleccionada,\nInserte el ID del cliente para encontrar realizar el Check-In. ", "Error!", WARNING_MESSAGE);
             checkInButtom.setVisible(false);
-        }else{
+        } else {
             /*ClientStatus auxClient;//=Miyako.checkInWithIDBooking(MainID);
             
             checkInButtom.setVisible(false);
@@ -235,43 +232,43 @@ public class Bookings extends javax.swing.JFrame {
             textScroll.setVisible(false);
             text.setVisible(false);
             textTitle.setVisible(false);
-            */
+             */
         }
 
     }//GEN-LAST:event_checkInButtomActionPerformed
 
     private void searchButtomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtomActionPerformed
         checkInPanel.setVisible(false);
-        String IDString=IDClient.getText();
-        NodeBST existID=null;
-        Validations val=new Validations();
+        String IDString = IDClient.getText();
+        NodeBST existID = null;
+        Validations val = new Validations();
         boolean check;
-        if (val.isID(IDString)){
-            int ID=Integer.parseInt(IDString);
+        if (val.isID(IDString)) {
+            int ID = Integer.parseInt(IDString);
             try {
-                existID=BookingsList.SearchNodeInBST(BookingsList.getRoot(), ID);
+                existID = Home.Miyako.Bookings.SearchNodeInBST(Home.Miyako.Bookings.getRoot(), ID);
+                //BookingsList.SearchNodeInBST(BookingsList.getRoot(), ID);
             } catch (Exception ex) {
                 Logger.getLogger(Bookings.class.getName()).log(Level.SEVERE, null, ex);
                 System.out.println("Hay algo mal en el boton buscar");
             }
-            check=true;
-        }
-        else{
-            check=false;
+            check = true;
+        } else {
+            check = false;
             checkInPanel.setVisible(false);
             text.setVisible(false);
             textTitle.setVisible(false);
             textScroll.setVisible(false);
-            checkInButtom.setVisible(false); }
-        
-        if (existID!=null){
+            checkInButtom.setVisible(false);
+        }
+
+        if (existID != null) {
             textScroll.setVisible(true);
             text.setVisible(true);
             textTitle.setVisible(true);
-            text.setText(Miyako.visualizeBooking(IDString));
+            text.setText(Home.Miyako.visualizeBooking(IDString));
             checkInButtom.setVisible(true);
-        }
-        else if(check){
+        } else if (check) {
             JOptionPane.showMessageDialog(null, "No se ha encontrado ninguna reserva con ese ID.\nInténtelo nuevamente. ", "Información", INFORMATION_MESSAGE);
             checkInPanel.setVisible(false);
             text.setVisible(false);

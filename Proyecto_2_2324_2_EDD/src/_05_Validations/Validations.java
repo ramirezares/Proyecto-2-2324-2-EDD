@@ -198,11 +198,4 @@ public class Validations {
         return match.find();
     
     }
-    
-    public static void main(String[] args) {
-        Validations val = new Validations(); 
-        System.out.println(val.isPhoneLength("041429531234567"));
-
-    }
-    
 }

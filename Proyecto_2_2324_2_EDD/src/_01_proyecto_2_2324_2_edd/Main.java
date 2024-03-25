@@ -4,6 +4,10 @@
  */
 package _01_proyecto_2_2324_2_edd;
 
+import _02_EDD.BinarySearchTree;
+import _02_EDD.HashTable;
+import _04_Functions.ReadCSV;
+
 /**
  *
  * @author AresR
@@ -14,7 +18,12 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+            System.out.println("hoola");
+            ReadCSV data = new ReadCSV();
+            BinarySearchTree pepe = new BinarySearchTree();
 
+           HashTable hashi = new HashTable();
+           data.readClientStatus(hashi);
 
     }
 }

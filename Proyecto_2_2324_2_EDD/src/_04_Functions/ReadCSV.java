@@ -69,14 +69,14 @@ public class ReadCSV {
         if (readedline[0].equals("")) {
             
         } else {
-        ClientStatus newClientStatus = new ClientStatus(readedline[0],readedline[1],readedline[2],readedline[3],readedline[4],readedline[5],readedline[6]);
+        ClientStatus newClientStatus = new ClientStatus(readedline[0],readedline[1].toLowerCase(),readedline[2].toLowerCase(),readedline[3],readedline[4],readedline[5],readedline[6]);
         tablastatus.insert(newClientStatus);
         }
     }
     
-    public void putAtributesRoom(BinarySearchTree habitaciones,int arrayNum)  {
+    public void putAtributesRoom(BinarySearchTree habitaciones)  {
         Room newRoom = new Room(Integer.parseInt(readedline[0]),readedline[1],Integer.parseInt(readedline[2]));
-        roomArray[arrayNum] = newRoom;
+        habitaciones.insertNodeInBST(habitaciones.getRoot(), Integer.parseInt(readedline[0]), newRoom);
         
     }
     
@@ -93,7 +93,7 @@ public class ReadCSV {
     public void readBooking(BinarySearchTree Reservas) {
         try {
             int erasefirst = 0;
-            leer = new BufferedReader(new FileReader(System.getProperty("user.dir") + "\\src\\_08_Csvs\\Booking_hotel - reservas.csv"));
+            leer = new BufferedReader(new FileReader(System.getProperty("user.dir") + "\\src\\_08_CSV\\Booking_hotel - reservas.csv"));
             while ((line = leer.readLine()) != null ) {
                 if (erasefirst == 0) {
                     erasefirst = 1;
@@ -114,7 +114,7 @@ public class ReadCSV {
     public void readClientStatus(HashTable tablastatus) {
         try {
             int erasefirst = 0;
-            leer = new BufferedReader(new FileReader(System.getProperty("user.dir") + "\\src\\_08_Csvs\\\\Booking_hotel - estado.csv"));
+            leer = new BufferedReader(new FileReader(System.getProperty("user.dir") + "\\src\\_08_CSV\\Booking_hotel - estado.csv"));
             while ((line = leer.readLine()) != null ) {
                 if (erasefirst == 0) {
                     erasefirst = 1;
@@ -123,6 +123,7 @@ public class ReadCSV {
                 putAtributesClientStatus(tablastatus); 
                 erasefirst++;
                 }
+                
             }
             leer.close();
             line = null;
@@ -136,7 +137,7 @@ public class ReadCSV {
     public void readRoomRecords(ListaSimple listaDeHistorial) {
         try {
             int erasefirst = 0;
-            leer = new BufferedReader(new FileReader(System.getProperty("user.dir") + "\\src\\_08_Csvs\\Booking_hotel - Histórico.csv"));
+            leer = new BufferedReader(new FileReader(System.getProperty("user.dir") + "\src\_08_CSV\Booking_hotel - Histórico.csv"));
             while ((line = leer.readLine()) != null ) {
                 if (erasefirst == 0) {
                     erasefirst = 1;
@@ -159,13 +160,13 @@ public class ReadCSV {
         try {
             int erasefirst = 0;
             int numArray = 0;
-            leer = new BufferedReader(new FileReader(System.getProperty("user.dir") + "\\src\\_08_Csvs\\Booking_hotel - habitaciones.csv"));
+            leer = new BufferedReader(new FileReader(System.getProperty("user.dir") + "\\src\\_08_CSV\\Booking_hotel - habitaciones.csv"));
             while ((line = leer.readLine()) != null ) {
                 if (erasefirst == 0) {
                     erasefirst = 1;
                 } else {
                 readedline = line.split(",");
-                putAtributesRoom(Habitaciones,numArray);
+                putAtributesRoom(Habitaciones);
                 numArray++;
                 
                 }

@@ -64,7 +64,7 @@ public class SystemHotel {
         return bookingToReturn;
     }
 
-    public String visualizeRoomRecordWithRoomNumber(String roomNumber) {
+    public String visualizeRoomRecord(String roomNumber) {
         String recordToReturn = "";
 
         try {
@@ -82,8 +82,8 @@ public class SystemHotel {
         return recordToReturn;
     }
 
-    public boolean checkInWithIDBooking(String ID) {
-        boolean val = false;
+    public ClientStatus checkInWithIDBooking(String ID) {
+        ClientStatus client = null;
         try {
             // Validar que id sea una cedula afuera
             int IDToSearch = Integer.parseInt(ID);
@@ -91,23 +91,23 @@ public class SystemHotel {
             Booking BookingToStatus = (Booking) NodeOfBooking.getData();
 
             int[] occupiedRooms = ListOfOccupiedRoomsWithStatusWithDate(BookingToStatus.getArrival());
-
+            
             int[] RoomswithType = ListOfRoomsWithType(BookingToStatus.getRoomType());
-
+            
             int roomNumber = SelectNumOfAvailableRoom(RoomswithType, occupiedRooms);
-
-            ClientStatus newClientToStatus = new ClientStatus(String.valueOf(roomNumber), BookingToStatus.getName(), BookingToStatus.getLastName(), BookingToStatus.getEmail(), BookingToStatus.getGender(), BookingToStatus.getCellphone(), BookingToStatus.getArrival());
-
+            
+            ClientStatus newClientToStatus = new ClientStatus( String.valueOf(roomNumber), BookingToStatus.getName(), BookingToStatus.getLastName(), BookingToStatus.getEmail(), BookingToStatus.getGender(), BookingToStatus.getCellphone(), BookingToStatus.getArrival());
+            
             SystemHotel.StatusList.insert(newClientToStatus);
-
+            
             SystemHotel.Bookings.deleteNodeInBST(SystemHotel.Bookings.getRoot(), Integer.parseInt(BookingToStatus.getID()));
-
-            val = true;
+            
+            client = newClientToStatus;
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "No hay habitacion disponible.");
         }
-        return val;
+        return client;
         // Recibe el id de una reserva y se trae la reserva para crear un unevo cliente en status.
         // Borra la reserva del arbol de reservas
 
@@ -149,6 +149,7 @@ public class SystemHotel {
         return intArray;
     }
 
+    
     /*
     private int countWithType(NodeBST pRoot, String roomType, int count) {
         Validations temporal = new Validations();
@@ -189,17 +190,17 @@ public class SystemHotel {
         // y la lista de las habitaciones del tipo deseado.
 
         int numToReturn = -1;
-
+        
         for (int i : RoomswithType) {
             boolean notOccupied = true;
-            for (int j : occupiedRooms) {
-
-                if (RoomswithType[i] == occupiedRooms[j]) {
-                    notOccupied = false;
+            for (int j : occupiedRooms) {                
+                
+                if(RoomswithType[i]==occupiedRooms[j]){
+                    notOccupied=false;
                 }
             }
-
-            if (notOccupied) {
+            
+            if(notOccupied){
                 numToReturn = i;
                 return numToReturn;
             }

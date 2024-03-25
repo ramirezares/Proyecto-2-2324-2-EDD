@@ -224,11 +224,8 @@ public class Bookings extends javax.swing.JFrame {
             
             
         } else {
-            /*
-            Booking
             
-            ClientStatus auxClient= Home.Miyako.checkInWithIDBooking(MainID);
-            
+            ClientStatus auxClient=Home.Miyako.checkInWithIDBooking(MainID);
             checkInButtom.setVisible(false);
             chosenRoom.setText(auxClient.getRoomNumber());
             chosenName.setText(auxClient.getName()+""+auxClient.getLastName());
@@ -237,7 +234,7 @@ public class Bookings extends javax.swing.JFrame {
             textScroll.setVisible(false);
             text.setVisible(false);
             textTitle.setVisible(false);
-            */
+            
         }
 
     }//GEN-LAST:event_checkInButtomActionPerformed

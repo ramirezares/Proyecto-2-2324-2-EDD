@@ -351,6 +351,8 @@ public class ManageClientStatus extends javax.swing.JFrame {
         Helper help=new Helper();
         boolean check;
         if ((val.isName2(name))&&(val.isName2(surname))){
+            name=help.toLowerCaseString(name);
+            surname=help.toLowerCaseString(surname);
             keyName=help.NameSurname(name, surname);
             auxClient=Home.Miyako.StatusList.search(keyName);
             check=true;

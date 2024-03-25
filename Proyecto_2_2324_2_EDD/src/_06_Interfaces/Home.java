@@ -181,7 +181,7 @@ public class Home extends javax.swing.JFrame {
 
     private void recordButtomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recordButtomActionPerformed
         if ((Home.Miyako.Rooms != null) && (Home.Miyako.StatusList != null) && (Home.Miyako.Bookings != null)) {
-            RoomRecord historial = new RoomRecord(Home.Miyako);
+            RoomRecord historial = new RoomRecord();
             historial.setVisible(true);
             this.setVisible(false);
         } else {
@@ -201,7 +201,7 @@ public class Home extends javax.swing.JFrame {
 
     private void bookingButtomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookingButtomActionPerformed
         if ((Home.Miyako.Rooms != null) && (Home.Miyako.StatusList != null) && (Home.Miyako.Bookings != null)) {
-            Bookings reservas = new Bookings(Home.Miyako);
+            Bookings reservas = new Bookings();
             reservas.setVisible(true);
             this.setVisible(false);
         } else {

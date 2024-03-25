@@ -1,9 +1,7 @@
 
 package _06_Interfaces;
 
-import _02_EDD.BinarySearchTree;
 import _03_Classes.Room;
-import _03_Classes.SystemHotel;
 import _05_Validations.Validations;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -14,8 +12,6 @@ import static javax.swing.JOptionPane.INFORMATION_MESSAGE;
  * @author Daniela Zambrano
  */
 public class RoomRecord extends javax.swing.JFrame {
-    public  SystemHotel Miyako; 
-    public BinarySearchTree BookingsList;
     
     ImageIcon logoCompanyPic = new ImageIcon("Untitled-3.png");
     ImageIcon fondoPic = new ImageIcon("mount-fuji-1346096_1280.jpg");
@@ -23,10 +19,7 @@ public class RoomRecord extends javax.swing.JFrame {
     /**
      * Creates new form RoomRecord
      */
-    public RoomRecord() {}
-    public RoomRecord(SystemHotel miyako) {
-        this.Miyako=miyako;
-        this.BookingsList=Miyako.getRooms();
+    public RoomRecord() {
         initComponents();
         this.setLocationRelativeTo(null);
         logo.setIcon(logoCompanyPic);
@@ -186,7 +179,7 @@ public class RoomRecord extends javax.swing.JFrame {
     }//GEN-LAST:event_numRoomActionPerformed
 
     private void backButtomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtomActionPerformed
-        Home Inicio = new Home(this.Miyako);
+        Home Inicio = new Home();
         Inicio.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_backButtomActionPerformed

@@ -2,7 +2,6 @@ package _06_Interfaces;
 
 import _02_EDD.BinarySearchTree;
 import _02_EDD.NodeBST;
-import _03_Classes.SystemHotel;
 import _05_Validations.Validations;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -24,10 +23,8 @@ public class Bookings extends javax.swing.JFrame {
     /**
      * Creates new form Bookings
      */
-    public Bookings() {
-    }
 
-    public Bookings(SystemHotel miyako) {
+    public Bookings() {
         initComponents();
         this.setLocationRelativeTo(null);
         logo.setIcon(logoCompanyPic);

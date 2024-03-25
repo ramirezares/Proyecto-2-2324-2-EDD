@@ -1,4 +1,3 @@
-
 package _01_proyecto_2_2324_2_edd;
 
 import _06_Interfaces.Home;
@@ -14,7 +13,7 @@ public class Main {
      */
     public static void main(String[] args) {
         Home MiyakoHotelProgram = new Home();
-        MiyakoHotelProgram.setVisible(true);     
+        MiyakoHotelProgram.setVisible(true);
 
     }
 }

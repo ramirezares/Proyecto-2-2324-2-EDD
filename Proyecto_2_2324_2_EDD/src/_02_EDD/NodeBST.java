@@ -5,7 +5,7 @@
 package _02_EDD;
 
 /**
- * 
+ *
  * @author AresR
  */
 public class NodeBST implements Comparator {
@@ -35,7 +35,7 @@ public class NodeBST implements Comparator {
     public void setNumberOfNode(int numberOfNode) {
         this.numberOfNode = numberOfNode;
     }
-    
+
     public Object getData() {
         return Data;
     }
@@ -86,5 +86,5 @@ public class NodeBST implements Comparator {
         }
         return val;
     }
-    
+
 }

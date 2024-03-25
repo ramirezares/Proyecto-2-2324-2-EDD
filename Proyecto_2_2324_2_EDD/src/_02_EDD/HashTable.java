@@ -123,7 +123,7 @@ public class HashTable {
     public int getSize() {
         return size;
     }
-    
+
     public int getNumElements() {
         return numElements;
     }

@@ -1,4 +1,3 @@
-
 package _04_Functions;
 
 /**
@@ -9,10 +8,12 @@ public class Helper {
 
     public Helper() {
     }
-    
-    
-    
-    public String NameSurname(String name,String surname){
-    return name+surname;
+
+    public String NameSurname(String name, String surname) {
+        return name + surname;
+    }
+
+    public static String toLowerCaseString(String input) {
+        return input.toLowerCase();
     }
 }

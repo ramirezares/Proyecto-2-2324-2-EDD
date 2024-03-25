@@ -5,13 +5,20 @@
 package _02_EDD;
 
 /**
+ * Clase Arbol Binario de Busqueda. Esta clase define el objeto Arbol binario de
+ * busqueda y su comportamiento, con su atributo pRoot (raiz)
  *
  * @author AresR
+ * @version 25/03/2024 (v3)
+ *
  */
 public class BinarySearchTree {
 
     private NodeBST pRoot;
 
+    /**
+     * Constructor de la clase. Inicializa el arbol sin nodos, vacio.
+     */
     public void BinarySearchTree() {
         this.pRoot = null;
     }
@@ -130,7 +137,6 @@ public class BinarySearchTree {
         }
         return count;
     }
-    
 
     public NodeBST getRoot() {
         return pRoot;

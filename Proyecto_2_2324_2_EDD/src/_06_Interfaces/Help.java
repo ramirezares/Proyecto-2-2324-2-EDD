@@ -1,6 +1,7 @@
 
 package _06_Interfaces;
 
+import _03_Classes.SystemHotel;
 import javax.swing.ImageIcon;
 
 /**
@@ -8,13 +9,15 @@ import javax.swing.ImageIcon;
  * @author Daniela Zambrano
  */
 public class Help extends javax.swing.JFrame {
-       
+    public  SystemHotel Miyako;    
     ImageIcon logoCompanyPic = new ImageIcon("Untitled-3.png");
     ImageIcon fondoPic = new ImageIcon("mount-fuji-8010752_1280.jpg");
     /**
      * Creates new form Help
      */
-    public Help() {
+    public Help() {}
+    public Help(SystemHotel miyako) {
+         this.Miyako=miyako;
         initComponents();
         this.setLocationRelativeTo(null);
         logo.setIcon(logoCompanyPic);
@@ -262,7 +265,7 @@ public class Help extends javax.swing.JFrame {
     }//GEN-LAST:event_xButtomActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        Home Inicio = new Home();
+        Home Inicio = new Home(this.Miyako);
         Inicio.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton3ActionPerformed

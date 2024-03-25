@@ -15,7 +15,7 @@ public class Booking {
     private String cellphone;
     private String arrival;
     private String departure;
-
+    public Booking(){}
     public Booking(String ID, String name, String lastName, String email, String gender, String roomType, String cellphone, String arrival, String departure) {
         this.ID = ID;
         this.name = name;

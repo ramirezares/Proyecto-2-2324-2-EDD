@@ -34,8 +34,8 @@ public class SystemHotel {
         //solo agregar al arbol de habitaciones las activas del historial
     }
 
-    public String visualizeGuestWithName(String nameOfClientToSearch) {
-        String nameToSearch = nameOfClientToSearch;
+    public String visualizeGuest(String clientFullName) {
+        String nameToSearch = clientFullName;
         String textToReturn = "";
 
         try {
@@ -50,12 +50,12 @@ public class SystemHotel {
         // recibe un nombre y apellido, lo busca en el hashtable y devuelve el string del huesped
     }
 
-    public String visualizeBookingWithID(String IDofClientThatBooked) {
+    public String visualizeBooking(String clientID) {
         String bookingToReturn = "";
 
         try {
             // La cedula la tengo que transformar en numero, validar afuera si el string es un numero
-            int NumForSearch = Integer.parseInt(IDofClientThatBooked);
+            int NumForSearch = Integer.parseInt(clientID);
             NodeBST matched = this.Bookings.SearchNodeInBST(this.Bookings.getRoot(), NumForSearch);
             Booking BookingMatched = (Booking) matched.getData();
             bookingToReturn = BookingMatched.getSummaryOfBooking();
@@ -169,7 +169,7 @@ public class SystemHotel {
      * @param phoneNumber
      * @return
      */
-    public boolean checkOutWithName(String completeNameOfCustomerToSearch, String ID, String email, String phoneNumber) {
+    public boolean checkOut(String completeNameOfCustomerToSearch, String ID, String email, String phoneNumber) {
         boolean val = false;
         // Validar afuera el ID
         try {

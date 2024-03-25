@@ -1,7 +1,12 @@
 
 package _06_Interfaces;
 
+import _02_EDD.BinarySearchTree;
+import _02_EDD.HashTable;
 import _03_Classes.ClientStatus;
+import _03_Classes.SystemHotel;
+import _04_Functions.Helper;
+import _05_Validations.Validations;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.INFORMATION_MESSAGE;
@@ -11,15 +16,22 @@ import static javax.swing.JOptionPane.WARNING_MESSAGE;
  *
  * @author Daniela Zambrano
  */
-public class GestionClientStatus extends javax.swing.JFrame {
+public class ManageClientStatus extends javax.swing.JFrame {
+    public SystemHotel Miyako;     
+    public HashTable GuestsList;
+    public BinarySearchTree BookingsList;
+    
     ImageIcon logoCompanyPic = new ImageIcon("Untitled-3.png");
     ImageIcon fondoPic = new ImageIcon("mount-fuji-1346096_1280.jpg");
     ClientStatus MainClient;
-    Boolean CheckOut;
     /**
      * Creates new form Check_in
      */
-    public GestionClientStatus() {
+    public ManageClientStatus(){}
+    public ManageClientStatus(SystemHotel miyako) {
+        this.Miyako=miyako;
+        this.GuestsList= Miyako.getStatusList();
+        this.BookingsList=Miyako.getBookings();
         initComponents();
         this.setLocationRelativeTo(null);
         logo.setIcon(logoCompanyPic);
@@ -27,9 +39,11 @@ public class GestionClientStatus extends javax.swing.JFrame {
         imagenFondo.setIcon(fondoPic);
         imagenFondo.setText("");
         checkOutPanel.setVisible(false);
+        textTitle.setVisible(false);
         text.setVisible(false);
         textScroll.setVisible(false);
-        checkOutButtom.setVisible(false);
+        checkOutButtom.setVisible(false); 
+        searchButtom.setVisible(true);
     }
 
     /**
@@ -56,6 +70,8 @@ public class GestionClientStatus extends javax.swing.JFrame {
         emailClient = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         finalCheckOutButtom = new javax.swing.JButton();
+        IDClient = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
         textScroll = new javax.swing.JScrollPane();
         text = new javax.swing.JTextArea();
         jPanel3 = new javax.swing.JPanel();
@@ -158,6 +174,18 @@ public class GestionClientStatus extends javax.swing.JFrame {
             }
         });
 
+        IDClient.setBackground(new java.awt.Color(102, 155, 188));
+        IDClient.setForeground(new java.awt.Color(0, 48, 73));
+        IDClient.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                IDClientActionPerformed(evt);
+            }
+        });
+
+        jLabel9.setFont(new java.awt.Font("Perpetua", 3, 18)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(0, 48, 73));
+        jLabel9.setText("Inserte ID del cliente");
+
         javax.swing.GroupLayout checkOutPanelLayout = new javax.swing.GroupLayout(checkOutPanel);
         checkOutPanel.setLayout(checkOutPanelLayout);
         checkOutPanelLayout.setHorizontalGroup(
@@ -167,11 +195,13 @@ public class GestionClientStatus extends javax.swing.JFrame {
                     .addGroup(checkOutPanelLayout.createSequentialGroup()
                         .addGap(24, 24, 24)
                         .addGroup(checkOutPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(emailClient, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(phoneClient, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(finalCheckOutButtom, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(IDClient, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(checkOutPanelLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel8)))
@@ -183,19 +213,23 @@ public class GestionClientStatus extends javax.swing.JFrame {
                 .addGap(19, 19, 19)
                 .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(IDClient, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(emailClient, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(phoneClient, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
                 .addComponent(finalCheckOutButtom, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
-        jPanel1.add(checkOutPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 180, 440, 260));
+        jPanel1.add(checkOutPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 140, 440, 350));
 
         text.setEditable(false);
         text.setBackground(new java.awt.Color(102, 155, 188));
@@ -291,15 +325,19 @@ public class GestionClientStatus extends javax.swing.JFrame {
     private void finalCheckOutButtomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finalCheckOutButtomActionPerformed
         String email=emailClient.getText();
         String phone=phoneClient.getText();
+        String ID=IDClient.getText();
+        Validations val=new Validations();
+        boolean ready;
+        if (((val.isEmail(email))&&(val.isID(ID))&&(val.isPhone(phone)))){
+            ready=true;
+        }
+        else{
+            ready=false;
+            JOptionPane.showMessageDialog(null, "Debe colocar todos los datos para poder confirmar el check-in.\nInténtelo nuevamente.", "Información", INFORMATION_MESSAGE);
+        }
         
-        /*Aqui va una funcion que verifique los datos 
-        si los datos en orden checkout = true*/
-        
-        if(CheckOut){/*
-        los datos del cliente son agarrados en una funcion y convertidos en historial
-        se sebe actaulizar el historial  de la habitacion 
-        y se debe elimnar del hashtable el client= 
-        */
+        if(ready){
+            this.Miyako.checkOut(MainClient.getFullName(), ID, email, phone);
             checkOutPanel.setVisible(false);
             text.setVisible(false);
             textScroll.setVisible(false);
@@ -321,6 +359,7 @@ public class GestionClientStatus extends javax.swing.JFrame {
             checkOutButtom.setVisible(false);
         }else{
         checkOutPanel.setVisible(true);  
+        searchButtom.setVisible(false);
         }
         
         
@@ -328,7 +367,7 @@ public class GestionClientStatus extends javax.swing.JFrame {
     }//GEN-LAST:event_checkOutButtomActionPerformed
 
     private void backButtomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtomActionPerformed
-        Home Inicio = new Home();
+        Home Inicio = new Home(this.Miyako);
         Inicio.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_backButtomActionPerformed
@@ -338,21 +377,45 @@ public class GestionClientStatus extends javax.swing.JFrame {
         String surname=surnameClient.getText();
         String keyName;
         ClientStatus auxClient=null;
-        /*Funcion que llama a validacion de cada texto y luego los combina
-        sila validacion retorna un texto entonces busca el hash table
-        if keyname!=""
-            auxclient =funcion de buscar en el hash table con nombrejunto*/
-            
+        Validations val=new Validations();
+        Helper help=new Helper();
+        boolean check;
+        if ((val.isName2(name))&&(val.isName2(surname))){
+            keyName=help.NameSurname(name, surname);
+            auxClient=GuestsList.search(keyName);
+            check=true;
+        }
+        else{
+            check=false;
+            checkOutPanel.setVisible(false);
+            textTitle.setVisible(false);
+            text.setVisible(false);
+            textScroll.setVisible(false);
+            checkOutButtom.setVisible(false); 
+            JOptionPane.showMessageDialog(null, "Debe colocar todos los datos para poder buscar al huesped.\nInténtelo nuevamente.", "Información", INFORMATION_MESSAGE);
+        }
+        
         if (auxClient!=null){
         textScroll.setVisible(true);
         text.setVisible(true);
-        text.setText("cliente to string"); //auxClient.toString()
+        textTitle.setVisible(true);
+        text.setText(auxClient.toString()); 
         checkOutButtom.setVisible(true);
+        this.MainClient=auxClient;
         }
-        else{
+        else if(check && (val.isName(name))&&(val.isName(surname))){
+            checkOutPanel.setVisible(false);
+            textTitle.setVisible(false);
+            text.setVisible(false);
+            textScroll.setVisible(false);
+            checkOutButtom.setVisible(false); 
             JOptionPane.showMessageDialog(null, "No se ha encontrado ningún huesped con ese nombre.\n Por favor intente nuevamente. ", "Información", INFORMATION_MESSAGE);
             }
     }//GEN-LAST:event_searchButtomActionPerformed
+
+    private void IDClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IDClientActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_IDClientActionPerformed
 
     /**
      * @param args the command line arguments
@@ -371,14 +434,30 @@ public class GestionClientStatus extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GestionClientStatus.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ManageClientStatus.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GestionClientStatus.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ManageClientStatus.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GestionClientStatus.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ManageClientStatus.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GestionClientStatus.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ManageClientStatus.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -399,12 +478,13 @@ public class GestionClientStatus extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GestionClientStatus().setVisible(true);
+                new ManageClientStatus().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField IDClient;
     private javax.swing.JButton backButtom;
     private javax.swing.JButton checkOutButtom;
     private javax.swing.JPanel checkOutPanel;
@@ -418,6 +498,7 @@ public class GestionClientStatus extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel9;

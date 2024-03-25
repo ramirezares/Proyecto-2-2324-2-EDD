@@ -1,24 +1,32 @@
 
 package _06_Interfaces;
 
+import _02_EDD.BinarySearchTree;
 import _03_Classes.Room;
+import _03_Classes.SystemHotel;
+import _05_Validations.Validations;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.INFORMATION_MESSAGE;
-import static javax.swing.JOptionPane.WARNING_MESSAGE;
 
 /**
  *
  * @author Daniela Zambrano
  */
-public class RoomRecord1 extends javax.swing.JFrame {
+public class RoomRecord extends javax.swing.JFrame {
+    public  SystemHotel Miyako; 
+    public BinarySearchTree BookingsList;
+    
     ImageIcon logoCompanyPic = new ImageIcon("Untitled-3.png");
     ImageIcon fondoPic = new ImageIcon("mount-fuji-1346096_1280.jpg");
 
     /**
      * Creates new form RoomRecord
      */
-    public RoomRecord1() {
+    public RoomRecord() {}
+    public RoomRecord(SystemHotel miyako) {
+        this.Miyako=miyako;
+        this.BookingsList=Miyako.getRooms();
         initComponents();
         this.setLocationRelativeTo(null);
         logo.setIcon(logoCompanyPic);
@@ -178,28 +186,49 @@ public class RoomRecord1 extends javax.swing.JFrame {
     }//GEN-LAST:event_numRoomActionPerformed
 
     private void backButtomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtomActionPerformed
-        Home Inicio = new Home();
+        Home Inicio = new Home(this.Miyako);
         Inicio.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_backButtomActionPerformed
 
     private void searchButtomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtomActionPerformed
         String roomNumber= numRoom.getText();
-        Boolean si;
-        //Funcion que verifique el string ingresado
-        Room auxRoom;
-        if(roomNumber!=null){
-        //funcion que busca roomNumber en el arbol binario
-        //cuando se obtenga el nodon y el objeto se iguala a aux Room
-        textTitle.setVisible(false);
-        text.setVisible(false);
-        textScroll.setVisible(false);
-        roomTitle.setVisible(false);
-        numRoomLabel.setVisible(false);
-        //text.setText(auxRoom.getRecord());
+        Room auxRoom=null;
+        Validations val=new Validations();
+        boolean check;
+        if (val.isRoom(roomNumber)){
+            /*el dato ingresado es valid
+            *funcion que busca roomNumber en el arbol binario*
+            porende se puedebuscar la habitacion en el sistema
+            //cuando se obtenga el nodon y el objeto se iguala a aux Room
+            auxRoom=Miyako.searchRoom();
+            */
+            check=true;
+        }
+        else{
+            textTitle.setVisible(false);
+            text.setVisible(false);
+            textScroll.setVisible(false);
+            roomTitle.setVisible(false);
+            numRoomLabel.setVisible(false);
+            check=false;
+            JOptionPane.showMessageDialog(null, "Debe colocar el número correspondiente a la habitación para poder visualizar el historial de la misma.\nInténtelo nuevamente.", "Información", INFORMATION_MESSAGE);
+        }
+        if(auxRoom!=null){
+            
+        textTitle.setVisible(true);
+        textScroll.setVisible(true);
+        roomTitle.setVisible(true);
+
+        numRoomLabel.setVisible(true);
+        numRoomLabel.setText(roomNumber);
+
+        text.setVisible(true);
+        text.setText(auxRoom.getSummaryForRecord());
         
-        }else{
-            JOptionPane.showMessageDialog(null, "No se ha encontrado la habitación ingresada.\n Por favor intentelo nuevamente", "Información", INFORMATION_MESSAGE);
+        }
+        else if(check){
+            JOptionPane.showMessageDialog(null, "No se ha encontrado ninguna habitación con el número ingresado.\nInténtelo nuevamente.", "Información", INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_searchButtomActionPerformed
 
@@ -220,21 +249,23 @@ public class RoomRecord1 extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(RoomRecord1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RoomRecord.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(RoomRecord1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RoomRecord.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(RoomRecord1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RoomRecord.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(RoomRecord1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RoomRecord.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new RoomRecord1().setVisible(true);
+                new RoomRecord().setVisible(true);
             }
         });
     }

@@ -76,16 +76,8 @@ public class RoomRecord {
     
     public String stringRoomRecord() {
         String stringaux;
-        stringaux =  this.ID + " " + this.name + " " + this.lastName + " " + this.email + " " + this.gender + " " + this.arrive;
-                
+        stringaux =  this.ID + " " + this.name + " " + this.lastName + " " + this.email + " " + this.gender + " " + this.arrive+".";
         
         return stringaux;
-        
-        
     }
-    
-    
-    
-    
-    
 }

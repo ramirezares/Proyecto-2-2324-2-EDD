@@ -1,10 +1,7 @@
 
 package _06_Interfaces;
 
-import _02_EDD.BinarySearchTree;
-import _02_EDD.HashTable;
 import _03_Classes.ClientStatus;
-import _03_Classes.SystemHotel;
 import _04_Functions.Helper;
 import _05_Validations.Validations;
 import javax.swing.ImageIcon;

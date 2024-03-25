@@ -90,10 +90,10 @@ public class ClientStatus {
     public String getClientSummary() {
         StringBuilder stringToReturn = new StringBuilder();
 
-        stringToReturn.append("Numero de habitacion:").append(this.roomNumber).append("\n");
-        stringToReturn.append("Nombre:").append(this.name).append(" ").append("Apellido:").append(this.lastName).append("\n");
-        stringToReturn.append("Email:").append(this.email).append(" ").append("Genero:").append(this.gender).append("\n");
-        stringToReturn.append("Numero de telefono:").append(this.cellphone).append(" ").append("Llegada:").append(this.arrive).append("\n");
+        stringToReturn.append("Nombre: ").append(this.name).append(" ").append(this.lastName).append(".\n");
+        stringToReturn.append("Número de Habitación: ").append(this.roomNumber).append(".\n");
+        stringToReturn.append("Email: ").append(this.email).append("\n").append("Género:").append(this.gender).append(".\n");
+        stringToReturn.append("Número de Télefono: ").append(this.cellphone).append(".\n").append("Llegada: ").append(this.arrive).append(".\n");
 
         return stringToReturn.toString();
     }

@@ -1,6 +1,5 @@
 package _06_Interfaces;
 
-import _02_EDD.BinarySearchTree;
 import _02_EDD.NodeBST;
 import _05_Validations.Validations;
 import java.util.logging.Level;
@@ -90,12 +89,14 @@ public class Bookings extends javax.swing.JFrame {
         text.setEditable(false);
         text.setBackground(new java.awt.Color(102, 155, 188));
         text.setColumns(20);
-        text.setForeground(new java.awt.Color(0, 48, 73));
+        text.setFont(new java.awt.Font("Franklin Gothic Book", 0, 18)); // NOI18N
+        text.setForeground(new java.awt.Color(0, 0, 0));
         text.setRows(5);
         text.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        text.setMargin(new java.awt.Insets(6, 6, 6, 6));
         textScroll.setViewportView(text);
 
-        jPanel1.add(textScroll, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, 430, 320));
+        jPanel1.add(textScroll, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, 440, 300));
 
         jLabel2.setFont(new java.awt.Font("Perpetua", 1, 50)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 48, 73));
@@ -172,6 +173,7 @@ public class Bookings extends javax.swing.JFrame {
         jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 280, 30));
 
         IDClient.setBackground(new java.awt.Color(253, 240, 213));
+        IDClient.setFont(new java.awt.Font("Franklin Gothic Demi", 0, 12)); // NOI18N
         IDClient.setForeground(new java.awt.Color(0, 32, 54));
         IDClient.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -218,6 +220,7 @@ public class Bookings extends javax.swing.JFrame {
         if ("".equals(MainID)) {
             JOptionPane.showMessageDialog(null, "No hay ninguna reserva seleccionada,\nInserte el ID del cliente para encontrar realizar el Check-In. ", "Error!", WARNING_MESSAGE);
             checkInButtom.setVisible(false);
+            
         } else {
             /*ClientStatus auxClient;//=Miyako.checkInWithIDBooking(MainID);
             
@@ -244,10 +247,10 @@ public class Bookings extends javax.swing.JFrame {
             int ID = Integer.parseInt(IDString);
             try {
                 existID = Home.Miyako.Bookings.SearchNodeInBST(Home.Miyako.Bookings.getRoot(), ID);
-                //BookingsList.SearchNodeInBST(BookingsList.getRoot(), ID);
+                
             } catch (Exception ex) {
                 Logger.getLogger(Bookings.class.getName()).log(Level.SEVERE, null, ex);
-                System.out.println("Hay algo mal en el boton buscar");
+                IDClient.setText("");
             }
             check = true;
         } else {
@@ -265,6 +268,7 @@ public class Bookings extends javax.swing.JFrame {
             textTitle.setVisible(true);
             text.setText(Home.Miyako.visualizeBooking(IDString));
             checkInButtom.setVisible(true);
+            //udjudoddojdoj
         } else if (check) {
             JOptionPane.showMessageDialog(null, "No se ha encontrado ninguna reserva con ese ID.\nInténtelo nuevamente. ", "Información", INFORMATION_MESSAGE);
             checkInPanel.setVisible(false);

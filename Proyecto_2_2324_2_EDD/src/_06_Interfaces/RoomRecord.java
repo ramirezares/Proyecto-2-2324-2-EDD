@@ -81,9 +81,11 @@ public class RoomRecord extends javax.swing.JFrame {
         text.setEditable(false);
         text.setBackground(new java.awt.Color(102, 155, 188));
         text.setColumns(20);
-        text.setForeground(new java.awt.Color(0, 48, 73));
+        text.setFont(new java.awt.Font("Franklin Gothic Book", 0, 18)); // NOI18N
+        text.setForeground(new java.awt.Color(0, 0, 0));
         text.setRows(5);
         text.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        text.setMargin(new java.awt.Insets(5, 5, 5, 5));
         textScroll.setViewportView(text);
 
         jPanel1.add(textScroll, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 750, 340));
@@ -194,7 +196,7 @@ public class RoomRecord extends javax.swing.JFrame {
             *funcion que busca roomNumber en el arbol binario*
             porende se puedebuscar la habitacion en el sistema
             //cuando se obtenga el nodon y el objeto se iguala a aux Room
-            auxRoom=Miyako.searchRoom();
+            auxRoom=Home.Miyako.searchRoom();
             */
             check=true;
         }

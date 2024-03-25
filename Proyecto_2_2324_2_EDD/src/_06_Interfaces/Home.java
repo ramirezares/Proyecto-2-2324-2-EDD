@@ -200,6 +200,7 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_guestButtomActionPerformed
 
     private void bookingButtomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookingButtomActionPerformed
+
         if ((Home.Miyako.Rooms != null) && (Home.Miyako.StatusList != null) && (Home.Miyako.Bookings != null)) {
             Bookings reservas = new Bookings();
             reservas.setVisible(true);

@@ -54,8 +54,6 @@ public class ManageClientStatus extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         nameClient = new javax.swing.JTextField();
         checkOutPanel = new javax.swing.JPanel();
-        jLabel7 = new javax.swing.JLabel();
-        phoneClient = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         emailClient = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
@@ -92,6 +90,7 @@ public class ManageClientStatus extends javax.swing.JFrame {
         jPanel1.add(logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 10, 130, 120));
 
         surnameClient.setBackground(new java.awt.Color(253, 240, 213));
+        surnameClient.setFont(new java.awt.Font("Franklin Gothic Demi", 0, 12)); // NOI18N
         surnameClient.setForeground(new java.awt.Color(0, 32, 54));
         surnameClient.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -116,6 +115,7 @@ public class ManageClientStatus extends javax.swing.JFrame {
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 560, 280, 30));
 
         nameClient.setBackground(new java.awt.Color(253, 240, 213));
+        nameClient.setFont(new java.awt.Font("Franklin Gothic Demi", 0, 12)); // NOI18N
         nameClient.setForeground(new java.awt.Color(0, 32, 54));
         nameClient.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -126,23 +126,12 @@ public class ManageClientStatus extends javax.swing.JFrame {
 
         checkOutPanel.setBackground(new java.awt.Color(253, 240, 213));
 
-        jLabel7.setFont(new java.awt.Font("Perpetua", 3, 18)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 48, 73));
-        jLabel7.setText("Inserte el número de teléfono del cliente");
-
-        phoneClient.setBackground(new java.awt.Color(102, 155, 188));
-        phoneClient.setForeground(new java.awt.Color(0, 48, 73));
-        phoneClient.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                phoneClientActionPerformed(evt);
-            }
-        });
-
-        jLabel6.setFont(new java.awt.Font("Perpetua", 3, 18)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Perpetua", 3, 20)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 48, 73));
         jLabel6.setText("Inserte el correo del cliente");
 
         emailClient.setBackground(new java.awt.Color(102, 155, 188));
+        emailClient.setFont(new java.awt.Font("Franklin Gothic Demi", 0, 12)); // NOI18N
         emailClient.setForeground(new java.awt.Color(0, 48, 73));
         emailClient.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -155,7 +144,7 @@ public class ManageClientStatus extends javax.swing.JFrame {
         jLabel8.setText("Confirmacion de Datos para el check out");
 
         finalCheckOutButtom.setBackground(new java.awt.Color(120, 0, 0));
-        finalCheckOutButtom.setFont(new java.awt.Font("Perpetua", 1, 14)); // NOI18N
+        finalCheckOutButtom.setFont(new java.awt.Font("Perpetua", 1, 18)); // NOI18N
         finalCheckOutButtom.setForeground(new java.awt.Color(253, 240, 213));
         finalCheckOutButtom.setText("Confirmar Check-Out");
         finalCheckOutButtom.addActionListener(new java.awt.event.ActionListener() {
@@ -165,6 +154,7 @@ public class ManageClientStatus extends javax.swing.JFrame {
         });
 
         IDClient.setBackground(new java.awt.Color(102, 155, 188));
+        IDClient.setFont(new java.awt.Font("Franklin Gothic Demi", 0, 12)); // NOI18N
         IDClient.setForeground(new java.awt.Color(0, 48, 73));
         IDClient.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -172,7 +162,7 @@ public class ManageClientStatus extends javax.swing.JFrame {
             }
         });
 
-        jLabel9.setFont(new java.awt.Font("Perpetua", 3, 18)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Perpetua", 3, 20)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(0, 48, 73));
         jLabel9.setText("Inserte ID del cliente");
 
@@ -188,10 +178,8 @@ public class ManageClientStatus extends javax.swing.JFrame {
                             .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(emailClient, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(phoneClient, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(finalCheckOutButtom, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(IDClient, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(IDClient, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(finalCheckOutButtom)))
                     .addGroup(checkOutPanelLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel8)))
@@ -210,26 +198,24 @@ public class ManageClientStatus extends javax.swing.JFrame {
                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(emailClient, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(phoneClient, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                .addGap(35, 35, 35)
                 .addComponent(finalCheckOutButtom, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(32, Short.MAX_VALUE))
         );
 
-        jPanel1.add(checkOutPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 140, 440, 350));
+        jPanel1.add(checkOutPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 160, 440, 300));
 
         text.setEditable(false);
         text.setBackground(new java.awt.Color(102, 155, 188));
         text.setColumns(20);
-        text.setForeground(new java.awt.Color(0, 48, 73));
+        text.setFont(new java.awt.Font("Franklin Gothic Book", 0, 18)); // NOI18N
+        text.setForeground(new java.awt.Color(0, 0, 0));
         text.setRows(5);
         text.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        text.setMargin(new java.awt.Insets(6, 6, 6, 6));
         textScroll.setViewportView(text);
 
-        jPanel1.add(textScroll, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, 410, 340));
+        jPanel1.add(textScroll, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, 440, 340));
 
         jPanel3.setBackground(new java.awt.Color(0, 32, 54));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -304,21 +290,16 @@ public class ManageClientStatus extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_nameClientActionPerformed
 
-    private void phoneClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_phoneClientActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_phoneClientActionPerformed
-
     private void emailClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailClientActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_emailClientActionPerformed
 
     private void finalCheckOutButtomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finalCheckOutButtomActionPerformed
         String email=emailClient.getText();
-        String phone=phoneClient.getText();
         String ID=IDClient.getText();
         Validations val=new Validations();
         boolean ready;
-        if (((val.isEmail(email))&&(val.isID(ID))&&(val.isPhone(phone)))){
+        if (((val.isEmail(email))&&(val.isID(ID)))){
             ready=true;
         }
         else{
@@ -327,7 +308,7 @@ public class ManageClientStatus extends javax.swing.JFrame {
         }
         
         if(ready){
-            Home.Miyako.checkOut(MainClient.getFullName(), ID, email, phone);
+            Home.Miyako.checkOut(MainClient.getFullName(), ID, email);
             checkOutPanel.setVisible(false);
             text.setVisible(false);
             textScroll.setVisible(false);
@@ -336,7 +317,6 @@ public class ManageClientStatus extends javax.swing.JFrame {
             nameClient.setText("");
             surnameClient.setText("");
             emailClient.setText("");
-            phoneClient.setText("");
             
         }else{
             JOptionPane.showMessageDialog(null, "Es necesario colocar todos los datos del huesped de manera correcta para realizar el Check-Out exitosamente.\n Por favor intente nuevamente. ", "Error!", WARNING_MESSAGE);
@@ -486,7 +466,6 @@ public class ManageClientStatus extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
@@ -494,7 +473,6 @@ public class ManageClientStatus extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel9;
     private javax.swing.JLabel logo;
     private javax.swing.JTextField nameClient;
-    private javax.swing.JTextField phoneClient;
     private javax.swing.JButton searchButtom;
     private javax.swing.JTextField surnameClient;
     private javax.swing.JTextArea text;

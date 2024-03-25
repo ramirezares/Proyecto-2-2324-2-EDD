@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package _03_Classes;
 
 import _02_EDD.BinarySearchTree;
@@ -39,7 +36,7 @@ public class SystemHotel {
         String textToReturn = "";
 
         try {
-            ClientStatus matched = this.StatusList.search(nameToSearch);
+            ClientStatus matched = SystemHotel.StatusList.search(nameToSearch);
             textToReturn = matched.getClientSummary();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "No se encuentra en el hotel.");
@@ -56,7 +53,7 @@ public class SystemHotel {
         try {
             // La cedula la tengo que transformar en numero, validar afuera si el string es un numero
             int NumForSearch = Integer.parseInt(clientID);
-            NodeBST matched = this.Bookings.SearchNodeInBST(this.Bookings.getRoot(), NumForSearch);
+            NodeBST matched = SystemHotel.Bookings.SearchNodeInBST(SystemHotel.Bookings.getRoot(), NumForSearch);
             Booking BookingMatched = (Booking) matched.getData();
             bookingToReturn = BookingMatched.getSummaryOfBooking();
         } catch (Exception e) {
@@ -72,7 +69,7 @@ public class SystemHotel {
         try {
             // El string lo tengo que transformar en numero, validar afuera si el string es un numero
             int NumForSearch = Integer.parseInt(roomNumber);
-            NodeBST matched = this.Rooms.SearchNodeInBST(this.Rooms.getRoot(), NumForSearch);
+            NodeBST matched = SystemHotel.Rooms.SearchNodeInBST(SystemHotel.Rooms.getRoot(), NumForSearch);
             Room roomMatched = (Room) matched.getData();
             recordToReturn = roomMatched.getSummaryForRecord();
 
@@ -89,7 +86,7 @@ public class SystemHotel {
         try {
             // Validar que id sea una cedula afuera
             int IDToSearch = Integer.parseInt(ID);
-            NodeBST NodeOfBooking = this.Bookings.SearchNodeInBST(this.Bookings.getRoot(), IDToSearch);
+            NodeBST NodeOfBooking = SystemHotel.Bookings.SearchNodeInBST(SystemHotel.Bookings.getRoot(), IDToSearch);
             Booking BookingToStatus = (Booking) NodeOfBooking.getData();
             
             //Hacer funciones auxiliares de abajo
@@ -166,28 +163,27 @@ public class SystemHotel {
      * @param completeNameOfCustomerToSearch
      * @param ID
      * @param email
-     * @param phoneNumber
      * @return
      */
-    public boolean checkOut(String completeNameOfCustomerToSearch, String ID, String email, String phoneNumber) {
+    public boolean checkOut(String completeNameOfCustomerToSearch, String ID, String email) {
         boolean val = false;
         // Validar afuera el ID
         try {
-            ClientStatus matched = this.StatusList.search(completeNameOfCustomerToSearch);
-            String LineToAppend = CreateRecordLine(ID, matched.getName(), matched.getLastName(), email, matched.getEmail(), matched.getEmail());
-
+            ClientStatus matched = SystemHotel.StatusList.search(completeNameOfCustomerToSearch);
+            String LineToAppend = CreateRecordLine(ID, matched.getName(), matched.getLastName(), email, matched.getGender(),matched.getArrive() );
+            
             int roomNumber = Integer.parseInt(matched.getRoomNumber());
-            NodeBST currentNode = this.Rooms.SearchNodeInBST(this.Rooms.getRoot(), roomNumber); //Retorna el nodo a modificar
+            NodeBST currentNode = SystemHotel.Rooms.SearchNodeInBST(SystemHotel.Rooms.getRoot(), roomNumber); //Retorna el nodo a modificar
             Room toModify = (Room) currentNode.getData();
 
             toModify.modifyRoomRecord(LineToAppend);
-            this.Rooms.insertNewDataInNode(this.Rooms.getRoot(), roomNumber, toModify); //Guarda el nuevo valor en el historial
+            SystemHotel.Rooms.insertNewDataInNode(SystemHotel.Rooms.getRoot(), roomNumber, toModify); //Guarda el nuevo valor en el historial
 
-            this.StatusList.delete(completeNameOfCustomerToSearch); //Borro el cliente de StatusList
+            SystemHotel.StatusList.delete(completeNameOfCustomerToSearch);      //Borro el cliente de StatusList
             val = true;
 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Clente no encontrado.");
+            JOptionPane.showMessageDialog(null, "Cliente no encontrado.");
         }
         return val;
         // busca en el hashtable con el name, si lo consigue procede al checkOut, si no indica que no esta

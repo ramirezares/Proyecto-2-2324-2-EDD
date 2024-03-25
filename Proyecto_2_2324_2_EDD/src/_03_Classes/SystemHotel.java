@@ -27,9 +27,8 @@ public class SystemHotel {
 
         temporal.readClientStatus(StatusList);
         temporal.readBooking(Bookings);
-        //temporal.readRooms(Rooms);        // En esta funcion tenemos que leer el historial y crear el arbol 
+        temporal.readRooms(Rooms);        // En esta funcion tenemos que leer el historial y crear el arbol 
 
-        //solo agregar al arbol de habitaciones las activas del historial
     }
 
     public String visualizeGuest(String clientFullName) {

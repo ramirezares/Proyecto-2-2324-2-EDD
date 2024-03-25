@@ -23,6 +23,7 @@ public class ReadCSV {
    private BufferedReader leer;
    private String line;
    private String readedline[] = null;
+   private Room roomArray[] = null;
     
     /**
     * Funcion que toma un string con la direccion de un archivo .csv y lo lee en la terminal
@@ -68,7 +69,7 @@ public class ReadCSV {
         if (readedline[0].equals("")) {
             
         } else {
-        ClientStatus newClientStatus = new ClientStatus(readedline[0],readedline[1],readedline[2],readedline[3],readedline[4],readedline[5],readedline[6]);
+        ClientStatus newClientStatus = new ClientStatus(readedline[0],readedline[1].toLowerCase(),readedline[2].toLowerCase(),readedline[3],readedline[4],readedline[5],readedline[6]);
         tablastatus.insert(newClientStatus);
         }
     }
@@ -76,6 +77,10 @@ public class ReadCSV {
     public void putAtributesRoom(BinarySearchTree habitaciones)  {
         Room newRoom = new Room(Integer.parseInt(readedline[0]),readedline[1],Integer.parseInt(readedline[2]));
         habitaciones.insertNodeInBST(habitaciones.getRoot(), Integer.parseInt(readedline[0]), newRoom);
+        
+    }
+    
+    public void setRoomArray() {
         
     }
 /*
@@ -88,7 +93,7 @@ public class ReadCSV {
     public void readBooking(BinarySearchTree Reservas) {
         try {
             int erasefirst = 0;
-            leer = new BufferedReader(new FileReader(System.getProperty("user.dir") + "\\src\\_08_Csvs\\Booking_hotel - reservas.csv"));
+            leer = new BufferedReader(new FileReader(System.getProperty("user.dir") + "\\src\\_08_CSV\\Booking_hotel - reservas.csv"));
             while ((line = leer.readLine()) != null ) {
                 if (erasefirst == 0) {
                     erasefirst = 1;
@@ -109,7 +114,7 @@ public class ReadCSV {
     public void readClientStatus(HashTable tablastatus) {
         try {
             int erasefirst = 0;
-            leer = new BufferedReader(new FileReader(System.getProperty("user.dir") + "\\src\\_08_Csvs\\\\Booking_hotel - estado.csv"));
+            leer = new BufferedReader(new FileReader(System.getProperty("user.dir") + "\\src\\_08_CSV\\Booking_hotel - estado.csv"));
             while ((line = leer.readLine()) != null ) {
                 if (erasefirst == 0) {
                     erasefirst = 1;
@@ -118,6 +123,7 @@ public class ReadCSV {
                 putAtributesClientStatus(tablastatus); 
                 erasefirst++;
                 }
+                
             }
             leer.close();
             line = null;
@@ -131,7 +137,7 @@ public class ReadCSV {
     public void readRoomRecords(ListaSimple listaDeHistorial) {
         try {
             int erasefirst = 0;
-            leer = new BufferedReader(new FileReader(System.getProperty("user.dir") + "\\src\\_08_Csvs\\Booking_hotel - Histórico.csv"));
+            leer = new BufferedReader(new FileReader(System.getProperty("user.dir") + "\src\_08_CSV\Booking_hotel - Histórico.csv"));
             while ((line = leer.readLine()) != null ) {
                 if (erasefirst == 0) {
                     erasefirst = 1;
@@ -153,13 +159,16 @@ public class ReadCSV {
     public void readRooms(BinarySearchTree Habitaciones) {
         try {
             int erasefirst = 0;
-            leer = new BufferedReader(new FileReader(System.getProperty("user.dir") + "\\src\\_08_Csvs\\Booking_hotel - habitaciones.csv"));
+            int numArray = 0;
+            leer = new BufferedReader(new FileReader(System.getProperty("user.dir") + "\\src\\_08_CSV\\Booking_hotel - habitaciones.csv"));
             while ((line = leer.readLine()) != null ) {
                 if (erasefirst == 0) {
                     erasefirst = 1;
                 } else {
                 readedline = line.split(",");
-                putAtributesBooking(Habitaciones);
+                putAtributesRoom(Habitaciones);
+                numArray++;
+                
                 }
             }
             leer.close();
@@ -173,5 +182,7 @@ public class ReadCSV {
     
     
     //Buscar en history el ultimo elemento que es la habitacion.
-    //Revisar que elemento 
+    //Revisar que elemento este en el arbol binario DE HABITACIONEs
+    //Si esta agregar el historial a la habitacion
+    //Si no, hay que agregar la habitacion al árbol binario
 }

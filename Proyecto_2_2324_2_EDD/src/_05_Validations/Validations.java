@@ -128,8 +128,9 @@ public class Validations {
         return ((phone.length() > 8) && (phone.length() < 16));
     }
 
-    public boolean isRoomLength(String phone) {
-        return ((phone.length() > 0) && (phone.length() < 4));
+    public boolean isRoomLength(String room) {
+        int numRoom = Integer.parseInt(room);
+        return ((numRoom > 0) && (numRoom < 301));
     }
 
     public boolean isName(String name) {

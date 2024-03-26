@@ -85,10 +85,10 @@ public class RoomRecord extends javax.swing.JFrame {
         text.setForeground(new java.awt.Color(0, 0, 0));
         text.setRows(5);
         text.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        text.setMargin(new java.awt.Insets(5, 5, 5, 5));
+        text.setMargin(new java.awt.Insets(8, 8, 6, 6));
         textScroll.setViewportView(text);
 
-        jPanel1.add(textScroll, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 750, 340));
+        jPanel1.add(textScroll, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 720, 330));
 
         searchButtom.setBackground(new java.awt.Color(120, 0, 0));
         searchButtom.setFont(new java.awt.Font("Perpetua", 1, 18)); // NOI18N
@@ -109,17 +109,17 @@ public class RoomRecord extends javax.swing.JFrame {
         roomTitle.setFont(new java.awt.Font("Perpetua", 3, 18)); // NOI18N
         roomTitle.setForeground(new java.awt.Color(0, 48, 73));
         roomTitle.setText("N° Habitación:");
-        jPanel1.add(roomTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 140, 130, 30));
+        jPanel1.add(roomTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 150, 130, 30));
 
-        textTitle.setFont(new java.awt.Font("Perpetua", 3, 24)); // NOI18N
+        textTitle.setFont(new java.awt.Font("Perpetua", 3, 36)); // NOI18N
         textTitle.setForeground(new java.awt.Color(0, 48, 73));
         textTitle.setText("Clientes anteriormente hospedados");
-        jPanel1.add(textTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 400, 30));
+        jPanel1.add(textTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 500, 30));
 
         numRoomLabel.setFont(new java.awt.Font("Perpetua", 3, 18)); // NOI18N
         numRoomLabel.setForeground(new java.awt.Color(0, 48, 73));
         numRoomLabel.setText("100");
-        jPanel1.add(numRoomLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 140, 50, 30));
+        jPanel1.add(numRoomLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 150, 50, 30));
 
         jPanel7.setBackground(new java.awt.Color(0, 48, 73));
         jPanel7.setForeground(new java.awt.Color(0, 48, 73));
@@ -205,7 +205,7 @@ public class RoomRecord extends javax.swing.JFrame {
             check=false;
             JOptionPane.showMessageDialog(null, "Debe colocar el número correspondiente a la habitación para poder visualizar el historial de la misma.\nInténtelo nuevamente.", "Información", INFORMATION_MESSAGE);
         }
-        if(!"".equals(auxRoom)){
+        if((!"".equals(auxRoom))&&check){
             
         textTitle.setVisible(true);
         textScroll.setVisible(true);

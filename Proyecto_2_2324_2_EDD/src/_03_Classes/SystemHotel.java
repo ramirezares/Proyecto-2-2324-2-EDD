@@ -3,6 +3,7 @@ package _03_Classes;
 import _02_EDD.BinarySearchTree;
 import _02_EDD.HashTable;
 import _02_EDD.NodeBST;
+import _04_Functions.Helper;
 import _04_Functions.ReadCSV;
 import _05_Validations.Validations;
 import java.util.ArrayList;
@@ -81,30 +82,31 @@ public class SystemHotel {
         return recordToReturn;
     }
 
-    public ClientStatus checkInWithIDBooking(String ID) {
+    public ClientStatus checkIn(String ID) {
         ClientStatus client = null;
+        Helper help =new Helper();
         try {
             // Validar que id sea una cedula afuera
+            //el error esta aca adentro
             int IDToSearch = Integer.parseInt(ID);
             NodeBST NodeOfBooking = SystemHotel.Bookings.SearchNodeInBST(SystemHotel.Bookings.getRoot(), IDToSearch); //Busco la reserva 
             Booking BookingToStatus = (Booking) NodeOfBooking.getData();
-
-            int[] occupiedRooms = ListOfOccupiedRoomsWithStatusWithDate(BookingToStatus.getArrival());
+            int[] occupiedRooms = ListOfOccupiedRoomsWithStatusWithDate(BookingToStatus.getArrival());/*problema en las lineas antes de messi*/
             
             int[] RoomswithType = ListOfRoomsWithType(BookingToStatus.getRoomType());
             
             int roomNumber = SelectNumOfAvailableRoom(RoomswithType, occupiedRooms);
-            
-            ClientStatus newClientToStatus = new ClientStatus( String.valueOf(roomNumber), BookingToStatus.getName(), BookingToStatus.getLastName(), BookingToStatus.getEmail(), BookingToStatus.getGender(), BookingToStatus.getCellphone(), BookingToStatus.getArrival());
-            
+
+            ClientStatus newClientToStatus = new ClientStatus(String.valueOf(roomNumber), help.toLowerCaseString(BookingToStatus.getName()), help.toLowerCaseString(BookingToStatus.getLastName()), BookingToStatus.getEmail(), BookingToStatus.getGender(), BookingToStatus.getCellphone(), BookingToStatus.getArrival());
+
             SystemHotel.StatusList.insert(newClientToStatus);
-            
+
             SystemHotel.Bookings.deleteNodeInBST(SystemHotel.Bookings.getRoot(), Integer.parseInt(BookingToStatus.getID()));
-            
+
             client = newClientToStatus;
 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "No hay habitacion disponible.");
+            JOptionPane.showMessageDialog(null, "No hay habitación disponible para esta reserva,\nintete reservar de nuevo para poder asignarle una habitación.");
         }
         return client;
         // Recibe el id de una reserva y se trae la reserva para crear un unevo cliente en status.
@@ -115,17 +117,17 @@ public class SystemHotel {
     }
 
     private int[] ListOfOccupiedRoomsWithStatusWithDate(String ArriveDate) {
-        Validations temporal = new Validations();
-        int[] occupiedRooms = new int[301];
-
+        Validations val = new Validations();
+        int[] occupiedRooms = new int[SystemHotel.StatusList.getSize()];
         for (int i = 0; i < SystemHotel.StatusList.getSize(); i++) {
             ClientStatus current = SystemHotel.StatusList.getTable()[i];
-            if (temporal.compareStrings(ArriveDate, current.getArrive())) {
-                occupiedRooms[i] = Integer.parseInt(current.getRoomNumber());
+            if (current != null) {
+                if (ArriveDate.equals(current.getArrive())) {
+                    occupiedRooms[i] = Integer.parseInt(current.getRoomNumber());
+                }
             }
         }
         //Busca en el Hashtable status las habitaciones que estan ocupadas en la fecha de llegada indicada
-
         // devuelve un array con las habitaciones ocupadas    
         return occupiedRooms;
     }
@@ -148,7 +150,6 @@ public class SystemHotel {
         return intArray;
     }
 
-    
     /*
     private int countWithType(NodeBST pRoot, String roomType, int count) {
         Validations temporal = new Validations();
@@ -189,17 +190,17 @@ public class SystemHotel {
         // y la lista de las habitaciones del tipo deseado.
 
         int numToReturn = -1;
-        
+
         for (int i : RoomswithType) {
             boolean notOccupied = true;
-            for (int j : occupiedRooms) {                
-                
-                if(RoomswithType[i]==occupiedRooms[j]){
-                    notOccupied=false;
+            for (int j : occupiedRooms) {
+
+                if (RoomswithType[i] == occupiedRooms[j]) {
+                    notOccupied = false;
                 }
             }
-            
-            if(notOccupied){
+
+            if (notOccupied) {
                 numToReturn = i;
                 return numToReturn;
             }
@@ -212,23 +213,22 @@ public class SystemHotel {
      *
      * @param completeNameOfCustomerToSearch
      * @param ID
-     * @param email
      * @return
      */
-    public boolean checkOut(String completeNameOfCustomerToSearch, String ID, String email) {
+    public boolean checkOut(String completeNameOfCustomerToSearch, String ID) {
         boolean val = false;
         // Validar afuera el ID
         try {
             ClientStatus matched = SystemHotel.StatusList.search(completeNameOfCustomerToSearch);
-            String LineToAppend = CreateRecordLine(ID, matched.getName(), matched.getLastName(), email, matched.getGender(), matched.getArrive());
+            String LineToAppend = CreateRecordLine(ID, matched.getName(), matched.getLastName(), matched.getEmail(), matched.getGender(), matched.getArrive());
 
             int roomNumber = Integer.parseInt(matched.getRoomNumber());
             NodeBST currentNode = SystemHotel.Rooms.SearchNodeInBST(SystemHotel.Rooms.getRoot(), roomNumber); //Retorna el nodo a modificar
             Room toModify = (Room) currentNode.getData();
 
-                             // REVISAR QUE EL CHECKOUT AGREGA UNA POSICION DE MEMORIA
+            // REVISAR QUE EL CHECKOUT AGREGA UNA POSICION DE MEMORIA
             toModify.modifyRoomRecord(LineToAppend);
-            
+
             SystemHotel.Rooms.insertNewDataInNode(SystemHotel.Rooms.getRoot(), roomNumber, toModify); //Guarda el nuevo valor en el historial
 
             SystemHotel.StatusList.delete(completeNameOfCustomerToSearch);      //Borro el cliente de StatusList

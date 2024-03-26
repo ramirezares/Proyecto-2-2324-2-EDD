@@ -23,7 +23,6 @@ public class Bookings extends javax.swing.JFrame {
     /**
      * Creates new form Bookings
      */
-
     public Bookings() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -90,11 +89,11 @@ public class Bookings extends javax.swing.JFrame {
         text.setEditable(false);
         text.setBackground(new java.awt.Color(102, 155, 188));
         text.setColumns(20);
-        text.setFont(new java.awt.Font("Franklin Gothic Book", 0, 18)); // NOI18N
+        text.setFont(new java.awt.Font("Franklin Gothic Book", 0, 20)); // NOI18N
         text.setForeground(new java.awt.Color(0, 0, 0));
         text.setRows(5);
         text.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        text.setMargin(new java.awt.Insets(6, 6, 6, 6));
+        text.setMargin(new java.awt.Insets(8, 8, 6, 6));
         textScroll.setViewportView(text);
 
         jPanel1.add(textScroll, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, 440, 300));
@@ -218,25 +217,30 @@ public class Bookings extends javax.swing.JFrame {
     }//GEN-LAST:event_backButtomActionPerformed
 
     private void checkInButtomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkInButtomActionPerformed
-        System.out.println(MainID);
-        
         if ("".equals(MainID)) {
             JOptionPane.showMessageDialog(null, "No hay ninguna reserva seleccionada,\nInserte el ID del cliente para encontrar realizar el Check-In. ", "Error!", WARNING_MESSAGE);
             checkInButtom.setVisible(false);
-            
-            
+
         } else {
-            
-            ClientStatus auxClient=Home.Miyako.checkInWithIDBooking(MainID);
-            checkInButtom.setVisible(false);
-            chosenRoom.setText(auxClient.getRoomNumber());
-            chosenName.setText(auxClient.getName()+""+auxClient.getLastName());
-            checkInPanel.setVisible(true);
-            IDClient.setText("");
-            textScroll.setVisible(false);
-            text.setVisible(false);
-            textTitle.setVisible(false);
-            
+
+            ClientStatus auxClient = Home.Miyako.checkIn(MainID);
+            if (auxClient != null) {
+                checkInPanel.setVisible(true);
+                checkInButtom.setVisible(false);
+                textScroll.setVisible(false);
+                textTitle.setVisible(false);
+                text.setVisible(false);
+                IDClient.setText("");
+                chosenRoom.setText(auxClient.getRoomNumber());
+                chosenName.setText(auxClient.getName() + " " + auxClient.getLastName());
+            } else {
+                checkInButtom.setVisible(false);
+                textScroll.setVisible(false);
+                textTitle.setVisible(false);
+                text.setVisible(false);
+                IDClient.setText("");
+            }
+
         }
 
     }//GEN-LAST:event_checkInButtomActionPerformed
@@ -247,12 +251,12 @@ public class Bookings extends javax.swing.JFrame {
         NodeBST existID = null;
         Validations val = new Validations();
         boolean check;
-        
+
         if (val.isID(IDString)) {
             int ID = Integer.parseInt(IDString);
             try {
                 existID = Home.Miyako.Bookings.SearchNodeInBST(Home.Miyako.Bookings.getRoot(), ID);
-                
+
             } catch (Exception ex) {
                 Logger.getLogger(Bookings.class.getName()).log(Level.SEVERE, null, ex);
                 IDClient.setText("");
@@ -273,8 +277,7 @@ public class Bookings extends javax.swing.JFrame {
             textTitle.setVisible(true);
             text.setText(Home.Miyako.visualizeBooking(IDString));
             checkInButtom.setVisible(true);
-            MainID=IDString;
-            System.out.println("messi");
+            MainID = IDString;
         } else if (check) {
             JOptionPane.showMessageDialog(null, "No se ha encontrado ninguna reserva con ese ID.\nInténtelo nuevamente. ", "Información", INFORMATION_MESSAGE);
             checkInPanel.setVisible(false);
@@ -282,7 +285,6 @@ public class Bookings extends javax.swing.JFrame {
             textTitle.setVisible(false);
             textScroll.setVisible(false);
             checkInButtom.setVisible(false);
-            System.out.println("messi2");
         }
     }//GEN-LAST:event_searchButtomActionPerformed
 

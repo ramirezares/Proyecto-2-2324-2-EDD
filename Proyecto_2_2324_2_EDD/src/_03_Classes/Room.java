@@ -70,9 +70,9 @@ public class Room {
     public String getSummaryForRecord(){
         StringBuilder stringToReturn = new StringBuilder();
         
-        stringToReturn.append("Numero de habitacion:").append(this.roomNumber).append(". ").append("Tipo de habitacion").append(this.roomType).append(". ").append("Piso:").append(this.roomFloor).append(".").append("\n");
+        stringToReturn.append("Número de Habitación: ").append(this.roomNumber).append(". ").append("Tipo de Habitación: ").append(this.roomType).append(". ").append("Piso: ").append(this.roomFloor).append(".");
         stringToReturn.append("\n");
-        stringToReturn.append(this.roomRecord).append(". ").append("\n");
+        stringToReturn.append(this.roomRecord);
         
         return stringToReturn.toString();
     }

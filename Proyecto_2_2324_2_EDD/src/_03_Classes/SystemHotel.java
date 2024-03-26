@@ -92,7 +92,7 @@ public class SystemHotel {
             NodeBST NodeOfBooking = SystemHotel.Bookings.SearchNodeInBST(SystemHotel.Bookings.getRoot(), IDToSearch); //Busco la reserva 
             Booking BookingToStatus = (Booking) NodeOfBooking.getData();
 
-            int[] occupiedRooms = ListOfOccupiedRoomsWithStatusWithDate(BookingToStatus.getArrival());/*problema en las lineas antes de messi*/
+            int[] occupiedRooms = ListOfOccupiedRoomsWithStatusWithDate(BookingToStatus.getArrival());
 
             int[] RoomswithType = ListOfRoomsWithType(BookingToStatus.getRoomType());
 
@@ -120,14 +120,12 @@ public class SystemHotel {
     private int[] ListOfOccupiedRoomsWithStatusWithDate(String ArriveDate) {
 
         Validations val = new Validations();
-        int[] occupiedRooms = new int[301];//cambiar esto por un arraylist
-        for (int i = 0; i < 301; i++) {
+        int[] occupiedRooms = new int[SystemHotel.StatusList.getTable().length];
+        for (int i = 0; i < SystemHotel.StatusList.getTable().length; i++) {
             ClientStatus current = SystemHotel.StatusList.getTable()[i];
             
             if (current != null) {
-                System.out.println(ArriveDate);
-            System.out.println(current.getArrive());
-                if (val.compareStrings(ArriveDate, current.getArrive())) {//esta validacion no se esta haciedo correctamente
+                if (val.compareStrings(ArriveDate, current.getArrive())) {
                     occupiedRooms[i] = Integer.parseInt(current.getRoomNumber());
                 }
             }
@@ -155,24 +153,7 @@ public class SystemHotel {
         return intArray;
     }
 
-    /*
-    private int countWithType(NodeBST pRoot, String roomType, int count) {
-        Validations temporal = new Validations();
-
-        if (pRoot != null) {
-            Room current = (Room) pRoot.getData();
-            count = countWithType(pRoot.getLeftSong(),roomType, count);
-            
-            if (temporal.compareStrings(roomType, current.getRoomType())){
-            count++;
-            }    
-            
-            count = countWithType(pRoot.getRightSong(), roomType, count);
-            
-        }
-        return count;
-    }
-     */
+   
     private ArrayList AddWithType(NodeBST pRoot, String roomType, ArrayList RoomswithType) {
         Validations temporal = new Validations();
 

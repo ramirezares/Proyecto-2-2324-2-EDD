@@ -218,6 +218,8 @@ public class Bookings extends javax.swing.JFrame {
     }//GEN-LAST:event_backButtomActionPerformed
 
     private void checkInButtomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkInButtomActionPerformed
+        System.out.println(MainID);
+        
         if ("".equals(MainID)) {
             JOptionPane.showMessageDialog(null, "No hay ninguna reserva seleccionada,\nInserte el ID del cliente para encontrar realizar el Check-In. ", "Error!", WARNING_MESSAGE);
             checkInButtom.setVisible(false);
@@ -245,6 +247,7 @@ public class Bookings extends javax.swing.JFrame {
         NodeBST existID = null;
         Validations val = new Validations();
         boolean check;
+        
         if (val.isID(IDString)) {
             int ID = Integer.parseInt(IDString);
             try {
@@ -271,6 +274,7 @@ public class Bookings extends javax.swing.JFrame {
             text.setText(Home.Miyako.visualizeBooking(IDString));
             checkInButtom.setVisible(true);
             MainID=IDString;
+            System.out.println("messi");
         } else if (check) {
             JOptionPane.showMessageDialog(null, "No se ha encontrado ninguna reserva con ese ID.\nInténtelo nuevamente. ", "Información", INFORMATION_MESSAGE);
             checkInPanel.setVisible(false);
@@ -278,6 +282,7 @@ public class Bookings extends javax.swing.JFrame {
             textTitle.setVisible(false);
             textScroll.setVisible(false);
             checkInButtom.setVisible(false);
+            System.out.println("messi2");
         }
     }//GEN-LAST:event_searchButtomActionPerformed
 

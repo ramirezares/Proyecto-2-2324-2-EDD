@@ -311,12 +311,14 @@ public class ManageClientStatus extends javax.swing.JFrame {
             Home.Miyako.checkOut(MainClient.getFullName(), ID, email);
             checkOutPanel.setVisible(false);
             text.setVisible(false);
+            textTitle.setVisible(false);
             textScroll.setVisible(false);
             this.MainClient=null;
             checkOutButtom.setVisible(false);
             nameClient.setText("");
             surnameClient.setText("");
             emailClient.setText("");
+            JOptionPane.showMessageDialog(null, "Se ha realizdo correctamente el check-out.\nPuede visualizar la información nuevamente en el partado de historial de cada habitación.", "Operación Exitosa!", INFORMATION_MESSAGE);
             
         }else{
             JOptionPane.showMessageDialog(null, "Es necesario colocar todos los datos del huesped de manera correcta para realizar el Check-Out exitosamente.\n Por favor intente nuevamente. ", "Error!", WARNING_MESSAGE);

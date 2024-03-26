@@ -91,15 +91,15 @@ public class SystemHotel {
             int IDToSearch = Integer.parseInt(ID);
             NodeBST NodeOfBooking = SystemHotel.Bookings.SearchNodeInBST(SystemHotel.Bookings.getRoot(), IDToSearch); //Busco la reserva 
             Booking BookingToStatus = (Booking) NodeOfBooking.getData();
-            
+
             int[] occupiedRooms = ListOfOccupiedRoomsWithStatusWithDate(BookingToStatus.getArrival());/*problema en las lineas antes de messi*/
 
             int[] RoomswithType = ListOfRoomsWithType(BookingToStatus.getRoomType());
-            
+
             int roomNumber = SelectNumOfAvailableRoom(RoomswithType, occupiedRooms);
 
             ClientStatus newClientToStatus = new ClientStatus(String.valueOf(roomNumber), help.toLowerCaseString(BookingToStatus.getName()), help.toLowerCaseString(BookingToStatus.getLastName()), BookingToStatus.getEmail(), BookingToStatus.getGender(), BookingToStatus.getCellphone(), BookingToStatus.getArrival());
-            
+
             SystemHotel.StatusList.insert(newClientToStatus);
 
             SystemHotel.Bookings.deleteNodeInBST(SystemHotel.Bookings.getRoot(), Integer.parseInt(BookingToStatus.getID()));
@@ -117,14 +117,17 @@ public class SystemHotel {
         // Colocar JOptionPane para imprimir exitoso o fallas.
     }
 
-    private int[] ListOfOccupiedRoomsWithStatusWithDate(String ArriveDate) {//cambiar esto por un arraylist
+    private int[] ListOfOccupiedRoomsWithStatusWithDate(String ArriveDate) {
 
         Validations val = new Validations();
-        int[] occupiedRooms = new int[SystemHotel.StatusList.getSize()];//entonces no hace falta definir tamaño y se agrega lo que hay que agregarse
-        for (int i = 0; i < SystemHotel.StatusList.getSize(); i++) {
+        int[] occupiedRooms = new int[301];//cambiar esto por un arraylist
+        for (int i = 0; i < 301; i++) {
             ClientStatus current = SystemHotel.StatusList.getTable()[i];
+            
             if (current != null) {
-                if (val.compareStrings(ArriveDate, current.getArrive())) {
+                System.out.println(ArriveDate);
+            System.out.println(current.getArrive());
+                if (val.compareStrings(ArriveDate, current.getArrive())) {//esta validacion no se esta haciedo correctamente
                     occupiedRooms[i] = Integer.parseInt(current.getRoomNumber());
                 }
             }
@@ -201,9 +204,7 @@ public class SystemHotel {
         }
         if (free) {
             return RoomswithType[0];
-        } 
-        
-        else {
+        } else {
             for (int i = 0; i < RoomswithType.length; i++) {
 
                 boolean notOccupied = true;
@@ -215,7 +216,7 @@ public class SystemHotel {
                     }
                 }
                 if (notOccupied) {
-                    numToReturn = i;
+                    numToReturn = RoomswithType[i];
                     return numToReturn;
                 }
             }

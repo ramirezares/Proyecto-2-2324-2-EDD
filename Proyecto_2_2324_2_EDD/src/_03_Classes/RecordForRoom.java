@@ -4,7 +4,7 @@ package _03_Classes;
  *
  * @author Daniela Zambrano
  */
-public class RoomRecord {
+public class RecordForRoom {
     private String ID;
     private String name;
     private String lastName;
@@ -15,7 +15,7 @@ public class RoomRecord {
     
     //falta una funcion que genero una linea de string sin el numero de la habitacion
 
-    public RoomRecord(String ID, String name, String lastName, String email, String genre, String arrive, String room_Number) {
+    public RecordForRoom(String ID, String name, String lastName, String email, String genre, String arrive, String room_Number) {
         this.ID = ID;
         this.name = name;
         this.lastName = lastName;
@@ -24,7 +24,7 @@ public class RoomRecord {
         this.arrive = arrive;
         this.room_Number = room_Number;
     }
-    public RoomRecord(String ID, String name, String lastName, String email, String genre, String arrive) {
+    public RecordForRoom(String ID, String name, String lastName, String email, String genre, String arrive) {
         this.ID = ID;
         this.name = name;
         this.lastName = lastName;

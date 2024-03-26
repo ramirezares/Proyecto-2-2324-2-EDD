@@ -226,7 +226,9 @@ public class SystemHotel {
             NodeBST currentNode = SystemHotel.Rooms.SearchNodeInBST(SystemHotel.Rooms.getRoot(), roomNumber); //Retorna el nodo a modificar
             Room toModify = (Room) currentNode.getData();
 
+                             // REVISAR QUE EL CHECKOUT AGREGA UNA POSICION DE MEMORIA
             toModify.modifyRoomRecord(LineToAppend);
+            
             SystemHotel.Rooms.insertNewDataInNode(SystemHotel.Rooms.getRoot(), roomNumber, toModify); //Guarda el nuevo valor en el historial
 
             SystemHotel.StatusList.delete(completeNameOfCustomerToSearch);      //Borro el cliente de StatusList
@@ -241,9 +243,9 @@ public class SystemHotel {
 
     private String CreateRecordLine(String ID, String name, String lastName, String email, String genre, String arrive) {
         String lineToReturn = "";
-        RoomRecord newLine = new RoomRecord(ID, name, lastName, email, genre, arrive);
+        RecordForRoom newLine = new RecordForRoom(ID, name, lastName, email, genre, arrive);
 
-        lineToReturn = newLine.toString();
+        lineToReturn = newLine.stringRoomRecord();
 
         return lineToReturn;
         // Con el objeto status, crea y devuelve una linea String para agregar en el historial de la habitacion

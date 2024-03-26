@@ -3,9 +3,10 @@ package _04_Functions;
 
 import _02_EDD.BinarySearchTree;
 import _02_EDD.HashTable;
-import _02_EDD.ListaSimple;
+import _02_EDD.SimpleList;
 import _03_Classes.Booking;
 import _03_Classes.ClientStatus;
+import _03_Classes.RecordForRoom;
 import _03_Classes.Room;
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -84,7 +85,7 @@ public class ReadCSV {
         roomArray.add(newRoom);
         
     }
-    public void putRoomInTree(BinarySearchTree Habitaciones,ListaSimple HabitacionesNoHistorial,ListaSimple HabitacionesHistorial)  {
+    public void putRoomInTree(BinarySearchTree Habitaciones,SimpleList HabitacionesNoHistorial,SimpleList HabitacionesHistorial)  {
         for (int i = 0; i < HabitacionesNoHistorial.getSize(); i++) {
             Room HabitacionAgregada = (Room) HabitacionesNoHistorial.getContentByIndex(i);
             Habitaciones.insertNodeInBST(Habitaciones.getRoot(), HabitacionAgregada.getRoomNumber(), HabitacionAgregada);
@@ -97,7 +98,7 @@ public class ReadCSV {
         }
     }
 /*
-    public void putAtributesRoomRecord(ListaSimple listaDeHistorial)  {
+    public void putAtributesRoomRecord(SimpleList listaDeHistorial)  {
         RoomRecord newRoomRecord = new RoomRecord(readedline[0],readedline[1],readedline[2],readedline[3],readedline[4],readedline[5],readedline[6]);
         listaDeHistorial.addEnd(newRoomRecord);
     }
@@ -150,8 +151,8 @@ public class ReadCSV {
     }
         public void readRoomRecordsForRooms(ArrayList ListaHabitaciones,BinarySearchTree HabitacionesCompletas) {
         try {
-            ListaSimple HabitacionesHistorial = new ListaSimple();
-            ListaSimple HabitacionesNoHistorial = new ListaSimple();
+            SimpleList HabitacionesHistorial = new SimpleList();
+            SimpleList HabitacionesNoHistorial = new SimpleList();
             int erasefirst = 0;
             leer = new BufferedReader(new FileReader(System.getProperty("user.dir") + "\\src\\_08_CSV\\Booking_hotel - Histórico.csv"));
             while ((line = leer.readLine()) != null ) {
@@ -159,17 +160,17 @@ public class ReadCSV {
                     erasefirst = 1;
                 } else {
                 readedline = line.split(",");
-                RoomRecord historial = new RoomRecord(readedline[0],readedline[1],readedline[2],readedline[3],readedline[4],readedline[5]);
+                RecordForRoom historial = new RecordForRoom(readedline[0],readedline[1],readedline[2],readedline[3],readedline[4],readedline[5]);
                 
                     for (int i = 0; i < ListaHabitaciones.size(); i++) {
                         Room Habitaciontemporal = (Room) ListaHabitaciones.get(i);
                         if (Integer.parseInt(readedline[6]) == Habitaciontemporal.getRoomNumber()) {
                             if (HabitacionesHistorial.isInList(Habitaciontemporal)) {
                             Room habitacionTemporalHistorial =  (Room) HabitacionesHistorial.getContentByIndex(HabitacionesHistorial.getIndex(Habitaciontemporal));
-                            habitacionTemporalHistorial.setRecord(historial.stringRoomRecord());
+                            habitacionTemporalHistorial.modifyRoomRecord(historial.stringRoomRecord());
                                 
                             } else {
-                            Habitaciontemporal.setRecord(historial.stringRoomRecord());
+                            Habitaciontemporal.modifyRoomRecord(historial.stringRoomRecord());
                             HabitacionesHistorial.addEnd(Habitaciontemporal);
                             }
                         }
@@ -203,7 +204,7 @@ public class ReadCSV {
         }
     }
     /*
-    public void readRoomRecords(ListaSimple listaDeHistorial) {
+    public void readRoomRecords(SimpleList listaDeHistorial) {
         try {
             int erasefirst = 0;
             leer = new BufferedReader(new FileReader(System.getProperty("user.dir") + "\src\_08_CSV\Booking_hotel - Histórico.csv"));

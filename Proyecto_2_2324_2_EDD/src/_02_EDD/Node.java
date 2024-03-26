@@ -4,8 +4,8 @@ package _02_EDD;
  *
  * @author Daniela Zambrano 30956881
  */
-public abstract class Nodo {
-    private Nodo pNext;
+public abstract class Node {
+    private Node pNext;
     private Object content;
  
 //getters and setters    
@@ -14,11 +14,11 @@ public abstract class Nodo {
  *
  * @return El nodo siguiente
  */
-    public Nodo getpNext() {
+    public Node getpNext() {
         return pNext;
     }
    
-    public void setpNext(Nodo pNext) {
+    public void setpNext(Node pNext) {
         this.pNext = pNext;
     }
 
@@ -38,17 +38,17 @@ public abstract class Nodo {
  *
  * Constructores por defecto
  */
-    public Nodo() {
+    public Node() {
         this.pNext = null;
         this.content = null;
     }
    
-    public Nodo(Object contenido) {
+    public Node(Object contenido) {
         this.pNext = null;
         this.content = contenido;
     }
    
-    public Nodo(Object contenido,Nodo pNext) {
+    public Node(Object contenido,Node pNext) {
         this.pNext = pNext;
         this.content = contenido;
     }

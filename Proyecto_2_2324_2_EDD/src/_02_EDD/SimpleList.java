@@ -4,19 +4,19 @@ package _02_EDD;
  *
  * @author Daniela Zambrano 30956881
  */
-public class ListaSimple {
-    private  Nodo head;
-    private Nodo tail;
+public class SimpleList {
+    private  Node head;
+    private Node tail;
     private  int size;
    
     /*Constructor*/
-    public ListaSimple() {
+    public SimpleList() {
         head = null;
         tail=null;
         size = 0;
     }
 
-    public ListaSimple(Nodo head) {
+    public SimpleList(Node head) {
         this.head = head;
         this.tail = this.head;
     }
@@ -43,7 +43,7 @@ public class ListaSimple {
      * @return true si el objeto existe dentro de la lista
      */  
     public boolean isInList(Object obj){
-        Nodo aux=head;
+        Node aux=head;
         for (int i = 0; i < this.size; i++) {
             if (aux.getContent()==obj){
                 return true;
@@ -59,10 +59,10 @@ public class ListaSimple {
      */ 
     public void addFirst(Object obj){
         if (this.isEmpty()){
-            head= new NodoSimpleP(obj);
+            head= new SimpleNode(obj);
         }else{
-            Nodo aux= head;
-            head= new NodoSimpleP(obj,aux);
+            Node aux= head;
+            head= new SimpleNode(obj,aux);
         }
         size++;
     }
@@ -72,10 +72,10 @@ public class ListaSimple {
      */  
     public void addEnd(Object obj){
         if (this.isEmpty()){
-            head= new NodoSimpleP(obj);
+            head= new SimpleNode(obj);
             tail= head;
         }else{
-            Nodo aux= new NodoSimpleP(obj);
+            Node aux= new SimpleNode(obj);
             tail.setpNext(aux);
             tail=aux;
         }
@@ -93,12 +93,12 @@ public class ListaSimple {
             if (index == 0 ) {
                 this.addFirst(obj);
             } else {
-            Nodo aux=head;
+            Node aux=head;
 
             for (int i = 0; i < index-1; i++) {
                 aux=aux.getpNext();
             }
-            Nodo nuevo = new NodoSimpleP(obj,aux.getpNext());
+            Node nuevo = new SimpleNode(obj,aux.getpNext());
 
             aux.setpNext(nuevo);
             size++;
@@ -113,12 +113,12 @@ public class ListaSimple {
      */      
     public void addAfterElem(Object obj, int index){
        if (this.indexExist(index)) {
-        Nodo aux=head;
+        Node aux=head;
        
         for (int i = 0; i < index; i++) {
             aux=aux.getpNext();
         }
-        Nodo nuevo = new NodoSimpleP(obj,aux.getpNext());
+        Node nuevo = new SimpleNode(obj,aux.getpNext());
        
         aux.setpNext(nuevo);
         size++;
@@ -131,11 +131,11 @@ public class ListaSimple {
         return size;
     }
 
-    public Nodo getHead() {
+    public Node getHead() {
         return head;
     }
 
-    public Nodo getTail() {
+    public Node getTail() {
         return tail;
     }
    
@@ -157,7 +157,7 @@ public class ListaSimple {
             deleteHead();
            
         }else{
-        Nodo aux=head;  
+        Node aux=head;  
         int counter=0;
         while(counter<this.size-1){
             aux=aux.getpNext();
@@ -178,7 +178,7 @@ public class ListaSimple {
             size--;
             }else{
             int contador=0;
-            Nodo anterior=head;
+            Node anterior=head;
             while(contador <index-1){
                 anterior=anterior.getpNext();
                 contador++;
@@ -195,8 +195,8 @@ public class ListaSimple {
      */     
     public void deleteElemC(Object content){      
         if (this.isInList(content)){
-            Nodo anterior=head;
-            Nodo nodito =head.getpNext();
+            Node anterior=head;
+            Node nodito =head.getpNext();
             if (anterior.getContent()==content){
                 this.deleteHead();}
             else{
@@ -218,7 +218,7 @@ public class ListaSimple {
      * Imprime la lista.
      */   
     public void printList(){
-        Nodo aux=head;
+        Node aux=head;
         for (int i = 0; i < this.size; i++) {
             System.out.println("Elemento N."+(i+1)+": "+aux.getContent());
             aux=aux.getpNext();
@@ -228,7 +228,7 @@ public class ListaSimple {
     }
    
     public void printListBooking(){
-        Nodo aux=head;
+        Node aux=head;
         for (int i = 0; i < this.size; i++) {
             System.out.println("Elemento N."+(i+1)+": "+aux.getContent());
             aux=aux.getpNext();
@@ -245,7 +245,7 @@ public class ListaSimple {
      */     
     public Object getContentByIndex(int index){
         int contador=0;
-        Nodo temporal = head;
+        Node temporal = head;
         if (index==(this.getSize()-1)){
             return this.getTail().getContent();}
         else if(index==0){
@@ -265,7 +265,7 @@ public class ListaSimple {
      * @param obj indice del elemento a buscar
      */     
     public Integer getIndex(Object obj){ //devuelve el indice  del primero que encuentra
-        Nodo aux= head;
+        Node aux= head;
         if (this.isInList(obj)){
             for (int i = 0; i < this.size; i++){
                 if(aux.getContent()==obj){return i;}
@@ -284,7 +284,7 @@ public class ListaSimple {
      * @param objNew contenido que reemplaza al contenido anterior
      */    
     public void changeAllContent(Object objRef, Object objNew){  //editar referencia solo el primero que tenga el valor igual lo cambia
-        Nodo aux= head;
+        Node aux= head;
         if (this.isInList(objRef)){
             for (int i = 0; i < this.size; i++){
                 if(aux.getContent()==objRef){
@@ -300,7 +300,7 @@ public class ListaSimple {
      * @param objNew contenido que reemplaza al contenido anterior
      */    
     public void changeFirstContent(Object objRef, Object objNew){
-        Nodo aux= head;
+        Node aux= head;
         if (this.isInList(objRef)){
             while (aux.getContent()!=objRef){
                 aux=aux.getpNext();
@@ -316,7 +316,7 @@ public class ListaSimple {
      * @param objNew contenido que reemplaza al contenido anterior
      */    
     public void changeContent(int indexRef, Object objNew){//editar por posicion, cambiar el valor del nodo que esta en una posicion
-        Nodo aux= head;
+        Node aux= head;
            
             if (indexRef>=0) {
                 for (int i = 0; i < this.size; i++){
@@ -360,9 +360,9 @@ public class ListaSimple {
     }
     
     public void eliminarDuplicado() {
-    Nodo p = head;
+    Node p = head;
     while(p!=null) {
-        Nodo q = p;
+        Node q = p;
         while(q.getpNext()!= null) {
             if(p.getContent()== q.getpNext().getContent()) {
                 q.setpNext(q.getpNext().getpNext());

@@ -119,7 +119,7 @@ public class Booking {
         stringToReturn.append("Nombre: ").append(this.name).append(" ").append(this.lastName).append(".\nNúmero de ID: ").append(this.ID).append(".\n");
         stringToReturn.append("Email: ").append(this.email).append("\n").append("Género: ").append(this.gender).append(".\n");
         stringToReturn.append("Número de Télefono: ").append(this.cellphone).append(".\n").append("Tipo de Habitación: ").append(this.roomType).append(".\n");
-        stringToReturn.append("Fecha de Llegada: ").append(this.arrival).append("\n").append(".\nFecha de Salida: ").append(this.departure);
+        stringToReturn.append("Fecha de Llegada: ").append(this.arrival).append(".\nFecha de Salida: ").append(this.departure);
         
         return stringToReturn.toString();
     }

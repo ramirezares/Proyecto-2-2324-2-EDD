@@ -4,20 +4,20 @@ package _02_EDD;
  *
  * @author Daniela Zambrano
  */
-public class NodoSimpleP extends Nodo{
+public class SimpleNode extends Node{
  
  /**
  *
  * Constructores por defecto
  */
-    public NodoSimpleP() {
+    public SimpleNode() {
     }
 
-    public NodoSimpleP(Object contenido) {
+    public SimpleNode(Object contenido) {
         super(contenido);
     }
 
-    public NodoSimpleP(Object contenido, Nodo pNext) {
+    public SimpleNode(Object contenido, Node pNext) {
         super(contenido, pNext);
     }
    

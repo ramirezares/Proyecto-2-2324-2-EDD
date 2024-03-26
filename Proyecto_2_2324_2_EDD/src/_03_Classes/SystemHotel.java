@@ -84,21 +84,22 @@ public class SystemHotel {
 
     public ClientStatus checkIn(String ID) {
         ClientStatus client = null;
-        Helper help =new Helper();
+        Helper help = new Helper();
         try {
             // Validar que id sea una cedula afuera
             //el error esta aca adentro
             int IDToSearch = Integer.parseInt(ID);
             NodeBST NodeOfBooking = SystemHotel.Bookings.SearchNodeInBST(SystemHotel.Bookings.getRoot(), IDToSearch); //Busco la reserva 
             Booking BookingToStatus = (Booking) NodeOfBooking.getData();
-            int[] occupiedRooms = ListOfOccupiedRoomsWithStatusWithDate(BookingToStatus.getArrival());/*problema en las lineas antes de messi*/
             
+            int[] occupiedRooms = ListOfOccupiedRoomsWithStatusWithDate(BookingToStatus.getArrival());/*problema en las lineas antes de messi*/
+
             int[] RoomswithType = ListOfRoomsWithType(BookingToStatus.getRoomType());
             
             int roomNumber = SelectNumOfAvailableRoom(RoomswithType, occupiedRooms);
 
             ClientStatus newClientToStatus = new ClientStatus(String.valueOf(roomNumber), help.toLowerCaseString(BookingToStatus.getName()), help.toLowerCaseString(BookingToStatus.getLastName()), BookingToStatus.getEmail(), BookingToStatus.getGender(), BookingToStatus.getCellphone(), BookingToStatus.getArrival());
-
+            
             SystemHotel.StatusList.insert(newClientToStatus);
 
             SystemHotel.Bookings.deleteNodeInBST(SystemHotel.Bookings.getRoot(), Integer.parseInt(BookingToStatus.getID()));
@@ -116,13 +117,14 @@ public class SystemHotel {
         // Colocar JOptionPane para imprimir exitoso o fallas.
     }
 
-    private int[] ListOfOccupiedRoomsWithStatusWithDate(String ArriveDate) {
+    private int[] ListOfOccupiedRoomsWithStatusWithDate(String ArriveDate) {//cambiar esto por un arraylist
+
         Validations val = new Validations();
-        int[] occupiedRooms = new int[SystemHotel.StatusList.getSize()];
+        int[] occupiedRooms = new int[SystemHotel.StatusList.getSize()];//entonces no hace falta definir tamaño y se agrega lo que hay que agregarse
         for (int i = 0; i < SystemHotel.StatusList.getSize(); i++) {
             ClientStatus current = SystemHotel.StatusList.getTable()[i];
             if (current != null) {
-                if (ArriveDate.equals(current.getArrive())) {
+                if (val.compareStrings(ArriveDate, current.getArrive())) {
                     occupiedRooms[i] = Integer.parseInt(current.getRoomNumber());
                 }
             }
@@ -191,22 +193,35 @@ public class SystemHotel {
 
         int numToReturn = -1;
 
-        for (int i : RoomswithType) {
-            boolean notOccupied = true;
-            for (int j : occupiedRooms) {
+        boolean free = true;
+        for (int i = 0; i < occupiedRooms.length; i++) {
+            if (occupiedRooms[i] != 0) {
+                free = false;
+            }
+        }
+        if (free) {
+            return RoomswithType[0];
+        } 
+        
+        else {
+            for (int i = 0; i < RoomswithType.length; i++) {
 
-                if (RoomswithType[i] == occupiedRooms[j]) {
-                    notOccupied = false;
+                boolean notOccupied = true;
+                for (int j = 0; j < occupiedRooms.length; j++) {
+                    if (RoomswithType[i] != 0 && occupiedRooms[j] != 0) {
+                        if (RoomswithType[i] == occupiedRooms[j]) {
+                            notOccupied = false;
+                        }
+                    }
+                }
+                if (notOccupied) {
+                    numToReturn = i;
+                    return numToReturn;
                 }
             }
 
-            if (notOccupied) {
-                numToReturn = i;
-                return numToReturn;
-            }
-        }
-
-        return numToReturn;     // Validar que si devuelve -1 afuera nunca encontro una habitacion disponible
+            return numToReturn;
+        }    // Validar que si devuelve -1 afuera nunca encontro una habitacion disponible
     }
 
     /**

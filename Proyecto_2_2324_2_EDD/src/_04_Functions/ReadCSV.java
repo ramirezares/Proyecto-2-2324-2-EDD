@@ -63,8 +63,8 @@ public class ReadCSV {
     }
 
     /**
-     *
-     * @param Reservas
+     *Función que inserta una reserva dentro del arbol binario de busquede indicado (inserta un objeto booking en BST de reservas)
+     * @param Reservas Arbol binario de busqueda 
      */
     public void putAtributesBooking(BinarySearchTree Reservas) {
         String newID = readedline[0].replaceAll("[^\\w+]", "");
@@ -74,8 +74,8 @@ public class ReadCSV {
     }
 
     /**
-     *
-     * @param tablastatus
+     *Función que inserta un ClientStatus dentro del hashtable indicado
+     * @param tablastatus Hashtable
      */
     public void putAtributesClientStatus(HashTable tablastatus) {
         if (readedline[0].equals("")) {
@@ -87,20 +87,19 @@ public class ReadCSV {
     }
 
     /**
-     *
-     * @param arrayNum
+     *Función que crea y agrega un Room a un roomArray
      */
-    public void createArrayRooms(int arrayNum) {
+    public void createArrayRooms() {
         Room newRoom = new Room(Integer.parseInt(readedline[0]), readedline[1], Integer.parseInt(readedline[2]));
         roomArray.add(newRoom);
 
     }
 
     /**
-     *
-     * @param Habitaciones
-     * @param HabitacionesNoHistorial
-     * @param HabitacionesHistorial
+     *Función que agrega una habitacion al Arbol Binario de Busqueda de habitaciones
+     * @param Habitaciones Arbol Binario de Busqueda que tiene almacenado las habitaciones
+     * @param HabitacionesNoHistorial Lista enlazada simple que contiene las habitaciones que no estan en la base de datos del historial
+     * @param HabitacionesHistorial Lista enlazada simple que contiene las habitaciones que estan en la base de datos del historial
      */
     public void putRoomInTree(BinarySearchTree Habitaciones, SimpleList HabitacionesNoHistorial, SimpleList HabitacionesHistorial) {
         for (int i = 0; i < HabitacionesNoHistorial.getSize(); i++) {
@@ -116,8 +115,8 @@ public class ReadCSV {
     }
 
     /**
-     *
-     * @param Reservas
+     *Función que lee el archivo de Reservas.CSV y llena un Arbol Binario de Busqueda con los objetos booking
+     * @param Reservas Arbol Binario de Busqueda que contiene reservas (bookings)
      */
     public void readBooking(BinarySearchTree Reservas) {
         try {
@@ -142,8 +141,8 @@ public class ReadCSV {
     }
 
     /**
-     *
-     * @param tablastatus
+     *Función que lee el archivo Estado.CVS y agrega los ClientStatus al hashtable dado por parametro
+     * @param tablastatus hashtable 
      */
     public void readClientStatus(HashTable tablastatus) {
         try {
@@ -170,9 +169,9 @@ public class ReadCSV {
     }
 
     /**
-     *
-     * @param ListaHabitaciones
-     * @param HabitacionesCompletas
+     *Función que lee el archivo Historial.CVS y agrega el historial a cada habtación
+     * @param ListaHabitaciones ArrayList con objetos Room 
+     * @param HabitacionesCompletas Arbol Binario de Busqueda 
      */
     public void readRoomRecordsForRooms(ArrayList ListaHabitaciones, BinarySearchTree HabitacionesCompletas) {
         try {
@@ -226,8 +225,8 @@ public class ReadCSV {
     }
 
     /**
-     *
-     * @param Habitaciones
+     *Función que lee el archivo de Habitaciones.CSV y llena un Arbol Binario de Busqueda con los objetos Room
+     * @param Habitaciones Arbol Binario de Busqueda
      */
     public void readRooms(BinarySearchTree Habitaciones) {
         try {
@@ -239,7 +238,7 @@ public class ReadCSV {
                     erasefirst = 1;
                 } else {
                     readedline = line.split(",");
-                    createArrayRooms(numArray);
+                    createArrayRooms();
                     numArray++;
 
                 }
@@ -256,8 +255,4 @@ public class ReadCSV {
         }
     }
 
-    //Buscar en history el ultimo elemento que es la habitacion.
-    //Revisar que elemento este en el arbol binario DE HABITACIONEs
-    //Si esta agregar el historial a la habitacion
-    //Si no, hay que agregar la habitacion al árbol binario
 }

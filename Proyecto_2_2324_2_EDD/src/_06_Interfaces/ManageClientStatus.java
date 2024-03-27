@@ -346,7 +346,7 @@ public class ManageClientStatus extends javax.swing.JFrame {
             checkOutButtom.setVisible(false);
             nameClient.setText("");
             surnameClient.setText("");
-            JOptionPane.showMessageDialog(null, "Se ha realizdo correctamente el check-out.\nPuede visualizar la información nuevamente en el partado de historial de cada habitación.", "Operación Exitosa!", INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Se ha realizado correctamente el check-out.\nPuede visualizar la información nuevamente en el apartado de historial de cada habitación.", "Operación Exitosa!", INFORMATION_MESSAGE);
             searchButtom.setVisible(true);
         } else {
             JOptionPane.showMessageDialog(null, "Es necesario colocar todos los datos del huesped de manera correcta para realizar el Check-Out exitosamente.\n Por favor intente nuevamente. ", "Error!", WARNING_MESSAGE);

@@ -178,7 +178,7 @@ public class Validations {
             return false;
         }
         if (!this.isJustLetters(name)) {
-            JOptionPane.showMessageDialog(null, "Solo se permiten usar caracteres alfabeticos", "Error!", WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Solo se permiten usar caracteres alfabeticos, sin espacios", "Error!", WARNING_MESSAGE);
             return false;
         }
 
@@ -199,7 +199,7 @@ public class Validations {
             return false;
         }
         if (!this.isJustLetters(name)) {
-            JOptionPane.showMessageDialog(null, "Solo se permiten usar caracteres alfabeticos", "Error!", WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Solo se permiten usar caracteres alfabeticos, sin espacios", "Error!", WARNING_MESSAGE);
             return false;
         }
 

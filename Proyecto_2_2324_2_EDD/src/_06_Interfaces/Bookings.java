@@ -3,8 +3,6 @@ package _06_Interfaces;
 import _02_EDD.NodeBST;
 import _03_Classes.ClientStatus;
 import _05_Validations.Validations;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.INFORMATION_MESSAGE;
@@ -257,9 +255,7 @@ public class Bookings extends javax.swing.JFrame {
             int ID = Integer.parseInt(IDString);
             try {
                 existID = Home.Miyako.Bookings.SearchNodeInBST(Home.Miyako.Bookings.getRoot(), ID);
-
-            } catch (Exception ex) {
-                Logger.getLogger(Bookings.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (Exception e) {
                 IDClient.setText("");
             }
             check = true;

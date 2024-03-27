@@ -122,13 +122,12 @@ public class SystemHotel {
         Helper help = new Helper();
         try {
             int IDToSearch = Integer.parseInt(ID);
-            System.out.println("pdanie");
             NodeBST NodeOfBooking = SystemHotel.Bookings.SearchNodeInBST(SystemHotel.Bookings.getRoot(), IDToSearch); //Busco la reserva 
+            Booking BookingToStatus = (Booking) NodeOfBooking.getData();
   
             //Llama a las funciones auxiliares private para asignar la habitacion, crear el nodo y realizar todas las acciones
             int[] occupiedRooms = ListOfOccupiedRoomsWithStatusWithDate(BookingToStatus.getArrival());
 
-            System.out.println("pdanie");
             int[] RoomswithType = ListOfRoomsWithType(BookingToStatus.getRoomType());
 
             int roomNumber = SelectNumOfAvailableRoom(RoomswithType, occupiedRooms);

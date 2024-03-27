@@ -10,8 +10,14 @@ public class Room {
     private String  roomType;
     private int roomFloor;
     private String roomRecord;
-    //atributo historial en la clase room va a ser un string
-
+    
+    /**
+     *Constructor de la clase room
+     * @param roomNumber int con el número de la habitación
+     * @param roomType string con el tipo de habitación
+     * @param roomFloor int con el número del piso de la habitación
+     * @param history String con todos los huéspedes que han estado en esa habitación
+     */
     public Room(int roomNumber, String roomType, int roomFloor, String history) {
         this.roomNumber = roomNumber;
         this.roomType = roomType;
@@ -19,6 +25,12 @@ public class Room {
         this.roomRecord = history;          // Ver si borramos este constructor
     }
 
+    /**
+     *Constructor  de la clase room
+     * @param roomNumber int con el número de la habitación
+     * @param roomType string con el tipo de habitación
+     * @param roomFloor int con el número del piso de la habitación
+     */
     public Room(int roomNumber, String roomType, int roomFloor) {
         this.roomNumber = roomNumber;
         this.roomType = roomType;
@@ -58,6 +70,10 @@ public class Room {
         this.roomRecord = roomRecord;
     }
 
+    /**
+     *Función que modifica el historial de la habitación agregandole una linea de información del último huesped
+     * @param lineToAppendToRecord linea que se agrega al historial (información del cliente)
+     */
     public void modifyRoomRecord(String lineToAppendToRecord){
         StringBuilder newRoomRecord = new StringBuilder();
         
@@ -67,6 +83,10 @@ public class Room {
         this.setRoomRecord(newRoomRecord.toString());
     }
     
+    /**
+     *Función que retorna un string con un resumen del historial de la habitación de forma arreglada
+     * @return String con un resumen del historial de la habitación
+     */
     public String getSummaryForRecord(){
         StringBuilder stringToReturn = new StringBuilder();
         

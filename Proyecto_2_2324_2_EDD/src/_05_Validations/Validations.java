@@ -1,6 +1,5 @@
 package _05_Validations;
 
-import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
@@ -15,16 +14,13 @@ public class Validations {
     public Validations() {
     }
 
-    /*
-    Funcion que valide si es un numero 
-    
-    funcion que valide si es cedula
-    
-    Investigar matches para validar que sean letras, numeros
-    
-    
+    /**
+     *Función que valida que dos string sean iguales letra por letra
+     * 
+     * @param s1 String 1 a comparar
+     * @param s2 String 1 a comparar
+     * @return boolean, retorna verdadero si ambos string son iguales letra por letra
      */
-    
     public boolean compareStrings(String s1, String s2) {
         // Verificar si las cadenas tienen el mismo tamaño
         if (s1.length() != s2.length()) {
@@ -72,7 +68,6 @@ public class Validations {
         return val;
     }
 
-    //
     /**
      * Valida si el texto ingresado es un numero y, de ser asi, si numero
      * introducido esta en el rango formado por dos numeros indicados. Los
@@ -97,6 +92,11 @@ public class Validations {
         return val;
     }
 
+    /**
+     *Función que válida que un string solo tenga caracteres alfabéticos
+     * @param name String que se válida
+     * @return boolean, retorna verdadero si el string solo contiene caracteres alfabéticos
+     */
     public boolean isJustLetters(String name) {
         String regex = "[^a-zA-Z]";
         Pattern patron = Pattern.compile(regex);
@@ -104,6 +104,12 @@ public class Validations {
         return !match.find();
     }
 
+    /**
+     *Función que válida que un string solo contenga cracteres numericos
+     * 
+     * @param num String a validar
+     * @return boolean, retorna verdadero si solo hay caracteres numéricos en el string (sin contar espacio)
+     */
     public boolean isNumber(String num) {
         String regex = "^\\d+$";
         Pattern patron = Pattern.compile(regex);
@@ -111,28 +117,61 @@ public class Validations {
         return match.find();
     }
 
+    /**
+     *Función que verifica que un string tenga caracteres numéricos y que ese número este entre 1-300
+     * @param roomNumber string a verificar
+     * @return boolean, retorna verdadero si el string es un número entre 1-300
+     */
     public boolean isRoom(String roomNumber) {
 
         return (this.isNumber(roomNumber) && this.isRoomLength(roomNumber));
     }
 
+    /**
+     *Función que válida el largo de un string para que sea nombre
+     * @param name String a validar
+     * @return boolean, retorna verdadero si el string tiene más de 1 cáracter
+     */
     public boolean isNameLength(String name) {
         return name.length() > 1;
     }
 
+    /**
+     *Función que válida si el largo de un string es apto para ser un ID
+     * @param ID String a validar
+     * @return boolean, retorna verdadero si el String tiene menos de 9 caracteres
+     */
     public boolean isIDLength(String ID) {
         return ID.length() < 9;
     }
 
+    /**
+     *Función que válida si el largo de un string es apto para ser un télefono
+     * @param phone String a validar
+     * @return boolean, retorna verdadero si el string tiene más de 8 caracteres y menos de 16
+     */
     public boolean isPhoneLength(String phone) {
         return ((phone.length() > 8) && (phone.length() < 16));
     }
 
+    /**
+     *Función que válida si el largo de un string es apto para el número de una habitacción
+     * @param room String a validar
+     * @return boolean, retorna verdadero si el string casteado a int es mayor a 0 y menor a 301
+     */
     public boolean isRoomLength(String room) {
         int numRoom = Integer.parseInt(room);
         return ((numRoom > 0) && (numRoom < 301));
     }
 
+    /**
+     *Funcion que verifica si un string es tiene las condiciones para ser un nombre
+     *El string regresara verdadero si el nombre tiene mas de dos letras y no tiene numeros
+     *La diferencia con isName2 es el tipo de advertencias 
+     * 
+     * @param name String correspondiente a un nombre
+     * @return boolean, retorna verdadero si el string cumple con las condiciones de un nombre
+     */
     public boolean isName(String name) {
         if (!this.isNameLength(name)) {
             JOptionPane.showMessageDialog(null, "El nombre/apellido es muy corto, es necesario tener al menos 3 letras", "Error!", WARNING_MESSAGE);
@@ -145,7 +184,15 @@ public class Validations {
 
         return true;
     }
-
+    
+    /**
+     *Funcion que verifica si un string es tiene las condiciones para ser un nombre
+     *El string regresara verdadero si el nombre tiene mas de dos letras y no tiene numeros
+     *La diferencia con isName2 es el tipo de advertencias 
+     * 
+     * @param name String correspondiente a un nombre
+     * @return boolean, retorna verdadero si el string cumple con las condiciones de un nombre
+     */
     public boolean isName2(String name) {
         if (!this.isNameLength(name)) {
             JOptionPane.showMessageDialog(null, "El nombre/apellido es muy corto o no se insertaron correctamente.\n Inténtelo nuevamente.", "Error!", WARNING_MESSAGE);
@@ -158,7 +205,14 @@ public class Validations {
 
         return true;
     }
-
+    
+    /**
+     *Se le ingresa un string ID para verificar si cumple o no con las condiciones de un ID
+     *La diferencia con isID2 es el tipo de aviso que despliega. 
+     * 
+     * @param ID  String correspondiente a un ID
+     * @return boolean, verdadero si el string ingresado cumple con el formato de ID
+     */
     public boolean isID(String ID) {
         if (ID.equals("")) {
             JOptionPane.showMessageDialog(null, "Debe ingresar al menos un caracter correspondiente al ID.\n Inténtelo Nuevamente.", "Error!", WARNING_MESSAGE);
@@ -179,6 +233,13 @@ public class Validations {
 
     }
 
+    /**
+     *Se le ingresa un string ID para verificar si cumple o no con las condiciones de un ID
+     *La diferencia con isID es el tipo de aviso que despliega. 
+     * 
+     * @param ID  String correspondiente a un ID
+     * @return boolean, verdadero si el string ingresado cumple con el formato de ID
+     */
     public boolean isID2(String ID) {
         if (ID.equals("")) {
             JOptionPane.showMessageDialog(null, "Debe ingresar al menos un caracter correspondiente al ID del cliente.\n Inténtelo Nuevamente.", "Error!", WARNING_MESSAGE);
@@ -199,6 +260,11 @@ public class Validations {
 
     }
 
+    /**
+     *
+     * @param Phone String correspondiente a un número telefónico
+     * @return boolean, verdadero si el string ingresado tiene el formato para un número de teléfono, falso de lo contrario
+     */
     public boolean isPhone(String Phone) {
         if (Phone.equals("")) {
             JOptionPane.showMessageDialog(null, "Debe ingresar al menos un caracter correspondiente al ID.\n Inténtelo Nuevamente.", "Error!", WARNING_MESSAGE);
@@ -219,6 +285,11 @@ public class Validations {
 
     }
 
+    /**
+     *
+     * @param email String correspondiente a un correo.
+     * @return boolean, verdadero si el string ingresado tiene el formato indicado para ser correo.
+     */
     public boolean isEmail(String email) {
         String regex = "^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$";
         Pattern patron = Pattern.compile(regex);

@@ -14,6 +14,16 @@ public class ClientStatus {
     private String cellphone;
     private String arrive;
 
+    /**
+     *Constructor de la clase ClientStatus
+     * @param room_number número de la habitación del huésped
+     * @param name nombre del huésped
+     * @param apellido apellido del huésped
+     * @param email correo del huésped
+     * @param gender género del huésped 
+     * @param cellphone teléfono del huésped
+     * @param arrive fecha de llegada del huésped
+     */
     public ClientStatus(String room_number, String name, String apellido, String email, String gender, String cellphone, String arrive) {
         this.roomNumber = room_number;
         this.name = name;
@@ -87,6 +97,10 @@ public class ClientStatus {
 
     }
 
+    /**
+     *Función que genera un resumen de la información (todos los atributos) de la clientstatus
+     * @return String con toda la información de la clientstatus
+     */
     public String getClientSummary() {
         StringBuilder stringToReturn = new StringBuilder();
 

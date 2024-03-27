@@ -13,8 +13,16 @@ public class RecordForRoom {
     private String arrive;
     private String room_Number;
     
-    //falta una funcion que genero una linea de string sin el numero de la habitacion
-
+    /**
+     *Constructor de la clase RecordRoom
+     * @param ID ID del último huésped
+     * @param name nombre del último huésped 
+     * @param lastName apellido del último huésped
+     * @param email correo del último huésped
+     * @param genre genero del último huésped 
+     * @param arrive fecha de llegada  del último huésped
+     * @param room_Number numero de habitación  del último huésped
+     */
     public RecordForRoom(String ID, String name, String lastName, String email, String genre, String arrive, String room_Number) {
         this.ID = ID;
         this.name = name;
@@ -24,6 +32,16 @@ public class RecordForRoom {
         this.arrive = arrive;
         this.room_Number = room_Number;
     }
+
+    /**
+     *Constructor de la clase RecordRoom
+     * @param ID ID del último huésped
+     * @param name nombre del último huésped 
+     * @param lastName apellido del último huésped
+     * @param email correo del último huésped
+     * @param genre genero del último huésped 
+     * @param arrive fecha de llegada  del último huésped
+     */
     public RecordForRoom(String ID, String name, String lastName, String email, String genre, String arrive) {
         this.ID = ID;
         this.name = name;
@@ -89,6 +107,10 @@ public class RecordForRoom {
         this.room_Number = room_Number;
     }
    
+    /**
+     *Función que genera una linea (String) con todos los atributos del objeto
+     * @return un string (una linea) con todos los datos del objeto
+     */
     public String stringRoomRecord() {
         String stringaux;
         stringaux =  this.ID + " " + this.name + " " + this.lastName + " " + this.email + " " + this.gender + " " + this.arrive + "\n";

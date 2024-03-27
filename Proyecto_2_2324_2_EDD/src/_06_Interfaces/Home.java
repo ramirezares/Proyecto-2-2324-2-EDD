@@ -9,9 +9,9 @@ import javax.swing.JOptionPane;
  * @author Daniela Zambrano
  */
 public class Home extends javax.swing.JFrame {
-
     public static SystemHotel Miyako = new SystemHotel();
 
+    //Inicializacion de imagenes para el programa
     ImageIcon logoCompanyPic = new ImageIcon("Untitled-3.png");
     ImageIcon fondoPic = new ImageIcon("caption.jpg");
     ImageIcon peoplePic = new ImageIcon("people2.png");
@@ -36,7 +36,6 @@ public class Home extends javax.swing.JFrame {
         recordLabel.setIcon(recordPic);
         recordLabel.setText("");
     }
-
 
     /**
      * This method is called from within the constructor to initialize the form.

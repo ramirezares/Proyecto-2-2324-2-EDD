@@ -16,6 +16,7 @@ import static javax.swing.JOptionPane.WARNING_MESSAGE;
  */
 public class Bookings extends javax.swing.JFrame {
 
+    //Inicializacion de imagenes para el programa
     ImageIcon logoCompanyPic = new ImageIcon("Untitled-3.png");
     ImageIcon fondoPic = new ImageIcon("mount-fuji-1346096_1280.jpg");
     String MainID = "";

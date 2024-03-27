@@ -16,6 +16,19 @@ public class Booking {
     private String arrival;
     private String departure;
     public Booking(){}
+    
+    /**
+     *Contructor de la clase
+     * @param ID Id de la reserva
+     * @param name Nombre de la reserva
+     * @param lastName Apellido de la reserva
+     * @param email Correo de la persona que reserva
+     * @param gender género de la persona que reserva
+     * @param roomType tipo de cuarto reservado
+     * @param cellphone teléfono de la persona que reserva
+     * @param arrival fecha de llegada de la persona que reserva
+     * @param departure fecha de llegada de la persona que reserva
+     */
     public Booking(String ID, String name, String lastName, String email, String gender, String roomType, String cellphone, String arrival, String departure) {
         this.ID = ID;
         this.name = name;
@@ -100,6 +113,9 @@ public class Booking {
         this.departure = departure;
     }
 
+    /**
+     *Imprime el booking en la terminal
+     */
     public void printBook() {
         System.out.println(this.ID);
         System.out.println(this.name);
@@ -113,6 +129,10 @@ public class Booking {
         System.out.println("");
     }
 
+    /**
+     *Función que genera un resumen de la información de la reserva
+     * @return String con toda la información de la reserva
+     */
     public String getSummaryOfBooking() {
         StringBuilder stringToReturn = new StringBuilder();
         

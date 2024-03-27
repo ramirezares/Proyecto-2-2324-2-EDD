@@ -89,11 +89,14 @@ public class SystemHotel {
             // Validar que id sea una cedula afuera
             //el error esta aca adentro
             int IDToSearch = Integer.parseInt(ID);
+            System.out.println("pdanie");
             NodeBST NodeOfBooking = SystemHotel.Bookings.SearchNodeInBST(SystemHotel.Bookings.getRoot(), IDToSearch); //Busco la reserva 
             Booking BookingToStatus = (Booking) NodeOfBooking.getData();
 
+            System.out.println("pdanie");
             int[] occupiedRooms = ListOfOccupiedRoomsWithStatusWithDate(BookingToStatus.getArrival());
 
+            System.out.println("pdanie");
             int[] RoomswithType = ListOfRoomsWithType(BookingToStatus.getRoomType());
 
             int roomNumber = SelectNumOfAvailableRoom(RoomswithType, occupiedRooms);

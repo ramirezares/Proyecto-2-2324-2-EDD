@@ -1,7 +1,6 @@
 
 package _06_Interfaces;
 
-import _03_Classes.Room;
 import _05_Validations.Validations;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -12,12 +11,12 @@ import static javax.swing.JOptionPane.INFORMATION_MESSAGE;
  * @author Daniela Zambrano
  */
 public class RoomRecord extends javax.swing.JFrame {
-    
+    /*Inicializacion de Imagenes*/
     ImageIcon logoCompanyPic = new ImageIcon("Untitled-3.png");
     ImageIcon fondoPic = new ImageIcon("mount-fuji-1346096_1280.jpg");
 
     /**
-     * Creates new form RoomRecord
+     * Constructor de Jframe RoomRecord
      */
     public RoomRecord() {
         initComponents();

@@ -1,4 +1,3 @@
-
 package _06_Interfaces;
 
 import _03_Classes.ClientStatus;
@@ -14,10 +13,11 @@ import static javax.swing.JOptionPane.WARNING_MESSAGE;
  * @author Daniela Zambrano
  */
 public class ManageClientStatus extends javax.swing.JFrame {
-    
+
     ImageIcon logoCompanyPic = new ImageIcon("Untitled-3.png");
     ImageIcon fondoPic = new ImageIcon("mount-fuji-1346096_1280.jpg");
     ClientStatus MainClient;
+
     /**
      * Creates new form Check_in
      */
@@ -32,7 +32,7 @@ public class ManageClientStatus extends javax.swing.JFrame {
         textTitle.setVisible(false);
         text.setVisible(false);
         textScroll.setVisible(false);
-        checkOutButtom.setVisible(false); 
+        checkOutButtom.setVisible(false);
         searchButtom.setVisible(true);
     }
 
@@ -269,16 +269,15 @@ public class ManageClientStatus extends javax.swing.JFrame {
     }//GEN-LAST:event_nameClientActionPerformed
 
     private void checkOutButtomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkOutButtomActionPerformed
-        if (MainClient==null){
+        if (MainClient == null) {
             JOptionPane.showMessageDialog(null, "No hay ningún huesped seleccionado para realizar el check-out,\n por favor inserte el nombre y el apellido para encontrar un huesped. ", "Error!", WARNING_MESSAGE);
             checkOutButtom.setVisible(false);
-        }else{
-        checkOutPanel.setVisible(true);  
-        searchButtom.setVisible(false);
+        } else {
+            checkOutPanel.setVisible(true);
+            searchButtom.setVisible(false);
         }
-        
-        
-        
+
+
     }//GEN-LAST:event_checkOutButtomActionPerformed
 
     private void backButtomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtomActionPerformed
@@ -288,44 +287,43 @@ public class ManageClientStatus extends javax.swing.JFrame {
     }//GEN-LAST:event_backButtomActionPerformed
 
     private void searchButtomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtomActionPerformed
-        String name=nameClient.getText();
-        String surname=surnameClient.getText();
-        String keyName="";
-        ClientStatus auxClient=null;
-        Validations val=new Validations();
-        Helper help=new Helper();
+        String name = nameClient.getText();
+        String surname = surnameClient.getText();
+        String keyName = "";
+        ClientStatus auxClient = null;
+        Validations val = new Validations();
+        Helper help = new Helper();
         boolean check;
-        if ((val.isName2(name))&&(val.isName2(surname))){
-            name=help.toLowerCaseString(name);
-            surname=help.toLowerCaseString(surname);
-            keyName=help.NameSurname(name, surname);
-            auxClient=Home.Miyako.StatusList.search(keyName);
-            check=true;
-        }
-        else{
-            check=false;
+        if ((val.isName2(name)) && (val.isName2(surname))) {
+            name = help.toLowerCaseString(name);
+            surname = help.toLowerCaseString(surname);
+            keyName = help.NameSurname(name, surname);
+            auxClient = Home.Miyako.StatusList.search(keyName);
+            check = true;
+        } else {
+            check = false;
             checkOutPanel.setVisible(false);
             textTitle.setVisible(false);
             text.setVisible(false);
             textScroll.setVisible(false);
-            checkOutButtom.setVisible(false); }
-        
-        if (auxClient!=null){
-        textScroll.setVisible(true);
-        text.setVisible(true);
-        textTitle.setVisible(true);
-        text.setText(Home.Miyako.visualizeGuest(keyName)); 
-        checkOutButtom.setVisible(true);
-        this.MainClient=auxClient;
+            checkOutButtom.setVisible(false);
         }
-        else if(check && (val.isName(name))&&(val.isName(surname))){
+
+        if (auxClient != null) {
+            textScroll.setVisible(true);
+            text.setVisible(true);
+            textTitle.setVisible(true);
+            text.setText(Home.Miyako.visualizeGuest(keyName));
+            checkOutButtom.setVisible(true);
+            this.MainClient = auxClient;
+        } else if (check && (val.isName(name)) && (val.isName(surname))) {
             checkOutPanel.setVisible(false);
             textTitle.setVisible(false);
             text.setVisible(false);
             textScroll.setVisible(false);
-            checkOutButtom.setVisible(false); 
+            checkOutButtom.setVisible(false);
             JOptionPane.showMessageDialog(null, "No se ha encontrado ningún huesped con ese nombre.\n Por favor intente nuevamente. ", "Información", INFORMATION_MESSAGE);
-            }
+        }
     }//GEN-LAST:event_searchButtomActionPerformed
 
     private void IDClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IDClientActionPerformed
@@ -333,24 +331,24 @@ public class ManageClientStatus extends javax.swing.JFrame {
     }//GEN-LAST:event_IDClientActionPerformed
 
     private void finalCheckOutButtomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finalCheckOutButtomActionPerformed
-                String ID=IDClient.getText();
-        Validations val=new Validations();
+        String ID = IDClient.getText();
+        Validations val = new Validations();
         boolean ready;
         ready = (val.isID(ID));
 
-        if(ready){
+        if (ready) {
             Home.Miyako.checkOut(MainClient.getFullName(), ID);
             checkOutPanel.setVisible(false);
             text.setVisible(false);
             textTitle.setVisible(false);
             textScroll.setVisible(false);
-            this.MainClient=null;
+            this.MainClient = null;
             checkOutButtom.setVisible(false);
             nameClient.setText("");
             surnameClient.setText("");
             JOptionPane.showMessageDialog(null, "Se ha realizdo correctamente el check-out.\nPuede visualizar la información nuevamente en el partado de historial de cada habitación.", "Operación Exitosa!", INFORMATION_MESSAGE);
-            searchButtom.setVisible(true);    
-        }else{
+            searchButtom.setVisible(true);
+        } else {
             JOptionPane.showMessageDialog(null, "Es necesario colocar todos los datos del huesped de manera correcta para realizar el Check-Out exitosamente.\n Por favor intente nuevamente. ", "Error!", WARNING_MESSAGE);
         }
     }//GEN-LAST:event_finalCheckOutButtomActionPerformed

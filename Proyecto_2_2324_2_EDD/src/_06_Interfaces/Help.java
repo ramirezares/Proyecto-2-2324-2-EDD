@@ -1,6 +1,5 @@
 package _06_Interfaces;
 
-import _03_Classes.SystemHotel;
 import javax.swing.ImageIcon;
 
 /**
@@ -9,6 +8,7 @@ import javax.swing.ImageIcon;
  */
 public class Help extends javax.swing.JFrame {
 
+    //Inicializacion de imagenes para el programa
     ImageIcon logoCompanyPic = new ImageIcon("Untitled-3.png");
     ImageIcon fondoPic = new ImageIcon("mount-fuji-8010752_1280.jpg");
 

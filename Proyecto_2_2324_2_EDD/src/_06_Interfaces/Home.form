@@ -181,7 +181,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="d5" green="f0" red="fd" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Gesti&#xf3;n de Huespedes"/>
+                <Property name="text" type="java.lang.String" value="Gesti&#xf3;n de Hu&#xe9;spedes"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="guestButtomActionPerformed"/>

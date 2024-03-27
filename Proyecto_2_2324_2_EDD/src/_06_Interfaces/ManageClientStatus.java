@@ -104,7 +104,7 @@ public class ManageClientStatus extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Perpetua", 1, 50)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 48, 73));
-        jLabel2.setText("Gestión de Huespedes");
+        jLabel2.setText("Gestión de Huéspedes");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 750, 70));
 
         jLabel5.setFont(new java.awt.Font("Perpetua", 3, 24)); // NOI18N
@@ -238,7 +238,7 @@ public class ManageClientStatus extends javax.swing.JFrame {
 
         textTitle.setFont(new java.awt.Font("Perpetua", 1, 32)); // NOI18N
         textTitle.setForeground(new java.awt.Color(0, 32, 54));
-        textTitle.setText("Huesped  Encontrado");
+        textTitle.setText("Huésped  Encontrado");
         jPanel1.add(textTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, 320, 30));
 
         imagenFondo.setBackground(new java.awt.Color(102, 155, 188));

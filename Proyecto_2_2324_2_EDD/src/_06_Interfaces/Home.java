@@ -114,7 +114,7 @@ public class Home extends javax.swing.JFrame {
         guestButtom.setBackground(new java.awt.Color(0, 32, 54));
         guestButtom.setFont(new java.awt.Font("Perpetua", 1, 18)); // NOI18N
         guestButtom.setForeground(new java.awt.Color(253, 240, 213));
-        guestButtom.setText("Gestión de Huespedes");
+        guestButtom.setText("Gestión de Huéspedes");
         guestButtom.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 guestButtomActionPerformed(evt);

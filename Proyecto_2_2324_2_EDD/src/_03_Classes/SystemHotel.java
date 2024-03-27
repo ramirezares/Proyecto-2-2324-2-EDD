@@ -15,10 +15,26 @@ import javax.swing.JOptionPane;
  */
 public class SystemHotel {
 
+    /**
+     * Tabla hash para almacenar el estado de los clientes en el hotel.
+     */
     public static HashTable StatusList;
+
+    /**
+     * Árbol binario de búsqueda para almacenar las reservas realizadas.
+     */
     public static BinarySearchTree Bookings;
+
+    /**
+     * Árbol binario de búsqueda para almacenar la información de las
+     * habitaciones.
+     */
     public static BinarySearchTree Rooms;
 
+    /**
+     * Constructor de la clase SystemHotel. Inicializa las estructuras de datos
+     * y carga la información inicial desde un archivo CSV.
+     */
     public SystemHotel() {
         SystemHotel.StatusList = new HashTable();
         SystemHotel.Bookings = new BinarySearchTree();
@@ -32,6 +48,12 @@ public class SystemHotel {
 
     }
 
+    /**
+     * Visualiza la información de un huésped en base a su nombre completo.
+     *
+     * @param clientFullName Nombre y apellido del huésped a buscar.
+     * @return un string con la informacion del huésped.
+     */
     public String visualizeGuest(String clientFullName) {
         String nameToSearch = clientFullName;
         String textToReturn = "";
@@ -44,15 +66,18 @@ public class SystemHotel {
         }
 
         return textToReturn;
-
-        // recibe un nombre y apellido, lo busca en el hashtable y devuelve el string del huesped
     }
 
+    /**
+     * Visualiza la información de una reserva en base a su ID.
+     *
+     * @param clientID ID de la reserva a buscar.
+     * @return un string con la información la reserva.
+     */
     public String visualizeBooking(String clientID) {
         String bookingToReturn = "";
 
         try {
-            // La cedula la tengo que transformar en numero, validar afuera si el string es un numero
             int NumForSearch = Integer.parseInt(clientID);
             NodeBST matched = SystemHotel.Bookings.SearchNodeInBST(SystemHotel.Bookings.getRoot(), NumForSearch);
             Booking BookingMatched = (Booking) matched.getData();
@@ -60,15 +85,20 @@ public class SystemHotel {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "No existe una reserva.");
         }
-        // recibe un ID, busca en el arbol la reservacion con se ID y muestra sus datos
         return bookingToReturn;
     }
 
+    /**
+     * Visualiza la información de una habitación en base a su número para ver
+     * su historial.
+     *
+     * @param roomNumber Número de la habitación a buscar.
+     * @return un string con la información de la habitación y su historial.
+     */
     public String visualizeRoomRecord(String roomNumber) {
         String recordToReturn = "";
 
         try {
-            // El string lo tengo que transformar en numero, validar afuera si el string es un numero
             int NumForSearch = Integer.parseInt(roomNumber);
             NodeBST matched = SystemHotel.Rooms.SearchNodeInBST(SystemHotel.Rooms.getRoot(), NumForSearch);
             Room roomMatched = (Room) matched.getData();
@@ -77,23 +107,25 @@ public class SystemHotel {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "El numero no corresponde con una habitacion.");
         }
-
-        // recibe un numero de habitacion, busca en el arbol esa habitacion y mustra sus datos
         return recordToReturn;
     }
 
+    /**
+     * Realiza el proceso de check-in de un cliente en el hotel.
+     *
+     * @param ID ID de la reserva para realizar el check-in.
+     * @return una instancia de la clase CLientStatus para colocar un resumen de
+     * la información del cliente registrado y la habitacion asignada.
+     */
     public ClientStatus checkIn(String ID) {
         ClientStatus client = null;
         Helper help = new Helper();
         try {
-            // Validar que id sea una cedula afuera
-            //el error esta aca adentro
             int IDToSearch = Integer.parseInt(ID);
             System.out.println("pdanie");
             NodeBST NodeOfBooking = SystemHotel.Bookings.SearchNodeInBST(SystemHotel.Bookings.getRoot(), IDToSearch); //Busco la reserva 
-            Booking BookingToStatus = (Booking) NodeOfBooking.getData();
-
-            System.out.println("pdanie");
+  
+            //Llama a las funciones auxiliares private para asignar la habitacion, crear el nodo y realizar todas las acciones
             int[] occupiedRooms = ListOfOccupiedRoomsWithStatusWithDate(BookingToStatus.getArrival());
 
             System.out.println("pdanie");
@@ -105,6 +137,7 @@ public class SystemHotel {
 
             SystemHotel.StatusList.insert(newClientToStatus);
 
+            // Borra la reserva del arbol de reservas
             SystemHotel.Bookings.deleteNodeInBST(SystemHotel.Bookings.getRoot(), Integer.parseInt(BookingToStatus.getID()));
 
             client = newClientToStatus;
@@ -113,20 +146,21 @@ public class SystemHotel {
             JOptionPane.showMessageDialog(null, "No hay habitación disponible para esta reserva,\nintete reservar de nuevo para poder asignarle una habitación.");
         }
         return client;
-        // Recibe el id de una reserva y se trae la reserva para crear un unevo cliente en status.
-        // Borra la reserva del arbol de reservas
-
-        //Llama a las funciones auxiliares private para asignar la habitacion, crear el nodo y realizar todas las acciones
-        // Colocar JOptionPane para imprimir exitoso o fallas.
     }
 
+    /**
+     * Lista las habitaciones ocupadas en una fecha específica.
+     *
+     * @param ArriveDate Fecha de llegada para filtrar las habitaciones
+     * ocupadas.
+     * @return Array con los números de las habitaciones ocupadas.
+     */
     private int[] ListOfOccupiedRoomsWithStatusWithDate(String ArriveDate) {
-
         Validations val = new Validations();
         int[] occupiedRooms = new int[SystemHotel.StatusList.getTable().length];
         for (int i = 0; i < SystemHotel.StatusList.getTable().length; i++) {
             ClientStatus current = SystemHotel.StatusList.getTable()[i];
-            
+
             if (current != null) {
                 if (val.compareStrings(ArriveDate, current.getArrive())) {
                     occupiedRooms[i] = Integer.parseInt(current.getRoomNumber());
@@ -138,11 +172,13 @@ public class SystemHotel {
         return occupiedRooms;
     }
 
+    /**
+     * Lista las habitaciones disponibles de un tipo específico.
+     *
+     * @param roomsType Tipo de habitación a filtrar.
+     * @return Array con los números de las habitaciones del tipo especificado.
+     */
     private int[] ListOfRoomsWithType(String roomsType) {
-        // Hacer funcion que cree un array del largo de las habitaciones del tipo y con el numero de habitaciones correspondientes
-        // int count = 0;
-        // int amountOfRoomsWithType = countWithType(SystemHotel.Rooms.getRoot(), roomsType, count);
-
         ArrayList RoomswithType = new ArrayList();
         RoomswithType = AddWithType(SystemHotel.Rooms.getRoot(), roomsType, RoomswithType);
         Object[] temporalArray = RoomswithType.toArray();
@@ -152,11 +188,18 @@ public class SystemHotel {
         for (int i = 0; i < temporalArray.length; i++) {
             intArray[i] = (int) temporalArray[i];  // Casting de Object a int
         }
-
         return intArray;
     }
 
-   
+    /**
+     * Añade al array las habitaciones del tipo especificado.
+     *
+     * @param pRoot Nodo raíz del árbol de habitaciones.
+     * @param roomType Tipo de habitación a buscar.
+     * @param RoomswithType ArrayList donde se almacenan las habitaciones
+     * encontradas.
+     * @return ArrayList con las habitaciones del tipo especificado.
+     */
     private ArrayList AddWithType(NodeBST pRoot, String roomType, ArrayList RoomswithType) {
         Validations temporal = new Validations();
 
@@ -166,14 +209,20 @@ public class SystemHotel {
 
             if (temporal.compareStrings(roomType, current.getRoomType())) {
                 RoomswithType.add(current.getRoomNumber());
-
             }
             RoomswithType = AddWithType(pRoot.getRightSong(), roomType, RoomswithType);
-
         }
         return RoomswithType;
     }
 
+    /**
+     * Selecciona el número de habitación disponible.
+     *
+     * @param RoomswithType Array con los números de habitaciones del tipo
+     * especificado.
+     * @param occupiedRooms Array con los números de habitaciones ocupadas.
+     * @return Número de habitación disponible.
+     */
     private int SelectNumOfAvailableRoom(int[] RoomswithType, int[] occupiedRooms) {
         // Selecciona el numero de posicion de la habitacion del tipo disponible evaluando en la lista de ocupadas 
         // y la lista de las habitaciones del tipo deseado.
@@ -204,20 +253,22 @@ public class SystemHotel {
                     return numToReturn;
                 }
             }
-
             return numToReturn;
-        }    // Validar que si devuelve -1 afuera nunca encontro una habitacion disponible
+            // Si devuelve -1 afuera nunca encontro una habitacion disponible
+        }
     }
 
     /**
+     * Realiza el proceso de check-out de un cliente del hotel.
      *
-     * @param completeNameOfCustomerToSearch
-     * @param ID
-     * @return
+     * @param completeNameOfCustomerToSearch Nombre completo del cliente a
+     * realizar el check-out.
+     * @param ID ID de la reserva asociada al cliente.
+     * @return True si el check-out fue exitoso, False en caso contrario.
      */
     public boolean checkOut(String completeNameOfCustomerToSearch, String ID) {
         boolean val = false;
-        // Validar afuera el ID
+
         try {
             ClientStatus matched = SystemHotel.StatusList.search(completeNameOfCustomerToSearch);
             String LineToAppend = CreateRecordLine(ID, matched.getName(), matched.getLastName(), matched.getEmail(), matched.getGender(), matched.getArrive());
@@ -238,9 +289,19 @@ public class SystemHotel {
             JOptionPane.showMessageDialog(null, "Cliente no encontrado.");
         }
         return val;
-        // busca en el hashtable con el name, si lo consigue procede al checkOut, si no indica que no esta
     }
 
+    /**
+     * Crea una línea de registro para el historial de una habitación.
+     *
+     * @param ID ID del cliente asociado al registro.
+     * @param name Nombre del cliente.
+     * @param lastName Apellido del cliente.
+     * @param email Email del cliente.
+     * @param genre Género del cliente.
+     * @param arrive Fecha de llegada del cliente.
+     * @return Línea de registro para el historial de la habitación.
+     */
     private String CreateRecordLine(String ID, String name, String lastName, String email, String genre, String arrive) {
         String lineToReturn = "";
         RecordForRoom newLine = new RecordForRoom(ID, name, lastName, email, genre, arrive);
@@ -248,6 +309,5 @@ public class SystemHotel {
         lineToReturn = newLine.stringRoomRecord();
 
         return lineToReturn;
-        // Con el objeto status, crea y devuelve una linea String para agregar en el historial de la habitacion
     }
 }

@@ -16,11 +16,16 @@ public class SimpleList {
         size = 0;
     }
 
+    /**
+     *Constructor 2 
+     * @param head Nodo cabeza
+     */
     public SimpleList(Node head) {
         this.head = head;
         this.tail = this.head;
     }
-   /**
+   
+    /**
      * Resetea la lista
      */
     public void resetList(){
@@ -30,6 +35,7 @@ public class SimpleList {
     }
    
     /*Booleans*/
+    
     /**
      * Consulta si la lista esta vacia.
      * @return true si el primer nodo (inicio), no apunta a otro nodo.
@@ -37,7 +43,8 @@ public class SimpleList {
     public boolean isEmpty(){
         return (head == null);
     }
-/**
+
+    /**
      * Consulta si el elemento existe dentro de la lista.
      * @param obj 
      * @return true si el objeto existe dentro de la lista
@@ -53,6 +60,7 @@ public class SimpleList {
     }
 
     /*Add*/
+    
     /**
      * Agrega un elemento al principio de la lista.
      * @param obj a agregar.
@@ -66,7 +74,8 @@ public class SimpleList {
         }
         size++;
     }
-   /**
+  
+    /**
      * Agrega un elemento al final de la lista.
      * @param obj a agregar.
      */  
@@ -214,6 +223,7 @@ public class SimpleList {
    
    
     /*Print*/
+    
     /** 
      * Imprime la lista.
      */   
@@ -227,6 +237,9 @@ public class SimpleList {
    
     }
    
+    /**
+     *Imprime la lista de alementos por terminal
+     */
     public void printListBooking(){
         Node aux=head;
         for (int i = 0; i < this.size; i++) {
@@ -277,6 +290,7 @@ public class SimpleList {
    
    
     /*Changers*/
+    
     //Por contenido
 /**
      * Cambio el elemento por otro a traves de una referencia, lo cambia en todos los elementos iguales que encuentre
@@ -294,7 +308,8 @@ public class SimpleList {
             }
         }
     }
-/**
+
+    /**
      * Cambio el elemento por otro a traves de una referencia, solo toma el primer elemento que encuentre
      * @param objRef contenido del elemento a cambiar
      * @param objNew contenido que reemplaza al contenido anterior
@@ -310,6 +325,7 @@ public class SimpleList {
     }
 
     //por indice
+    
     /**
      * Cambio el elemento por otro a traves de un indice, solo toma el primer elemento que encuentre
      * @param indexRef indice del elemento a cambiar.
@@ -337,7 +353,11 @@ public class SimpleList {
     return !(index<0 || index>this.size-1);    
    }
     
-    //Convierte una lista de ciudades en un texto y las separa por coma
+    /**
+    *Convierte una lista de ciudades en un texto y las separa por coma
+    *
+     * @return String con las ciudades separadas por coma
+    */
     public String toStringCities(){
         String texto ="";
         if(!this.isEmpty()){
@@ -348,7 +368,10 @@ public class SimpleList {
         return "La lista es vacia";
     }
     
-    ///Devuelve un String con una lista de los elementos de la lista
+    /**
+     * Devuelve un String con una lista de los elementos de la lista
+     */
+    @Override
     public String toString(){
         String texto ="";
         if(!this.isEmpty()){
@@ -359,6 +382,9 @@ public class SimpleList {
         return "La lista es vacia";
     }
     
+    /**
+     *Eliminar elementos duplicados
+     */
     public void eliminarDuplicado() {
     Node p = head;
     while(p!=null) {

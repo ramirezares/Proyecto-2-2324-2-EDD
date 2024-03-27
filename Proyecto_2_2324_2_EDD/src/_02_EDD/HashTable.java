@@ -8,11 +8,14 @@ import _03_Classes.ClientStatus;
  */
 public class HashTable {
 
-    private final int size = 1381; //primo no necesariamente cercano a una potencia de 2
+    private final int size = 1381; 
     private int numElements;
     private double loadFactor;
     private ClientStatus[] table;
 
+    /**
+     *Constructor de la clase Hashtable
+     */
     public HashTable() {
         table = new ClientStatus[this.size];
         numElements = 0;
@@ -24,7 +27,7 @@ public class HashTable {
 
     //
     /**
-     *
+     *Función que genera un indice a traves de un string clave insertado (función hash)
      * @param key la clave que representa al objeto fullname del client status
      * @return la posicion de un elemento
      */
@@ -44,7 +47,7 @@ public class HashTable {
     }
 
     /**
-     *
+     *Conviee un string en un long 
      * @param key clave que identifica de manera unica al objeto que se agrega
      * en el hashtable fullname del client status
      * @return el indice donde se debe agregar
@@ -63,9 +66,8 @@ public class HashTable {
 
     }
 
-    //Insetar un elemento en la tabla 
     /**
-     *
+     *Insetar un elemento en la tabla (un client status)
      * @param s el status que se quiere insertar
      */
     public void insert(ClientStatus s) {
@@ -83,9 +85,8 @@ public class HashTable {
 
     }
 
-    //Busqueda de un elemento
     /**
-     *
+     *Busca un elemento en la tabla apartir de un string clave
      * @param key fullname del client status
      * @return clientStatus encontrado
      */
@@ -97,9 +98,9 @@ public class HashTable {
         return c;
     }
 
-    //ELiminar un elemento
+    
     /**
-     *
+     *ELimina un elemento en la tabla a partir de un string clave
      * @param key fullname del client status
      */
     public void delete(String key) {
@@ -112,7 +113,7 @@ public class HashTable {
     }
 
     /**
-     * Imprime toda la tabla
+     * Imprime toda la tabla por terminal
      */
     public void print() {
         for (int i = 0; i < this.size; i++) {
